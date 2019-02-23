@@ -1352,7 +1352,7 @@
 											"top": 636,
 											"width": 182.46337890625,
 											"height": 13,
-											"text": "+?getNeighbouringField(): Field",
+											"text": "+?getNeighbouringTile(): Tile",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2865,7 +2865,7 @@
 											"top": 207,
 											"width": 162.9443359375,
 											"height": 13,
-											"text": "Field"
+											"text": "Tile"
 										},
 										{
 											"_type": "LabelView",
@@ -2969,7 +2969,7 @@
 											"top": 255,
 											"width": 162.9443359375,
 											"height": 13,
-											"text": "+getNeighbours(): Field[0..*]",
+											"text": "+getNeighbours(): Tile[0..*]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2986,7 +2986,7 @@
 											"top": 270,
 											"width": 162.9443359375,
 											"height": 13,
-											"text": "+addNeihgbour(f: Field)",
+											"text": "+addNeihgbour(f: Tile)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3287,7 +3287,7 @@
 											"top": 207,
 											"width": 127,
 											"height": 13,
-											"text": "Breakable"
+											"text": "BreakableTile"
 										},
 										{
 											"_type": "LabelView",
@@ -4008,7 +4008,7 @@
 										"$ref": "AAAAAAFpFddFgEDJBhg="
 									},
 									"edgePosition": 1,
-									"text": "-fields"
+									"text": "-tiles"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -9331,7 +9331,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpFdBAEz1CceM="
 							},
-							"name": "?getNeighbouringField",
+							"name": "?getNeighbouringTile",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9783,7 +9783,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Field",
+					"name": "Tile",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -9822,7 +9822,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpFdJUKT5+Y0k="
 							},
-							"name": "fields",
+							"name": "tiles",
 							"end1": {
 								"_type": "UMLAssociationEnd",
 								"_id": "AAAAAAFpFddFgEDGztw=",
@@ -9983,7 +9983,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Breakable",
+					"name": "BreakableTile",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
