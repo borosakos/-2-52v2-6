@@ -858,30 +858,11 @@
 									"model": {
 										"$ref": "AAAAAAFpFc++Jzzq9uI="
 									},
-									"subViews": [
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFpGnhdi5iHgB0=",
-											"_parent": {
-												"$ref": "AAAAAAFpFc++KTzyhsg="
-											},
-											"model": {
-												"$ref": "AAAAAAFpGnhdTpiEL+s="
-											},
-											"font": "Arial;13;0",
-											"left": 741,
-											"top": 598,
-											"width": 119,
-											"height": 13,
-											"text": "-isJingling: boolean",
-											"horizontalAlignment": 0
-										}
-									],
 									"font": "Arial;13;0",
 									"left": 736,
 									"top": 593,
 									"width": 129,
-									"height": 23
+									"height": 10
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -904,18 +885,35 @@
 											},
 											"font": "Arial;13;0",
 											"left": 741,
-											"top": 621,
+											"top": 608,
 											"width": 119,
 											"height": 13,
 											"text": "+step()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFpGsQj22bttls=",
+											"_parent": {
+												"$ref": "AAAAAAFpFc++KTzzSxc="
+											},
+											"model": {
+												"$ref": "AAAAAAFpGsQjxmbqA88="
+											},
+											"font": "Arial;13;0",
+											"left": 741,
+											"top": 623,
+											"width": 119,
+											"height": 13,
+											"text": "+jingleChance()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 736,
-									"top": 616,
+									"top": 603,
 									"width": 129,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1072,30 +1070,11 @@
 									"model": {
 										"$ref": "AAAAAAFpFc/xIj0W9EQ="
 									},
-									"subViews": [
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFpGnnFx55fIZs=",
-											"_parent": {
-												"$ref": "AAAAAAFpFc/xIj0eL3U="
-											},
-											"model": {
-												"$ref": "AAAAAAFpGnnFm55cnpE="
-											},
-											"font": "Arial;13;0",
-											"left": 909,
-											"top": 598,
-											"width": 123.2080078125,
-											"height": 13,
-											"text": "-isWhistling: boolean",
-											"horizontalAlignment": 0
-										}
-									],
 									"font": "Arial;13;0",
 									"left": 904,
 									"top": 593,
 									"width": 133.2080078125,
-									"height": 23
+									"height": 10
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1118,18 +1097,35 @@
 											},
 											"font": "Arial;13;0",
 											"left": 909,
-											"top": 621,
+											"top": 608,
 											"width": 123.2080078125,
 											"height": 13,
 											"text": "+step()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFpGsSr7WmqMfA=",
+											"_parent": {
+												"$ref": "AAAAAAFpFc/xIj0fByE="
+											},
+											"model": {
+												"$ref": "AAAAAAFpGsSr4mmn26o="
+											},
+											"font": "Arial;13;0",
+											"left": 909,
+											"top": 623,
+											"width": 123.2080078125,
+											"height": 13,
+											"text": "+whistleChance()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 904,
-									"top": 616,
+									"top": 603,
 									"width": 133.2080078125,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -7239,9 +7235,9 @@
 										"$ref": "AAAAAAFpGkgGoTDnPoM="
 									},
 									"font": "Arial;13;0",
-									"left": 764,
+									"left": 763,
 									"top": 829,
-									"width": 19.5126953125,
+									"width": 20,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -7513,9 +7509,9 @@
 										"$ref": "AAAAAAFpGksbSDhFWwA="
 									},
 									"font": "Arial;13;0",
-									"left": 704,
+									"left": 703,
 									"top": 397,
-									"width": 19.5126953125,
+									"width": 20,
 									"height": 13,
 									"alpha": 0.37527071951735164,
 									"distance": 35.4682957019364,
@@ -7880,9 +7876,9 @@
 										"$ref": "AAAAAAFpGmP0kIS1F5U="
 									},
 									"font": "Arial;13;0",
-									"left": 623,
+									"left": 622,
 									"top": 695,
-									"width": 19.5126953125,
+									"width": 20,
 									"height": 13,
 									"alpha": -1.0240076053021394,
 									"distance": 26.92582403567252,
@@ -9214,18 +9210,6 @@
 							}
 						}
 					],
-					"attributes": [
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFpGnhdTpiEL+s=",
-							"_parent": {
-								"$ref": "AAAAAAFpFc++Jzzq9uI="
-							},
-							"name": "isJingling",
-							"visibility": "private",
-							"type": "boolean"
-						}
-					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -9234,6 +9218,14 @@
 								"$ref": "AAAAAAFpFc++Jzzq9uI="
 							},
 							"name": "step"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFpGsQjxmbqA88=",
+							"_parent": {
+								"$ref": "AAAAAAFpFc++Jzzq9uI="
+							},
+							"name": "jingleChance"
 						}
 					]
 				},
@@ -9259,18 +9251,6 @@
 							}
 						}
 					],
-					"attributes": [
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFpGnnFm55cnpE=",
-							"_parent": {
-								"$ref": "AAAAAAFpFc/xIj0W9EQ="
-							},
-							"name": "isWhistling",
-							"visibility": "private",
-							"type": "boolean"
-						}
-					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -9279,6 +9259,14 @@
 								"$ref": "AAAAAAFpFc/xIj0W9EQ="
 							},
 							"name": "step"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFpGsSr4mmn26o=",
+							"_parent": {
+								"$ref": "AAAAAAFpFc/xIj0W9EQ="
+							},
+							"name": "whistleChance"
 						}
 					]
 				},
