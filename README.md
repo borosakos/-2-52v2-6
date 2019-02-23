@@ -1,1 +1,1 @@
-# PandaGame
+# Szuper titkos koalás titkosító algoritmus
