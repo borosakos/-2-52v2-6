@@ -3177,30 +3177,13 @@
 											"height": 13,
 											"text": "-isWhistling: boolean",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFpIQjwzc2Kdmc=",
-											"_parent": {
-												"$ref": "AAAAAAFpFdJUKT6GNcM="
-											},
-											"model": {
-												"$ref": "AAAAAAFpIQjwmc2Hx64="
-											},
-											"font": "Arial;13;0",
-											"left": 549,
-											"top": 228,
-											"width": 162.9443359375,
-											"height": 13,
-											"text": "-isTiring: boolean",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 544,
 									"top": 193,
 									"width": 172.9443359375,
-									"height": 53
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3223,7 +3206,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 549,
-											"top": 251,
+											"top": 236,
 											"width": 162.9443359375,
 											"height": 13,
 											"text": "+accept(a: Animal): boolean",
@@ -3240,7 +3223,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 549,
-											"top": 266,
+											"top": 251,
 											"width": 162.9443359375,
 											"height": 13,
 											"text": "+getNeighbours(): Tile[0..*]",
@@ -3257,7 +3240,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 549,
-											"top": 281,
+											"top": 266,
 											"width": 162.9443359375,
 											"height": 13,
 											"text": "+addNeighbour(t: Tile)",
@@ -3274,7 +3257,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 549,
-											"top": 296,
+											"top": 281,
 											"width": 162.9443359375,
 											"height": 13,
 											"text": "+remove(e: Element)",
@@ -3283,7 +3266,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 544,
-									"top": 246,
+									"top": 231,
 									"width": 172.9443359375,
 									"height": 68
 								},
@@ -10857,16 +10840,6 @@
 								"$ref": "AAAAAAFpFdJUKT5+Y0k="
 							},
 							"name": "isWhistling",
-							"visibility": "private",
-							"type": "boolean"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFpIQjwmc2Hx64=",
-							"_parent": {
-								"$ref": "AAAAAAFpFdJUKT5+Y0k="
-							},
-							"name": "isTiring",
 							"visibility": "private",
 							"type": "boolean"
 						}
