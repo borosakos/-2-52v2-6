@@ -1,0 +1,27 @@
+title Controller Ticks
+
+participant c: Controller as c
+participant g: Game as g
+participant o: Orangutan as o
+participant p: Panda as p
+participant e: Element as e
+
+c->+g: hasEnded()
+g-->-c:b: bool
+alt b==false
+loop for all o:Orangutan
+c->+o: step()
+o-->-c:
+end
+loop for all p:Panda
+c->+p: step()
+p-->-c:
+end
+loop for all e:Element
+c->+e: step()
+e-->-c:
+end
+else b == true
+c->+g:endGame()
+g-->-c:
+end

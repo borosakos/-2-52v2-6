@@ -1,0 +1,22 @@
+Orangutan steps
+	Panda hitBy Orangutan
+	Orangutan hitBy Orangutan
+	Elements hitBy Orangutan
+Animal steps on Gap
+Animal steps on BreakableTile
+Tile accept Panda
+Gap accept
+Remove from BreakableTile
+Panda steps
+	Panda hitBy Panda
+	Orangutan hitBy Panda
+	Elements hitBy Panda
+Panda follows
+Panda dies
+Orangutan dies
+ChocolateMachine whistles
+GameMachine Jingles
+TiredPanda sitDown
+ScaredPanda getíscared
+JumpingPanda jumps
+

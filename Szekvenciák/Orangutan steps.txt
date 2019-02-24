@@ -1,0 +1,28 @@
+title Orangutan steps
+
+participant c: Controller as c
+participant o: Orangutan as o
+participant t1: Tile as t1
+participant t2: Tile as t2
+participant p: Panda as p
+c->+o:step()
+o->+t1:getNeighbours()
+t1-->-o: tiles: Tile[]
+o->+t2:accept(o)
+#t2->+o:collideWith(e)
+#o->+e:hitBy(o)
+#e-->-o: b: bool
+#o-->-t2: b
+t2-->-o: b
+opt b==true
+o->+t1: remove(o)
+t1-->-o:
+end
+o->+o:isInQueue()
+o-->-o:c: bool
+opt c==true && b==false
+o->+p: follow(t1)
+p-->-o:
+end
+
+o-->-c:

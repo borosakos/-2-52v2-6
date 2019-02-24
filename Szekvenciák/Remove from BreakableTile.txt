@@ -1,0 +1,19 @@
+title Remove from BreakableTile
+
+participant a: Animal as a
+participant bt: BreakableTile as bt
+participant g: Gap as g
+a->+bt:remove(a)
+bt->+bt:lifeDecrease(1)
+note right of bt
+decreaseLife bool-al
+térjen vissza!!
+end note
+bt-->-bt:b: bool
+opt b==true
+bt->+bt: makeGap(neighbours)
+bt->*g: new Gap(neighbours)
+bt-->-bt:
+end
+bt->bt: setElement(null)
+bt-->-a:

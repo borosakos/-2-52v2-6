@@ -1,0 +1,11 @@
+title Gap Accept
+
+participant a: Animal as a
+participant g: Gap as g
+
+a->+g:accept(a)
+g->+a:die()
+a-->-g:
+destroy a
+
+

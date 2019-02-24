@@ -1,0 +1,17 @@
+title Tile accept
+
+participant a: Animal as a
+participant t1: Tile as t1
+participant t2: Tile as t2
+participant e: Element as e
+
+a->+t1:accept(a)
+alt t1 has Element
+t1->+a: collideWith(e)
+a->+e:hitBy(a)
+e-->-a:b: bool
+a-->-t1: b
+t1-->a:b
+else else
+t1-->-a: true
+end

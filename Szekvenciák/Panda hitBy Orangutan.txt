@@ -1,0 +1,22 @@
+title Panda hitBy Orangutan
+
+participant o: Orangutan as o
+participant p: Panda as p
+
+
+o->+p:hitBy(p)
+p->+o: grab(p)
+o->+p: isInQueue()
+p-->-o: a: bool
+opt a==true
+o->o: die()
+end
+o->+p:getInQueue(o)
+note right of p
+Kell hozzáadni ilyen fv-t!
+end note
+p-->-o:
+
+o-->-p:
+p-->-o:false
+
