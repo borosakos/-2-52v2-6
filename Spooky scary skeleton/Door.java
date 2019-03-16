@@ -1,3 +1,4 @@
+package skeleton;
 
 import java.util.*;
 
@@ -26,18 +27,27 @@ public class Door extends Element {
      * @param o 
      * @return
      */
-    public abstract boolean hitBy(Orangutan o);
+    public boolean hitBy(Orangutan o) {
+    	// TODO implement here
+    	return false;
+    }
 
     /**
      * @param p 
      * @return
      */
-    public abstract boolean hitBy(Panda p);
+    public boolean hitBy(Panda p) {
+    	// TODO implement here
+    	return false;
+    }
 
     /**
      * @param e 
      * @return
      */
-    public abstract boolean collideWith(Element e);
+    public boolean collideWith(Element e) {
+    	// TODO implement here
+    	return false;
+    }
 
 }

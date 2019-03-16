@@ -1,3 +1,4 @@
+package skeleton;
 
 import java.util.*;
 
@@ -26,13 +27,6 @@ public class Tile {
      * 
      */
     private Element element;
-
-    /**
-     * 
-     */
-    private Element element;
-
-
 
     /**
      * 

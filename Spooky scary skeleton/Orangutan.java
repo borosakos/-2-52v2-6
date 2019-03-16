@@ -1,3 +1,4 @@
+package skeleton;
 
 import java.util.*;
 
@@ -105,26 +106,14 @@ public class Orangutan extends Animal {
     /**
      * @param a
      */
-    public abstract void grab(Animal a);
+    public void grab(Animal a) {
+    	// TODO implement here
+    }
 
     /**
      * @param a
      */
-    public abstract void release(Animal a);
-
-    /**
-     * 
-     */
-    public abstract void step();
-
-    /**
-     * 
-     */
-    public abstract void die();
-
-    /**
-     * @return
-     */
-    public abstract Tile selectTile();
-
+    public void release(Animal a) {
+    	// TODO implement here
+    }
 }

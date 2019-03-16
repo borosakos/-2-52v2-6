@@ -1,3 +1,4 @@
+package skeleton;
 
 import java.util.*;
 
@@ -59,22 +60,15 @@ public class ChocolateMachine extends Element {
         // TODO implement here
     }
 
-    /**
-     * @param o 
-     * @return
-     */
-    public abstract boolean hitBy(Orangutan o);
-
-    /**
-     * @param p 
-     * @return
-     */
-    public abstract boolean hitBy(Panda p);
-
+    
     /**
      * @param e 
      * @return
      */
-    public abstract boolean collideWith(Element e);
+    public boolean collideWith(Element e) {
+    	//TODO implement here
+		return false;
+    	
+    }
 
 }

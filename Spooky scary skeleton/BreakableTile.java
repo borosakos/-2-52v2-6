@@ -1,3 +1,4 @@
+package skeleton;
 
 import java.util.*;
 
@@ -29,7 +30,7 @@ public class BreakableTile extends Tile {
     /**
      * 
      */
-    public void break() {
+    public void breakTile() {
         // TODO implement here
     }
 
