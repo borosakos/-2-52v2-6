@@ -1,7 +1,5 @@
 package skeleton;
 
-import java.util.*;
-
 /**
  * 
  */
@@ -17,21 +15,28 @@ public class BreakableTile extends Tile {
      * 
      */
     private int life;
+    private boolean broken;
 
     /**
      * @param a 
      * @return
      */
-    public boolean accept(Animal a) {
-        // TODO implement here
-        return false;
+    public boolean accept(Animal a) { //Ez idk jó-e, meglátjuk 
+        if (broken) {
+        	a.die();
+        	return false;
+        }
+		if (element == null)
+			return true;
+		else
+			return a.collideWith(element);
     }
 
     /**
      * 
      */
-    public void breakTile() {
-        // TODO implement here
+    public void breakTile() { //Kell ez egyáltalán? reeee de utálom ezt az egész diagramozgatást annyival egyértelmûbb lett volna simán leprogramozni istenem
+        broken = true;
     }
 
     /**
@@ -39,7 +44,9 @@ public class BreakableTile extends Tile {
      * @return
      */
     public boolean lifeDecrease(int i) {
-        // TODO implement here
+        life -= i;
+        if (life <= 0) return true;
+        //Szerintem itt értelmesebb lenne breakTileolni, de meglátjuk I guess
         return false;
     }
 
@@ -47,15 +54,15 @@ public class BreakableTile extends Tile {
      * @param a
      */
     public void remove(Animal a) {
-        // TODO implement here
+        if (lifeDecrease(1)) breakTile();
+        element = null;
     }
 
     /**
      * @return
      */
     public int getLife() {
-        // TODO implement here
-        return 0;
+        return life;
     }
 
 }

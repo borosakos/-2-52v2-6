@@ -7,120 +7,106 @@ import java.util.*;
  */
 public class Tile {
 
-    /**
-     * Default constructor
-     */
-    public Tile() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Tile() {
+	}
 
-    /**
-     * 
-     */
-    private boolean isJingling;
+	private boolean isJingling;
+	private boolean isWhistling;
+	protected Element element;
+	private Set<Tile> neighbours;
+	protected Set<Armchair> neighbouringArmchairs;
 
-    /**
-     * 
-     */
-    private boolean isWhistling;
+	/**
+	 * @param a
+	 * @return
+	 */
+	public boolean accept(Animal a) {
+		if (element == null)
+			return true;
+		else
+			return a.collideWith(element);
+	}
 
-    /**
-     * 
-     */
-    private Element element;
+	/**
+	 * @return
+	 */
+	public Set<Tile> getNeighbours() {
+		return neighbours;
+	}
 
-    /**
-     * 
-     */
-    protected Set<Armchair> neighbouringArmchairs;
+	/**
+	 * @param t
+	 */
+	public void addNeighbour(Tile t) {
+		// TODO implement here
+	}
 
-    /**
-     * @param a 
-     * @return
-     */
-    public boolean accept(Animal a) {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @param a
+	 */
+	public void remove(Animal a) {
+		element = null;
+	}
 
-    /**
-     * @return
-     */
-    public Set<Tile> getNeighbours() {
-        // TODO implement here
-        return null;
-    }
+	/**
+	 * @return
+	 */
+	public Set<Armchair> getNeighbouringArmchairs() {
+		return neighbouringArmchairs;
+	}
 
-    /**
-     * @param t
-     */
-    public void addNeighbour(Tile t) {
-        // TODO implement here
-    }
+	/**
+	 * @param b
+	 */
+	public void setIsJingling(boolean b) {
+		isJingling = b;
+	}
 
-    /**
-     * @param a
-     */
-    public void remove(Animal a) {
-        // TODO implement here
-    }
+	/**
+	 *
+	 */
+	public boolean getIsJingling() {
+		return isJingling;
+	}
 
-    /**
-     * @return
-     */
-    public boolean getIsJingling() {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @param b
+	 */
+	public void setIsWhistling(boolean b) {
+		isWhistling = b;
+	}
 
-    /**
-     * @return
-     */
-    public boolean getIsWhistling() {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @return
+	 */
+	public boolean getIsWhistling() {
+		return isWhistling;
+	}
 
-    /**
-     * @return
-     */
-    public Set<Armchair> getNeighbouringArmchairs() {
-        // TODO implement here
-        return null;
-    }
+	/**
+	 * @param e
+	 */
+	public void setElement(Element e) { //Ha jól értem, ez csak inicializásnál lesz használva de idk
+		element = e;
+	}
 
-    /**
-     * @param b
-     */
-    public void setIsJingling(boolean b) {
-        // TODO implement here
-    }
+	/**
+	 * @param a
+	 */
+	public void take(Animal a) {
+		element = a;
+	}
 
-    /**
-     * @param b
-     */
-    public void setIsWhistling(boolean b) {
-        // TODO implement here
-    }
-
-    /**
-     * @param e
-     */
-    public void setElement(Element e) {
-        // TODO implement here
-    }
-
-    /**
-     * @param a
-     */
-    public void take(Animal a) {
-        // TODO implement here
-    }
-
-    /**
-     * @param t
-     */
-    public void swap(Tile t) {
-        // TODO implement here
-    }
+	/**
+	 * @param t
+	 */
+	public void swap(Tile t) {
+		Element tempElement = element;
+		element = t.element;
+		t.element = tempElement;
+	}
 
 }
