@@ -9,36 +9,39 @@ public class Armchair extends Element {
 	 * Default constructor
 	 */
 	public Armchair() {
+		Indent.print("Armchair Armchair()");
 	}
 
-	/**
-	 * 
-	 */
 	private boolean isOccupied;
 
 	/**
 	 * @return
 	 */
 	public boolean getIsOccupied() {
-		// TODO implement here
-		return false;
+		Indent.print("Armchair getIsOccupied()");
+		
+		return isOccupied;
 	}
 
 	/**
-	 * @param o
+	 * Jelzi, hogy az orangután nem ütközhet a fotellal.
+	 * @param o orangután
 	 * @return
 	 */
 	public boolean hitBy(Orangutan o) {
-		// TODO implement here
+		Indent.print("Armchair hitby(Orangutan o)");
+		
 		return false;
 	}
 
 	/**
-	 * @param p
+	 * Jelzi, hogy a panda nem ütközhet a fotellal.
+	 * @param p panda
 	 * @return
 	 */
 	public boolean hitBy(Panda p) {
-		// TODO implement here
+		Indent.print("Armchair hitBy(Panda p)");
+		
 		return false;
 	}
 
@@ -47,7 +50,8 @@ public class Armchair extends Element {
 	 * @return
 	 */
 	public boolean collideWith(Element e) {
-		// TODO implement here
+		Indent.print("Armchair collideWith(Element e)");
+		
 		return false;
 	}
 
