@@ -1,117 +1,96 @@
-package skeleton;
+package main;
 
-/**
- * 
- */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Orangutan extends Animal {
 
-    /**
-     * Default constructor
-     */
-    public Orangutan() {
-    }
+	@Override
+	public void release() {
+		Indent.print("Orangutan release()");
+		
+	}
 
-    /**
-     * 
-     */
-    private int points;
+	@Override
+	public void die() {
+		Indent.print("Orangutan die()");
+		Indent.inc();
+		if (backNeighbour!=null) {
+			backNeighbour.release();
+		}
+		Game game = new Game();
+		game.endGame();
+		
+		Indent.dec();
+	}
 
-    /**
-     * 
-     */
-    public void step() {
-        // TODO implement here
-    }
+	@Override
+	public Tile selectTile() {
+		Indent.print("Milyen csempére akarsz lépni? (T / BT / G)");
+		BufferedReader reader =  
+                new BufferedReader(new InputStreamReader(System.in)); 
+		try {
+			String answer = reader.readLine();
+			answer = answer.toUpperCase();
+			switch(answer) {
+			case "T": return new Tile();
+			case "BT": return new BreakableTile(10);
+			case "G": return new BreakableTile(0);
+			default: return new Tile();
+			}
+			
+		} catch (IOException e) {
+			Indent.print("Valami szörnyű választ adhattál meg, ezért a rendszer összeomlott.");
+			e.printStackTrace();
+		} 
+		return null;
+	}
 
-    /**
-     * @param p
-     */
-    public void grab(Panda p) {
-        // TODO implement here
-    }
+	@Override
+	public boolean hitBy(Orangutan o) {
+		Indent.print("Orangutan hitBy(Orangutan)");
+		return false;
+	}
 
-    /**
-     * @param p
-     */
-    public void release(Panda p) {
-        // TODO implement here
-    }
+	@Override
+	public boolean hitBy(Panda p) {
+		// TODO Auto-generated method stub
+		Indent.print("Orangutan hitBy(Orangutan)");
+		return false;
+	}
 
-    /**
-     * @param points
-     */
-    public void addPoints(int points) {
-        // TODO implement here
-    }
+	@Override
+	public boolean collideWith(Element e) {
+		Indent.print("Orangutan hitBy(Element)");
+		Indent.inc();
+			boolean res = e.hitBy(this);
+		Indent.dec();
+		return res;
+	}
 
-    /**
-     * @return
-     */
-    public Tile selectTile() {
-        // TODO implement here
-        return null;
-    }
+	@Override
+	public void step() {
+		// TODO Auto-generated method stub
+		Indent.print("Orangutan step()");
+		Indent.inc();
+			Tile tostep = this.selectTile();
+			boolean accept = tostep.accept(this);
+			if(accept) {
+				position.remove(this);
+				tostep.take(this);
+			}
+			boolean inQueue = this.isInQueue();
+			if(inQueue && accept) {
+				backNeighbour.follow();
+			}
+		Indent.dec();
+	}
+	
+	@Override
+	public boolean isInQueue() {
+		Indent.print("Orangutan isInQueue()");
+		return (backNeighbour!=null);
+	}
 
-    /**
-     * @param o 
-     * @return
-     */
-    public boolean hitBy(Orangutan o) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param p 
-     * @return
-     */
-    public boolean hitBy(Panda p) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param e 
-     * @return
-     */
-    public boolean collideWith(Element e) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @return
-     */
-    public int countPoints() {
-        // TODO implement here
-        return 0;
-    }
-
-    /**
-     * 
-     */
-    public void deleteQueue() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void die() {
-        // TODO implement here
-    }
-
-    /**
-     * @param a
-     */
-    public void grab(Animal a) {
-    	// TODO implement here
-    }
-
-    /**
-     * @param a
-     */
-    public void release(Animal a) {
-    	// TODO implement here
-    }
 }

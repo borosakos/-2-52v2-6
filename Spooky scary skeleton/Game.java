@@ -1,37 +1,25 @@
-package skeleton;
+package main;
 
-/**
- * 
- */
 public class Game {
-
-    /**
-     * Default constructor
-     */
-    public Game() {
-    }
-
-
-    /**
-     * 
-     */
-    public void startGame() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void endGame() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public boolean hasEnded() {
-        // TODO implement here
-        return false;
-    }
-
+	public Controller controller;
+	public Board board;
+	Game(){
+		controller = new Controller();
+		board = new Board();
+	}
+	public void endGame() {
+		Indent.print("Game endGame()");
+	}
+	public void startGame() {
+		Indent.print("Game endGame()");
+		Indent.inc();
+		while(!this.hasEnded()) {
+			controller.tick();
+		}
+		Indent.dec();
+	}
+	public boolean hasEnded() {
+		Indent.print("Game hasEnded()");
+		return false;
+	}
 }

@@ -5,6 +5,9 @@ package skeleton;
  */
 public class ChocolateMachine extends Element {
 
+	//Hogy máshogy lehetne megoldani, hogy sípoljon kérésre?
+	public boolean tempShouldItWhistle;
+
     /**
      * Default constructor
      */
@@ -15,14 +18,23 @@ public class ChocolateMachine extends Element {
      * 
      */
     public void step() {
-        // TODO implement here
+        Indent.print("ChocolateMachine step()");
+		whistle();
     }
 
     /**
      * 
      */
     public void whistle() {
-        // TODO implement here
+		Indent.print("ChocolateMachine whistle()");
+		Indent.inc();
+		
+		boolean whistling = rand();
+		
+		for(Tile t : position.getNeighbours())
+			t.setIswhistling(whistling);
+		
+		Indent.dec();
     }
 
     /**
@@ -30,7 +42,7 @@ public class ChocolateMachine extends Element {
      * @return
      */
     public boolean hitBy(Orangutan o) {
-        // TODO implement here
+		Indent.print("ChocolateMachine hitBy(Orangutan)");
         return false;
     }
 
@@ -39,7 +51,7 @@ public class ChocolateMachine extends Element {
      * @return
      */
     public boolean hitBy(Panda p) {
-        // TODO implement here
+		Indent.print("ChocolateMachine hitBy(Panda)");
         return false;
     }
 
@@ -47,7 +59,10 @@ public class ChocolateMachine extends Element {
      * @return
      */
     private boolean rand() {
-        // TODO implement here
+        Indent.print("ChocolateMachine rand()");
+		//if((int)Math.random*2+1) //normál eset
+		if(shouldItWhistle)
+			return true;
         return false;
     }
 
@@ -55,7 +70,7 @@ public class ChocolateMachine extends Element {
      * @param b
      */
     private void setWhistling(boolean b) {
-        // TODO implement here
+        // why does this exist 🤔
     }
 
     
@@ -64,7 +79,7 @@ public class ChocolateMachine extends Element {
      * @return
      */
     public boolean collideWith(Element e) {
-    	//TODO implement here
+		Indent.print("ChocolateMachine collideWith(Element)");
 		return false;
     	
     }

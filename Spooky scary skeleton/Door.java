@@ -9,24 +9,21 @@ public class Door extends Element {
      * Default constructor
      */
     public Door() {
+    	Indent.print("Door Door()");
     }
 
     /**
      * 
      */
-    private Tile doorTile;
-
-    /**
-     * 
-     */
-    private Door otherDoor;
+    protected Tile doorTile;  //
+    protected Door otherDoor; //ezek valamiért nem voltak protectedek
 
     /**
      * @param o 
      * @return
      */
     public boolean hitBy(Orangutan o) {
-    	// TODO implement here
+    	Indent.print("Door hitBy(Orangutan o)");
     	return false;
     }
 
@@ -35,7 +32,7 @@ public class Door extends Element {
      * @return
      */
     public boolean hitBy(Panda p) {
-    	// TODO implement here
+    	Indent.print("Door hitBy(Panda p)");
     	return false;
     }
 
@@ -44,7 +41,7 @@ public class Door extends Element {
      * @return
      */
     public boolean collideWith(Element e) {
-    	// TODO implement here
+    	Indent.print("Door collideWith(Element e)");
     	return false;
     }
 
