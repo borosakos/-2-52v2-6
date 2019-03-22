@@ -1,57 +1,97 @@
 package skeleton;
 
+
 /**
  * 
  */
+
+//TODO - direkt van ketto release es grab???
 public class Panda extends Animal {
 
+	
+	protected Panda frontNeighbour;
+	
     /**
      * Default constructor
      */
+	//COMPLETED
     public Panda() {
+    	Indent.printf("Panda()");
+    	Indent.inc();
+    	//frontNeighbour = null;
+    	Indent.dec();
     }
 
 
     /**
      * 
      */
+    //COMPLETED
     public void step() {
-        // TODO implement here
+    	Indent.printf("step()");
+    	Indent.inc();
+    	
+    	detect();
+    	if(isInQueue()) {
+    		Indent.dec();
+    		return;
+    	}
+    	
+    	Tile t2 = selectTile();
+    	
+    	if(!t2.accept(this)) {
+    		Indent.dec();
+    		return;
+    	}
+    			
+    	getPosition().remove(this);
+    	t2.take(this);
+    	
+    	Indent.dec();
     }
 
-    /**
-     * @param p
-     */
-    public void grab(Panda p) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void release() {
-        // TODO implement here
-    }
 
     /**
      * @param t
      */
+    //COMPLETED
     public void follow(Tile t) {
-        // TODO implement here
+    	Indent.printf("follow(Tile t)");
+    	Indent.inc();
+    	
+        if(!t.accept(this)) {
+        	Indent.dec();
+        	return;
+        }
+        Tile t2 = getPosition();
+        t2.remove(this);
+        t.take(this);
+        follow(t2);
+        
+        Indent.dec();
     }
 
     /**
      * 
      */
-    public void detect() {
-        // TODO implement here
+    //COMPLETED
+    public void detect() { 
+    	Indent.printf("detect()");
+    	Indent.inc();
+    	Indent.dec();
     }
 
     /**
      * @return
+     * 
      */
+    // COMPLETED /TODO - Ehhez a feladathoz nem kell.
     public Tile selectTile() {
-        // TODO implement here
+    	Indent.printf("selectTile()");
+    	Indent.inc();
+        Tile[] neighbours = getNeighbours();
+        
+        Indent.dec();
         return null;
     }
 
@@ -59,8 +99,22 @@ public class Panda extends Animal {
      * @param o 
      * @return
      */
+    // COMPLETED
     public boolean hitBy(Orangutan o) {
-        // TODO implement here
+    	Indent.printf("hitBy()");
+    	Indent.inc();
+    	if(isInQueue())
+    		o.die();
+    	
+    	Panda p2 = o.getBackNeighbour();
+    	o.grab(this);
+    	
+    	if(p2 != null) {
+    		p2.setFrontNeighbour(this);
+    		setBackNeighbour(p2);
+    	}
+    	
+    	Indent.dec();
         return false;
     }
 
@@ -68,8 +122,11 @@ public class Panda extends Animal {
      * @param p 
      * @return
      */
+    //COMPLETED
     public boolean hitBy(Panda p) {
-        // TODO implement here
+    	Indent.printf("hitBy()");
+    	Indent.inc();
+    	Indent.dec();
         return false;
     }
 
@@ -83,32 +140,59 @@ public class Panda extends Animal {
     }
 
     /**
+     * 
+     */
+    // COMPLETED
+    public void die() {
+    	Indent.printf("die()");
+    	Indent.inc();
+    	getFrontNeighbour().setBackNeighbour(null);
+    	release();
+    	Indent.dec();
+    }
+
+    /**
      * @param a
      */
-    public void setFrontNeighbour(Animal a) {
-        // TODO implement here
-    }
+    // COMPLETED
+    public void grab(Animal a) {
+    	Indent.printf("grab()");
+    	Indent.inc();
+    	
+    	setBackNeighbour(p);
+    	Tile pt = p.getTile();
+    	swap(pt);
+    	
+    	Indent.dec();
+	}
+
+    /**
+     * @param a
+     */
+    // COMPLETED
+    public void release(Animal a) {
+    	Indent.printf("release()");
+    	Indent.inc();
+    	
+    	a.setForntNeighbour(null);
+    	setBackNeighbour(null);
+    	
+    	Indent.dec();
+	}
 
     /**
      * 
      */
-    public void die() {
-        // TODO implement here
+    // COMPLETED / TODO itt hibás volt a szekvencia? :OOOOOO vagy velem van a gond?
+    public void release() {
+    	Indent.printf("release()");
+    	Indent.inc();
+    	
+    	Panda p2 = getBackNeighbour();
+    	p2.setFrontNeighbour(null);
+    	p2.release();
+	
+    	Indent.dec();
     }
-
-    /**
-     * @param a
-     */
-    public void grab(Animal a) {
-    	// TODO implement here
-	}
-
-    /**
-     * @param a
-     */
-    public void release(Animal a) {
-    	// TODO implement here
-	}
-
 
 }
