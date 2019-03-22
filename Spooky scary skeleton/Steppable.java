@@ -1,21 +1,5 @@
-package skeleton;
+package main;
 
-/**
- * 
- */
-public class Steppable {
-
-    /**
-     * Default constructor
-     */
-    public Steppable() {
-    }
-
-    /**
-     * 
-     */
-    public void step() {
-        // TODO implement here
-    }
-
+public interface Steppable {
+public void step();
 }

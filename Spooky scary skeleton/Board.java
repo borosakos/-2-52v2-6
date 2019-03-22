@@ -1,16 +1,12 @@
-package skeleton;
+package main;
 
-/**
- * 
- */
+import java.util.ArrayList;
+
 public class Board {
-
-    /**
-     * Default constructor
-     */
-    public Board() {
-    }
-
-
-
+	ArrayList<Tile> tiles = new ArrayList<>();
+	
+	public void addTile(Tile t) {
+		Indent.print("Board addTile()");
+		tiles.add(t);
+	}
 }
