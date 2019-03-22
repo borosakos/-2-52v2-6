@@ -5,10 +5,8 @@ package skeleton;
  */
 public class BreakableTile extends Tile {
 
-    /**
-     * Default constructor
-     */
-    public BreakableTile() {
+    public BreakableTile(int life) {
+    	this.life = life;
     }
 
     /**

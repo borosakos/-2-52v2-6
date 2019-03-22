@@ -1,4 +1,4 @@
-package main;
+package skeleton;
 
 public class Game {
 	public Controller controller;

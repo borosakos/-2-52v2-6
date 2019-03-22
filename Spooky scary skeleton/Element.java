@@ -15,7 +15,7 @@ public abstract class Element {
     /**
      * 
      */
-    private Tile position;
+    protected Tile position;
 
     /**
      * @param o 

@@ -1,4 +1,4 @@
-package main;
+package skeleton;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -82,7 +82,7 @@ public class Orangutan extends Animal {
 			}
 			boolean inQueue = this.isInQueue();
 			if(inQueue && accept) {
-				backNeighbour.follow();
+				backNeighbour.follow(this.getTile());
 			}
 		Indent.dec();
 	}
@@ -91,6 +91,21 @@ public class Orangutan extends Animal {
 	public boolean isInQueue() {
 		Indent.print("Orangutan isInQueue()");
 		return (backNeighbour!=null);
+	}
+
+	public int countPoints() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void addPoints(int incr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteQueue() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

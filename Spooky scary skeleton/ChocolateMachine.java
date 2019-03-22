@@ -4,17 +4,7 @@ package skeleton;
  * 
  */
 public class ChocolateMachine extends Element {
-
-	//Hogy máshogy lehetne megoldani, hogy sípoljon kérésre?
-	private boolean tempShouldItWhistle;
-
-    /**
-     * Default constructor
-     */
-    public ChocolateMachine(boolean b) {
-		tempShouldItWhistle = b;
-    }
-
+	
     /**
      * 
      */
@@ -33,7 +23,7 @@ public class ChocolateMachine extends Element {
 		boolean whistling = rand();
 		
 		for(Tile t : position.getNeighbours())
-			t.setIswhistling(whistling);
+			t.setIsWhistling(whistling);
 		
 		Indent.dec();
     }
@@ -61,19 +51,8 @@ public class ChocolateMachine extends Element {
      */
     private boolean rand() {
         Indent.print("ChocolateMachine rand()");
-		//if((int)Math.random*2+1) //normál eset
-		if(shouldItWhistle)
-			return true;
-        return false;
+        return Math.random() < 0.5;
     }
-
-    /**
-     * @param b
-     */
-    private void setWhistling(boolean b) {
-        // why does this exist 🤔
-    }
-
     
     /**
      * @param e 

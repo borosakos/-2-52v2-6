@@ -16,7 +16,7 @@ public class Panda extends Animal {
      */
 	//COMPLETED
     public Panda() {
-    	Indent.printf("Panda()");
+    	Indent.print("Panda()");
     	Indent.inc();
     	//frontNeighbour = null;
     	Indent.dec();
@@ -28,7 +28,7 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public void step() {
-    	Indent.printf("step()");
+    	Indent.print("step()");
     	Indent.inc();
     	
     	detect();
@@ -56,7 +56,7 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public void follow(Tile t) {
-    	Indent.printf("follow(Tile t)");
+    	Indent.print("follow(Tile t)");
     	Indent.inc();
     	
         if(!t.accept(this)) {
@@ -76,7 +76,7 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public void detect() { 
-    	Indent.printf("detect()");
+    	Indent.print("detect()");
     	Indent.inc();
     	Indent.dec();
     }
@@ -87,7 +87,7 @@ public class Panda extends Animal {
      */
     // COMPLETED /TODO - Ehhez a feladathoz nem kell.
     public Tile selectTile() {
-    	Indent.printf("selectTile()");
+    	Indent.print("selectTile()");
     	Indent.inc();
         Tile[] neighbours = getNeighbours();
         
@@ -101,7 +101,7 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public boolean hitBy(Orangutan o) {
-    	Indent.printf("hitBy()");
+    	Indent.print("hitBy()");
     	Indent.inc();
     	if(isInQueue())
     		o.die();
@@ -124,7 +124,7 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public boolean hitBy(Panda p) {
-    	Indent.printf("hitBy()");
+    	Indent.print("hitBy()");
     	Indent.inc();
     	Indent.dec();
         return false;
@@ -144,7 +144,7 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public void die() {
-    	Indent.printf("die()");
+    	Indent.print("die()");
     	Indent.inc();
     	getFrontNeighbour().setBackNeighbour(null);
     	release();
@@ -156,7 +156,7 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public void grab(Animal a) {
-    	Indent.printf("grab()");
+    	Indent.print("grab()");
     	Indent.inc();
     	
     	setBackNeighbour(p);
@@ -171,7 +171,7 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public void release(Animal a) {
-    	Indent.printf("release()");
+    	Indent.print("release()");
     	Indent.inc();
     	
     	a.setForntNeighbour(null);
@@ -185,7 +185,7 @@ public class Panda extends Animal {
      */
     // COMPLETED / TODO itt hibás volt a szekvencia? :OOOOOO vagy velem van a gond?
     public void release() {
-    	Indent.printf("release()");
+    	Indent.print("release()");
     	Indent.inc();
     	
     	Panda p2 = getBackNeighbour();
