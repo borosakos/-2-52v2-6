@@ -15,14 +15,14 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * az a tile, amirõl a szekrénybe lehet lépni
+     * az a tile, amirol a szekrenybe lehet lepni
      */
     private Tile doorTile; 
     private Wardrobe end;
     private ArrayList<Wardrobe> otherWardrobes;
 
     /**
-     * Elterepoltálja az orángutánt a szekrény melletti mezõre.
+     * Elteleportalja az orangutant a szekreny melletti mezore.
      * @param o orángután
      */
     public void teleport(Orangutan o) {
@@ -48,7 +48,7 @@ public class Wardrobe extends Element {
     	p.getTile().remove(p);
     	doorTile.take(p);
     	
-    	Indent.dec;
+    	Indent.dec();
     }
 
     /**
@@ -59,9 +59,9 @@ public class Wardrobe extends Element {
     	Indent.inc();
     	
     	int index = (int)( Math.random() * otherWardrobes.size() );
-        return otherWardrobes.get(index);
         
-        Indent.dec();
+    	Indent.dec();
+    	return otherWardrobes.get(index);
     }
 
     /**
@@ -73,10 +73,10 @@ public class Wardrobe extends Element {
     	Indent.inc();
     	
     	setEnd( selectRandomWardrobe() );
-        teleport(o);
-        return false;
-        
+        end.teleport(o);
+
         Indent.dec();
+        return false;
     }
 
     /**
@@ -88,7 +88,7 @@ public class Wardrobe extends Element {
     	Indent.inc();
     	
     	setEnd( selectRandomWardrobe() );
-        teleport(p);
+        end.teleport(p);
         
         Indent.dec();
         return false;

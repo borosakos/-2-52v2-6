@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.util.Random;
+
 /**
  * 
  */
@@ -10,9 +12,9 @@ public class JumpingPanda extends Panda {
      */
 	//COMPLETED
     public JumpingPanda() {
-    	Indent.printf("JumpingPanda()");
+    	Indent.print("JumpingPanda()");
     	Indent.inc();
-    	super();
+    	//super();
     	Indent.dec();
     	
     }
@@ -23,11 +25,11 @@ public class JumpingPanda extends Panda {
      */
     //COMPLETED
     public void jump() {
-    	Indent.printf("jump()");
+    	Indent.print("jump()");
     	Indent.inc();
     	
     	Random r = new Random();
-        BreakableTile t = getTile();
+        Tile t = getTile();
         t.lifeDecrease(r.nextInt(10 - 3) + 3);
         
         Indent.dec();
@@ -38,10 +40,10 @@ public class JumpingPanda extends Panda {
      */
     // COMPLETED
     public void detect() {
-    	Indent.printf("JumpingPanda detect()");
+    	Indent.print("JumpingPanda detect()");
     	Indent.inc();
     	
-    	if(!getIsWhistling()) {
+    	if(!getTile().getIsWhistling()) {
     		jump();
     		Indent.dec();
     		return;

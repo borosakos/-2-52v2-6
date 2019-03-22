@@ -1,5 +1,5 @@
-package main;
+package skeleton;
 
 public interface Steppable {
-public void step();
+	public void step(); //get a sklifeon haha :^)
 }

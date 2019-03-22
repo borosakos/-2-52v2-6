@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -9,13 +11,13 @@ public class TiredPanda extends Panda {
      * Default constructor
      */
     public TiredPanda() {
-    	Indent.printf("TiredPanda()");
+    	Indent.print("TiredPanda()");
     	Indent.inc();
     	
-    	super();
+    	//super();
     	isSitting = false;
     	inArmchair = null;
-    	sittingTimeLeft = null;
+    	sittingTimeLeft = -1;
     	
     	Indent.dec();
     }
@@ -30,7 +32,7 @@ public class TiredPanda extends Panda {
      */
     // COMPLETED
     public void sitDown(Armchair ac) {
-    	Indent.printf("sitDown()");
+    	Indent.print("sitDown()");
     	Indent.inc();
     	
     	setArmchair(ac);
@@ -42,9 +44,9 @@ public class TiredPanda extends Panda {
     /**
      * 
      */
-    public void getUp() {
+    public void getUp() { 
         // TODO implement here
-    	Indent.printf("getUp()");
+    	Indent.print("getUp()");
     	Indent.inc();
     	Indent.dec();
     }
@@ -54,7 +56,7 @@ public class TiredPanda extends Panda {
      */
     //COMPLETED
     public void detect() {
-    	Indent.printf("TiredPanda detect()");
+    	Indent.print("TiredPanda detect()");
     	Indent.inc();
     	
     	Armchair ac = chooseArmchair();
@@ -75,14 +77,15 @@ public class TiredPanda extends Panda {
      */
     // COMPELETED
     public Armchair chooseArmchair() {
-    	Indent.printf("chooseArmchair()");
+    	Indent.print("chooseArmchair()");
     	Indent.inc();
     	
-    	Armchair[] armchairs = getNeighbouringArmchairs();
+    	ArrayList<Armchair> armchairs = getTile().getNeighbouringArmchairs();
     	for (Armchair armchair : armchairs) {
-			if(armchair.getIsOccupied())
+			if(armchair.getIsOccupied()) {
 				Indent.dec();
-				return armchair();
+				return armchair;
+			}
 		}
     	
     	Indent.dec();
@@ -93,8 +96,8 @@ public class TiredPanda extends Panda {
      * @param a
      */
  // COMPLETED
-    public void setArmchair(Armchair a) {
-    	Indent.printf("chooseArmchair()");
+    public void setArmchair(Armchair ac) {
+    	Indent.print("chooseArmchair()");
     	Indent.inc();      
     	inArmchair = ac;
     	Indent.dec();

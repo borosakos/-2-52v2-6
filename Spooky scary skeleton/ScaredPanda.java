@@ -10,9 +10,9 @@ public class ScaredPanda extends Panda {
      */
 	//COMPLETED
     public ScaredPanda() {
-    	Indent.printf("ScaredPanda()");
+    	Indent.print("ScaredPanda()");
     	Indent.inc();
-    	super();
+    	//super();
     	Indent.dec();
     }
 
@@ -21,7 +21,7 @@ public class ScaredPanda extends Panda {
      */
     //TODO Jó így? 
     public void becomeScared() {
-    	Indent.printf("becomeScared()");
+    	Indent.print("becomeScared()");
     	Indent.inc();
     	setFrontNeighbour(null);
         getBackNeighbour().release();
@@ -33,10 +33,10 @@ public class ScaredPanda extends Panda {
      */
     //COMPLETED
     public void detect() {
-    	Indent.printf("detect()");
+    	Indent.print("detect()");
     	Indent.inc();
     	
-        if(!getIsJingling()) return;
+        if(!getTile().getIsJingling()) return;
         becomeScared();
         setFrontNeighbour(null);
         getBackNeighbour().release();

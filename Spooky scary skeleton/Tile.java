@@ -13,11 +13,17 @@ public class Tile {
 	public Tile() {
 	}
 
+	public Tile(boolean b, boolean c, Armchair ac) {
+		isJingling = b;
+		isWhistling = c;
+		neighbouringArmchairs.add(ac);
+	}
+
 	private boolean isJingling;
 	private boolean isWhistling;
 	protected Element element;
-	private Set<Tile> neighbours;
-	protected Set<Armchair> neighbouringArmchairs;
+	private ArrayList<Tile> neighbours;
+	protected ArrayList<Armchair> neighbouringArmchairs;
 
 	/**
 	 * @param a
@@ -34,7 +40,7 @@ public class Tile {
 	/**
 	 * @return
 	 */
-	public Set<Tile> getNeighbours() {
+	public ArrayList<Tile> getNeighbours() {
 		Indent.print("Tile getNeighbours()");
 		return neighbours;
 	}
@@ -57,7 +63,7 @@ public class Tile {
 	/**
 	 * @return
 	 */
-	public Set<Armchair> getNeighbouringArmchairs() {
+	public ArrayList<Armchair> getNeighbouringArmchairs() {
 		Indent.print("Tile getNeighbouringArmchairs()");
 		return neighbouringArmchairs;
 	}
@@ -120,6 +126,11 @@ public class Tile {
 		element = t.element;
 		t.element = tempElement;
 		Indent.dec();
+	}
+
+	public boolean lifeDecrease(int i) {
+		Indent.print("Tile lifeDecrease(int i)");
+		return false;
 	}
 
 }

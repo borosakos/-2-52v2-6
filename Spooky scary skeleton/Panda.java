@@ -1,5 +1,8 @@
 package skeleton;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * 
@@ -44,7 +47,7 @@ public class Panda extends Animal {
     		return;
     	}
     			
-    	getPosition().remove(this);
+    	getTile().remove(this);
     	t2.take(this);
     	
     	Indent.dec();
@@ -63,7 +66,7 @@ public class Panda extends Animal {
         	Indent.dec();
         	return;
         }
-        Tile t2 = getPosition();
+        Tile t2 = getTile();
         t2.remove(this);
         t.take(this);
         follow(t2);
@@ -87,12 +90,26 @@ public class Panda extends Animal {
      */
     // COMPLETED /TODO - Ehhez a feladathoz nem kell.
     public Tile selectTile() {
-    	Indent.print("selectTile()");
-    	Indent.inc();
-        Tile[] neighbours = getNeighbours();
-        
-        Indent.dec();
-        return null;
+    	Indent.print("Panda selectTile()");
+        //ArrayList<Tile> neighbours = getTile().getNeighbours();
+		Indent.print("Milyen csempere akarsz lepni? (T / BT / G)");
+		BufferedReader reader =  
+                new BufferedReader(new InputStreamReader(System.in)); 
+		try {
+			String answer = reader.readLine();
+			answer = answer.toUpperCase();
+			switch(answer) {
+			case "T": return new Tile();
+			case "BT": return new BreakableTile(10);
+			case "G": return new BreakableTile(0);
+			default: return new Tile();
+			}
+			
+		} catch (IOException e) {
+			Indent.print("Valami szornyu valaszt adhattal meg, ezert a rendszer osszeomlott.");
+			e.printStackTrace();
+		} 
+		return null;
     }
 
     /**
@@ -118,7 +135,17 @@ public class Panda extends Animal {
         return false;
     }
 
-    /**
+    protected void setFrontNeighbour(Panda panda) {
+    	Indent.print("Panda setFrontNeighbour(Panda panda)");
+    	Indent.inc();
+    	
+    	frontNeighbour = panda;
+    	
+    	Indent.dec();
+	}
+
+
+	/**
      * @param p 
      * @return
      */
@@ -151,7 +178,12 @@ public class Panda extends Animal {
     	Indent.dec();
     }
 
-    /**
+    protected Animal getFrontNeighbour() {
+		return frontNeighbour;
+	}
+
+
+	/**
      * @param a
      */
     // COMPLETED
@@ -159,28 +191,15 @@ public class Panda extends Animal {
     	Indent.print("grab()");
     	Indent.inc();
     	
-    	setBackNeighbour(p);
-    	Tile pt = p.getTile();
-    	swap(pt);
+    	a.setBackNeighbour(this);
+    	Tile pt = this.getTile();
+    	a.getTile().swap(pt); //idk jo-e ez igy, de senki nem mond semmit es maganyos vagyok:^)
     	
     	Indent.dec();
 	}
 
-    /**
-     * @param a
-     */
-    // COMPLETED
-    public void release(Animal a) {
-    	Indent.print("release()");
-    	Indent.inc();
-    	
-    	a.setForntNeighbour(null);
-    	setBackNeighbour(null);
-    	
-    	Indent.dec();
-	}
 
-    /**
+	/**
      * 
      */
     // COMPLETED / TODO itt hibás volt a szekvencia? :OOOOOO vagy velem van a gond?

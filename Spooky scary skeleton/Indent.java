@@ -1,4 +1,4 @@
-package main;
+package skeleton;
 
 public class Indent {
 	static int in = 0;

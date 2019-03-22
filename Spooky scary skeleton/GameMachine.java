@@ -4,21 +4,12 @@ package skeleton;
  * 
  */
 public class GameMachine extends Element {
-	//Hogy máshogy lehetne megoldani, hogy csengjen kérésre?
-	private boolean tempShouldItJingle;
-
-    /**
-     * Default constructor
-     */
-    public GameMachine(boolean b) {
-		tempShouldItJingle = b;
-    }
 
     /**
      * 
      */
     public void step() {
-		print("GameMachine step()");
+		Indent.print("GameMachine step()");
 		Indent.inc();
 		
 		jingle();
@@ -30,7 +21,7 @@ public class GameMachine extends Element {
      * 
      */
     public void jingle() {
-		print("GameMachine jingle()");
+    	Indent.print("GameMachine jingle()");
 		Indent.inc();
 		
 		boolean jingling = rand();
@@ -46,7 +37,7 @@ public class GameMachine extends Element {
      * @return
      */
     public boolean hitBy(Orangutan o) {
-		print("GameMachine hitBy(Orangutan)");
+    	Indent.print("GameMachine hitBy(Orangutan)");
         return false;
     }
 
@@ -55,7 +46,7 @@ public class GameMachine extends Element {
      * @return
      */
     public boolean hitBy(Panda p) {
-		print("GameMachine hitBy(Panda)");
+    	Indent.print("GameMachine hitBy(Panda)");
         return false;
     }
 
@@ -64,10 +55,7 @@ public class GameMachine extends Element {
      */
     private boolean rand() {
         Indent.print("GameMachine rand()");
-		//if((int)Math.random*2+1) //normál eset
-		if(shouldItJingle)
-			return true;
-		return false;
+        return Math.random() < 0.5;
     }
 
     /**
@@ -76,8 +64,8 @@ public class GameMachine extends Element {
      */
     public boolean collideWith(Element e) {
     	// TODO implement here
-		print("GameMachine collideWith(Element)");
-    	return false;
+		Indent.print("GameMachine collideWith(Element)");
+		return false;
     }
 
 }

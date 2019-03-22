@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Orangutan extends Animal {
+	
+	int points;
 
 	@Override
 	public void release() {
@@ -27,7 +29,9 @@ public class Orangutan extends Animal {
 
 	@Override
 	public Tile selectTile() {
-		Indent.print("Milyen csempére akarsz lépni? (T / BT / G)");
+		Indent.print("Orangutan selectTile()");
+		Indent.print("Milyen csempere akarsz lepni? (T / BT / G)");
+		Indent.inc();
 		BufferedReader reader =  
                 new BufferedReader(new InputStreamReader(System.in)); 
 		try {
@@ -41,9 +45,10 @@ public class Orangutan extends Animal {
 			}
 			
 		} catch (IOException e) {
-			Indent.print("Valami szörnyű választ adhattál meg, ezért a rendszer összeomlott.");
+			Indent.print("Valami szornyu valaszt adhattal meg, ezert a rendszer osszeomlott.");
 			e.printStackTrace();
 		} 
+		Indent.dec();
 		return null;
 	}
 
@@ -94,18 +99,30 @@ public class Orangutan extends Animal {
 	}
 
 	public int countPoints() {
-		// TODO Auto-generated method stub
-		return 0;
+		Indent.print("Orangutan countPoints()");
+		if(5<=points && points<10) {
+			points+=5;
+		} else if (10<points) {
+			points+=10;
+		}
+		return points;
 	}
 
 	public void addPoints(int incr) {
-		// TODO Auto-generated method stub
-		
+		Indent.print("Orangutan addPoints()");
+		Indent.inc();
+		points++;
+		Indent.dec();
 	}
 
 	public void deleteQueue() {
-		// TODO Auto-generated method stub
-		
+		Indent.print("Orangutan deleteQueue()");
+		Panda lastBackNeighbour = backNeighbour;
+		while(lastBackNeighbour!=null) {
+			Panda current = lastBackNeighbour;
+			lastBackNeighbour = lastBackNeighbour.backNeighbour;
+			current = null;
+		}
 	}
 
 }
