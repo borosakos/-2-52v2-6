@@ -14,6 +14,7 @@ public class TiredPanda extends Panda {
     	Indent.print("TiredPanda()");
     	Indent.inc();
     	
+    	isAlive = true;
     	//super();
     	isSitting = false;
     	inArmchair = null;

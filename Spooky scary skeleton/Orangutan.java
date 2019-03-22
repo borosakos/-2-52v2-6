@@ -121,7 +121,7 @@ public class Orangutan extends Animal {
 		while(lastBackNeighbour!=null) {
 			Panda current = lastBackNeighbour;
 			lastBackNeighbour = lastBackNeighbour.backNeighbour;
-			current = null;
+			current.die();
 		}
 	}
 

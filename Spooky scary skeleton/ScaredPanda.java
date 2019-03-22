@@ -12,6 +12,8 @@ public class ScaredPanda extends Panda {
     public ScaredPanda() {
     	Indent.print("ScaredPanda()");
     	Indent.inc();
+    	
+    	isAlive = true;
     	//super();
     	Indent.dec();
     }

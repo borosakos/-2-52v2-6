@@ -20,7 +20,7 @@ public class Controller {
 					}
 				}
 				for(Panda p: pandas) {
-					p.step();
+					if(p.getIsAlive()) p.step();
 				}
 				for(Steppable s: steppables) {
 					s.step();

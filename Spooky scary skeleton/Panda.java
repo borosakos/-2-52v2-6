@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 //TODO - direkt van ketto release es grab???
 public class Panda extends Animal {
 
-	
+	protected boolean isAlive;
 	protected Panda frontNeighbour;
 	
     /**
@@ -21,6 +21,8 @@ public class Panda extends Animal {
     public Panda() {
     	Indent.print("Panda()");
     	Indent.inc();
+    	
+    	isAlive = true;
     	//frontNeighbour = null;
     	Indent.dec();
     }
@@ -171,14 +173,25 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public void die() {
-    	Indent.print("die()");
+    	Indent.print("Panda die()");
     	Indent.inc();
+    	
+    	isAlive = false;
+    	getTile().setElement(null);
     	getFrontNeighbour().setBackNeighbour(null);
-    	release();
+    	if(backNeighbour != null) release();
+    	
     	Indent.dec();
     }
 
-    protected Animal getFrontNeighbour() {
+    public boolean getIsAlive() {
+    	Indent.print("Panda getIsAlive()");
+    	return isAlive;
+	}
+
+
+	protected Animal getFrontNeighbour() {
+		Indent.print("Panda getFrontNeighbour()");
 		return frontNeighbour;
 	}
 
@@ -207,9 +220,9 @@ public class Panda extends Animal {
     	Indent.print("release()");
     	Indent.inc();
     	
-    	Panda p2 = getBackNeighbour();
-    	p2.setFrontNeighbour(null);
-    	p2.release();
+    	getFrontNeighbour().setBackNeighbour(null);
+    	getBackNeighbour().setFrontNeighbour(null);
+    	getBackNeighbour().release();
 	
     	Indent.dec();
     }
