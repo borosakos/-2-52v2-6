@@ -5,12 +5,13 @@ package skeleton;
  */
 public class GameMachine extends Element {
 	//Hogy máshogy lehetne megoldani, hogy csengjen kérésre?
-	public boolean tempShouldItJingle;
+	private boolean tempShouldItJingle;
 
     /**
      * Default constructor
      */
-    public GameMachine() {
+    public GameMachine(boolean b) {
+		tempShouldItJingle = b;
     }
 
     /**
@@ -46,8 +47,6 @@ public class GameMachine extends Element {
      */
     public boolean hitBy(Orangutan o) {
 		print("GameMachine hitBy(Orangutan)");
-		Indent.inc();
-		Indent.dec();
         return false;
     }
 
@@ -57,8 +56,6 @@ public class GameMachine extends Element {
      */
     public boolean hitBy(Panda p) {
 		print("GameMachine hitBy(Panda)");
-		Indent.inc();
-		Indent.dec();
         return false;
     }
 
@@ -67,8 +64,6 @@ public class GameMachine extends Element {
      */
     private boolean rand() {
         Indent.print("GameMachine rand()");
-		Indent.inc();
-		Indent.dec();
 		//if((int)Math.random*2+1) //normál eset
 		if(shouldItJingle)
 			return true;
@@ -82,8 +77,6 @@ public class GameMachine extends Element {
     public boolean collideWith(Element e) {
     	// TODO implement here
 		print("GameMachine collideWith(Element)");
-		Indent.inc();
-		Indent.dec();
     	return false;
     }
 

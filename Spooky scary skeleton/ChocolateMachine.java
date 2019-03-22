@@ -6,12 +6,13 @@ package skeleton;
 public class ChocolateMachine extends Element {
 
 	//Hogy máshogy lehetne megoldani, hogy sípoljon kérésre?
-	public boolean tempShouldItWhistle;
+	private boolean tempShouldItWhistle;
 
     /**
      * Default constructor
      */
-    public ChocolateMachine() {
+    public ChocolateMachine(boolean b) {
+		tempShouldItWhistle = b;
     }
 
     /**
