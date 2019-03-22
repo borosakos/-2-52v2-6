@@ -24,6 +24,7 @@ public class Tile {
 	 * @return
 	 */
 	public boolean accept(Animal a) {
+		Indent.print("Tile accept()");
 		if (element == null)
 			return true;
 		else
@@ -34,6 +35,7 @@ public class Tile {
 	 * @return
 	 */
 	public Set<Tile> getNeighbours() {
+		Indent.print("Tile getNeighbours()");
 		return neighbours;
 	}
 
@@ -41,13 +43,14 @@ public class Tile {
 	 * @param t
 	 */
 	public void addNeighbour(Tile t) {
-		// TODO implement here
+		Indent.print("Tile addNeighbour()");
 	}
 
 	/**
 	 * @param a
 	 */
 	public void remove(Animal a) {
+		Indent.print("Tile remove()");
 		element = null;
 	}
 
@@ -55,6 +58,7 @@ public class Tile {
 	 * @return
 	 */
 	public Set<Armchair> getNeighbouringArmchairs() {
+		Indent.print("Tile getNeighbouringArmchairs()");
 		return neighbouringArmchairs;
 	}
 
@@ -62,6 +66,7 @@ public class Tile {
 	 * @param b
 	 */
 	public void setIsJingling(boolean b) {
+		Indent.print("Tile setIsJingling()");
 		isJingling = b;
 	}
 
@@ -69,6 +74,7 @@ public class Tile {
 	 *
 	 */
 	public boolean getIsJingling() {
+		Indent.print("Tile getIsJingling()");
 		return isJingling;
 	}
 
@@ -76,6 +82,7 @@ public class Tile {
 	 * @param b
 	 */
 	public void setIsWhistling(boolean b) {
+		Indent.print("Tile setIsWhistling()");
 		isWhistling = b;
 	}
 
@@ -83,6 +90,7 @@ public class Tile {
 	 * @return
 	 */
 	public boolean getIsWhistling() {
+		Indent.print("Tile getIsWhistling()");
 		return isWhistling;
 	}
 
@@ -90,6 +98,7 @@ public class Tile {
 	 * @param e
 	 */
 	public void setElement(Element e) { //Ha jól értem, ez csak inicializásnál lesz használva de idk
+		Indent.print("Tile setElement()");
 		element = e;
 	}
 
@@ -97,6 +106,7 @@ public class Tile {
 	 * @param a
 	 */
 	public void take(Animal a) {
+		Indent.print("Tile take()");
 		element = a;
 	}
 
@@ -104,9 +114,12 @@ public class Tile {
 	 * @param t
 	 */
 	public void swap(Tile t) {
+		Indent.print("Tile swap()");
+		Indent.inc();
 		Element tempElement = element;
 		element = t.element;
 		t.element = tempElement;
+		Indent.dec();
 	}
 
 }
