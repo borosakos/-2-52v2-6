@@ -44,14 +44,43 @@ public class main {
 		
 		Indent.print("Van-e tulajdonsága a mezőnek, amin állsz?  (JT / WT / TT / N)");
 		answer=reader.readLine().toUpperCase();
+		Indent.print("Törékeny csempén állsz?  (Y / N)");
+		String answer2=reader.readLine().toUpperCase();
+		
+		int elet = -1;
+		switch(answer2) {
+		case "Y": 
+			Indent.print("Mennyi élete van?  (nullánál nagyobb egész szám)");
+			elet =  Integer.parseInt(reader.readLine());
+			break;
+		case "N":
+			elet = -1;
+			break;
+		}
+		
+		
+		
+		
 		Tile position;
+		if(elet!=-1) {
 		switch(answer) {
 		case "JT": position = new Tile(true, false, null); board.addTile(position);  break;
-		case "WT": board.addTile(new Tile(false, true, null)); break;
-		case "TT": board.addTile(new Tile(false, false, new Armchair())); break;
-		case "N": board.addTile(new Tile()); break;
-		default: board.addTile(new Tile()); break;
+		case "WT": position = new Tile(false, true, null); board.addTile(position); break;
+		case "TT": position = new Tile(false, false, new Armchair()); board.addTile(position); break;
+		case "N": position = new Tile(); board.addTile(position); break;
+		default: position = new Tile(); board.addTile(position); break;
 		}
+		} else {
+			switch(answer) {
+			case "JT": position = new BreakableTile(true, false, null); board.addTile(position);  break;
+			case "WT": position = new BreakableTile(false, true, null); board.addTile(position); break;
+			case "TT": position = new BreakableTile(false, false, new Armchair()); board.addTile(position); break;
+			case "N": position = new BreakableTile(); board.addTile(position); break;
+			default: position = new BreakableTile(); board.addTile(position); break;
+			}
+		}
+		
+		
 		
 	}
 
