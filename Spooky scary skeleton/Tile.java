@@ -4,7 +4,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * 
+ * Egy csempet reprezentalo osztaly
  */
 public class Tile {
 
@@ -27,14 +27,19 @@ public class Tile {
 	protected ArrayList<Armchair> neighbouringArmchairs = new ArrayList<>();
 
 	/**
-	 * @param a
-	 * @return
+	 * Visszaadja a csempen levo elementet
+	 * @return a csempen levo element
 	 */
-	
 	public Element getElement() {
 		return element;
 	}
 	
+	/**
+	 * Lekezeli azt az esemenyt, amikor az adott mezore egy allat lep.
+	 *
+	 * @param a Az allat aki ide akar lepni
+	 * @return true, ha ide lephet, false ha nem
+	 */
 	public boolean accept(Animal a) {
 		Indent.print("Tile accept()");
 		Indent.inc();
@@ -43,11 +48,14 @@ public class Tile {
 		if (element!=null) {
 			return a.collideWith(element);
 		}
-			return true;
-			
+			return true;		
 	}
 	
-	//Follow eseten feluliro accept fv, hogy ne kelljen minden followolo pandara megvalaszolni a kerdest
+	/**
+	*Follow eseten feluliro accept fv, hogy ne kelljen minden followolo pandara megvalaszolni a kerdest
+	* @param p A panda aki ide akar lepni
+	* @return true, ha ide lephet, false ha nem
+	*/
 	public boolean accept(Panda p) {
 		if(p.controlled) {
 			Animal a = p;
@@ -64,7 +72,9 @@ public class Tile {
 	}
 
 	/**
-	 * @return
+	 * Visszaadja az adott mezovel szomszedos mezok tombjet.
+	 *
+	 * @return Az adott mezovel szomszedos mezok
 	 */
 	public ArrayList<Tile> getNeighbours() {
 		Indent.print("Tile getNeighbours()");
@@ -72,22 +82,26 @@ public class Tile {
 	}
 
 	/**
-	 * @param t
+	 * Hozzaadja az adott mezovel szomszedos mezok tombjebe a parameterkent kapott mezot.
+	 *
+	 * @param t A hozzaadando mezo
 	 */
 	public void addNeighbour(Tile t) {
 		Indent.print("Tile addNeighbour()");
 	}
 
 	/**
-	 * @param a
+	 * Leszedi az allatot magarol.
 	 */
-	public void remove(Animal a) {
+	public void remove() {
 		Indent.print("Tile remove()");
 		element = null;
 	}
 
 	/**
-	 * @return
+	 * Visszaadja a szomszedos foteleket
+	 *
+	 * @return A szomszedos fotelek
 	 */
 	public ArrayList<Armchair> getNeighbouringArmchairs() {
 		Indent.print("Tile getNeighbouringArmchairs()");
@@ -95,7 +109,9 @@ public class Tile {
 	}
 
 	/**
-	 * @param b
+	 * Beallitja hogy a csempe csilingelo legyen-e
+	 *
+	 * @param b true, ha csilingel, false ha nem
 	 */
 	public void setIsJingling(boolean b) {
 		Indent.print("Tile setIsJingling()");
@@ -103,7 +119,9 @@ public class Tile {
 	}
 
 	/**
+	 * Visszaadja, hogy a csempe csilingel-e
 	 *
+	 * @return true, ha csilingel, false ha nem
 	 */
 	public boolean getIsJingling() {
 		Indent.print("Tile getIsJingling()");
@@ -111,7 +129,9 @@ public class Tile {
 	}
 
 	/**
-	 * @param b
+	 * Visszaadja, hogy a csempe sipol-e
+	 *
+	 * @return true, ha sipol, false ha nem
 	 */
 	public void setIsWhistling(boolean b) {
 		Indent.print("Tile setIsWhistling()");
@@ -119,7 +139,9 @@ public class Tile {
 	}
 
 	/**
-	 * @return
+	 * Visszaadja, hogy a csempe sipol-e
+	 *
+	 * @return true, ha sipol, false ha nem
 	 */
 	public boolean getIsWhistling() {
 		Indent.print("Tile getIsWhistling()");
@@ -127,7 +149,9 @@ public class Tile {
 	}
 
 	/**
-	 * @param e
+	 * Beallitja a csempen allo elementet
+	 *
+	 * @param e Az element ami a csempen lesz
 	 */
 	public void setElement(Element e) { //Ha j�l �rtem, ez csak inicializ�sn�l lesz haszn�lva de idk
 		Indent.print("Tile setElement()");
@@ -135,7 +159,9 @@ public class Tile {
 	}
 
 	/**
-	 * @param a
+	 * Beallitja a csempen allo allatot.
+	 *
+	 * @param a Az allat, aki a csempen fog allni
 	 */
 	public void take(Animal a) {
 		Indent.print("Tile take()");
@@ -143,7 +169,9 @@ public class Tile {
 	}
 
 	/**
-	 * @param t
+	 * Megcsereli a parameterkent kapott csempen allo allat helyet a sajat magan allo allattal.
+	 *
+	 * @param t A csempe, amivel cserelunk
 	 */
 	public void swap(Tile t) {
 		Indent.print("Tile swap()");
@@ -156,6 +184,11 @@ public class Tile {
 		Indent.dec();
 	}
 
+	/**
+	 * Csokkenti a csempe eletét
+	 *
+	 * @param i mennyivel csokkentsuk az eletet
+	 */
 	public boolean lifeDecrease(int i) {
 		Indent.print("Tile lifeDecrease(int i)");
 		return false;

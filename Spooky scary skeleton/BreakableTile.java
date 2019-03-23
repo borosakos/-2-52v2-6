@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * 
+ * Egy torekeny csempet reprezentalo osztaly
  */
 public class BreakableTile extends Tile {
 
@@ -18,6 +18,11 @@ public class BreakableTile extends Tile {
 		super(b, c, ac);
 		this.life = life;
 	}
+	
+	 /**
+	 * Beallitja, hogy az allat a mezore lépjen
+	 * @param a A mezore lepo allat
+	 */
     @Override
     public void take(Animal a) {
     	if(life<=0) {
@@ -27,17 +32,14 @@ public class BreakableTile extends Tile {
     	}
     }
 
-	/**
-     * 
-     */
     private int life=-1;
-    //private boolean broken;
 
     /**
-     * @param a 
-     * @return
-     */
-    public boolean accept(Animal a) { //Ez idk j�-e, megl�tjuk 
+	 * Lekezeli a mezore lepo allatot.
+	 * @param a A mezore lepo allat
+	 * @return true, ha a mezore lephet az allat, false ha nem
+	 */
+    public boolean accept(Animal a) { //Ez idk jo-e, meglatjuk 
     	Indent.print("BreakableTile accept()");
     	if(life!=0) {
     	Indent.print("Mennyi lifee legyen a csempenek? (nullanal nagyobb egesz)");
@@ -142,10 +144,11 @@ public class BreakableTile extends Tile {
 		}
     }
 
-    /**
-     * @param i 
-     * @return
-     */
+	/**
+	 * Csokkenti a mezo eletet.
+	 * @param i Mennyi elet tunjon
+	 * @return true-val ter vissza, ha eltort a csempe, kulonben false
+	 */
     public boolean lifeDecrease(int i) {
     	Indent.print("BreakableTile lifeDecrease()");
     	Indent.inc();
@@ -155,9 +158,9 @@ public class BreakableTile extends Tile {
         return false;
     }
 
-    /**
-     * @param a
-     */
+	/**
+	 * Leszedi az allatot magarol, es meghivja a lifeDecrease fuggvenyt.
+	 */
     public void remove(Animal a) {
     	Indent.print("BreakableTile remove()");
     	Indent.inc();
@@ -166,9 +169,10 @@ public class BreakableTile extends Tile {
         Indent.dec();
     }
 
-    /**
-     * @return
-     */
+	/**
+	 * Visszaadja, hany elete van a csempenek
+	 * @return a csempe elete
+	 */
     public int getLife() {
     	Indent.print("BreakableTile getLife()");
         return life;
