@@ -19,11 +19,11 @@ public class Wardrobe extends Element {
      */
     private Tile doorTile; 
     private Wardrobe end;
-    private ArrayList<Wardrobe> otherWardrobes;
+    private ArrayList<Wardrobe> otherWardrobes = new ArrayList<>();
 
     /**
      * Elteleportalja az orangutant a szekreny melletti mezore.
-     * @param o orángután
+     * @param o orï¿½ngutï¿½n
      */
     public void teleport(Orangutan o) {
     	Indent.print("Wardrobe teleport(Orangutan o)");
@@ -34,7 +34,7 @@ public class Wardrobe extends Element {
     	doorTile.take(o);
     	if(o.isInQueue()) o.getBackNeighbour().follow(doorTile);
     	
-    	Indent.inc();
+    	Indent.dec();
     }
 
     /**
@@ -57,9 +57,14 @@ public class Wardrobe extends Element {
     public Wardrobe selectRandomWardrobe() {
     	Indent.print("Wardrobe selectRandomWardrobe()");
     	Indent.inc();
-    	
+    	Wardrobe end = new Wardrobe();
+    	Tile t = new Tile();
+    	end.setPosition(t);
+    	end.doorTile = t;
+        otherWardrobes.add(end);
     	int index = (int)( Math.random() * otherWardrobes.size() );
-        
+    	
+
     	Indent.dec();
     	return otherWardrobes.get(index);
     }

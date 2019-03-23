@@ -13,6 +13,12 @@ public class Indent {
 		System.out.print("\t");		}
 		System.out.println(msg);
 	}
+	public static void printr(String msg) {
+		for (int i = 0; i< in; i++) {
+			System.out.print("\t");		}
+			System.out.print(msg);
+		}
+	
 	
 
 }

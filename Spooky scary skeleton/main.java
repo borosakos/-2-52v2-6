@@ -28,29 +28,30 @@ public class Main {
 		BufferedReader reader =  
                 new BufferedReader(new InputStreamReader(System.in)); 
 		String answer;
-		Game game = new Game();
-		Controller controller = game.controller;
+		Game game = Controller.game;
 		Board board = game.board;
-		Indent.print("Mivel szeretnel lepni? (O / P / TP / SP / JP)");
+		Indent.printr("Mivel szeretnel lepni? (O / P / TP / SP / JP)");
 		answer=reader.readLine().toUpperCase();
 		
+		Animal jatekos;
 		switch (answer) {
-		case "O": Orangutan o = new Orangutan(); controller.addOrangutan(o); break;
-		case "P": Panda p = new Panda(); controller.addPanda(p); break;
-		case "TP": TiredPanda tp = new TiredPanda(); controller.addPanda(tp); break;
-		case "SP": ScaredPanda sp = new ScaredPanda(); controller.addPanda(sp); break;
-		case "JP": JumpingPanda jp = new JumpingPanda(); controller.addPanda(jp); break;
+		case "O": Orangutan o = new Orangutan(); Controller.addOrangutan(o); jatekos = o; break;
+		case "P": Panda p = new Panda(); Controller.addPanda(p);jatekos = p; break;
+		case "TP": TiredPanda tp = new TiredPanda(); Controller.addPanda(tp); jatekos = tp; break;
+		case "SP": ScaredPanda sp = new ScaredPanda(); Controller.addPanda(sp); jatekos = sp; break;
+		case "JP": JumpingPanda jp = new JumpingPanda(); Controller.addPanda(jp); jatekos = jp; break;
+		default: Orangutan ok = new Orangutan(); Controller.addOrangutan(ok); jatekos = ok;
 		}
 		
-		Indent.print("Van-e tulajdonsaga a mezonek, amin allsz?  (JT / WT / TT / N)");
+		Indent.printr("Van-e tulajdonsaga a mezonek, amin allsz?  (JT / WT / TT / N)");
 		answer=reader.readLine().toUpperCase();
-		Indent.print("Torekeny csempen allsz?  (Y / N)");
+		Indent.printr("Torekeny csempen allsz?  (Y / N)");
 		String answer2=reader.readLine().toUpperCase();
 		
 		int life = -1;
 		switch(answer2) {
 		case "Y": 
-			Indent.print("Mennyi lifee van?  (nullanal nagyobb egesz szam)");
+			Indent.printr("Mennyi lifee van?  (nullanal nagyobb egesz szam)");
 			life =  Integer.parseInt(reader.readLine());
 			break;
 		case "N":
@@ -62,7 +63,7 @@ public class Main {
 		
 		
 		Tile position;
-		if(life!=-1) {
+		if(life==-1) {
 		switch(answer) {
 		case "JT": position = new Tile(true, false, null); board.addTile(position);  break;
 		case "WT": position = new Tile(false, true, null); board.addTile(position); break;
@@ -79,6 +80,9 @@ public class Main {
 			default: position = new BreakableTile(life); board.addTile(position); break;
 			}
 		}
+		position.setElement(jatekos);
+		jatekos.setPosition(position);
+		game.startGame();
 		
 		
 		

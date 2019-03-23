@@ -1,8 +1,6 @@
 package skeleton;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.util.*;
 
 /**
@@ -26,71 +24,39 @@ public class Tile {
 	private boolean isWhistling;
 	protected Element element;
 	private ArrayList<Tile> neighbours;
-	protected ArrayList<Armchair> neighbouringArmchairs;
+	protected ArrayList<Armchair> neighbouringArmchairs = new ArrayList<>();
 
 	/**
 	 * @param a
 	 * @return
 	 */
+	
+
+	
 	public boolean accept(Animal a) {
 		Indent.print("Tile accept()");
-		
-		Indent.print("All valami a mezon, amire lepni szeretnel? (A / ED / XD / CM / GM / O / P / TP / SP / JP /  W / N)");
 		Indent.inc();
-		BufferedReader reader =  
-                new BufferedReader(new InputStreamReader(System.in)); 
-		try {
-			String answer = reader.readLine();
-			answer = answer.toUpperCase();
-			switch(answer) {
-			case "A": this.setElement(new Armchair());
-			break;
-			case "ED": this.setElement(new EntryDoor());
-			break;
-			case "XD": this.setElement(new ExitDoor()); //XDDDDDD
-			break;
-			case "CM": this.setElement(new ChocolateMachine());
-			break;
-			case "GM": this.setElement(new GameMachine());
-			break;
-			case "O": this.setElement(new Orangutan());
-			break;
-			case "P": this.setElement(new Panda());
-			break;
-			case "TP": this.setElement(new TiredPanda());
-			break;
-			case "SP": this.setElement(new ScaredPanda());
-			break;
-			case "JP": this.setElement(new JumpingPanda());
-			break;
-			case "W": this.setElement(new Wardrobe());
-			break;
-			case "N": this.setElement(null);
-			break;
-			default: this.setElement(null);
-			
-			
-			}
-			if(answer.equals("P") || answer.equals("TP") ||answer.equals("JP") ||answer.equals("SP")) {
-				Indent.print("A panda resze-e lancnak?");
-				answer = reader.readLine(); answer = answer.toUpperCase();
-				if(answer.equals("Y")) {
-					Indent.print("Allnak a panda mogott a lancban?");
-					answer = reader.readLine(); answer = answer.toUpperCase();
-					if(answer.equals("Y")) {
-						//TODO: this.getElement().set
-					}
-				}
-			}
-		} catch (IOException e) {
-			Indent.print("Valami szornyu valaszt adhattal meg, ezert a rendszer osszeomlott.");
-			e.printStackTrace();
-		} 
-		
-		if (element == null)
-			return true;
-		else
+		Question.acceptQuestions(a, this);
+		Indent.dec();
+		if (element!=null) {
 			return a.collideWith(element);
+		}
+			return true;
+			
+	}
+	
+	//Follow eseten feluliro accept fv, hogy ne kelljen minden followolo pandara megvalaszolni a kerdest
+	public boolean accept(Panda p) {
+		if(p.controlled) {
+			Animal a = p;
+			accept(a);
+		}
+		Indent.inc();
+		Indent.dec();
+		if (element!=null) {
+			return p.collideWith(element);
+		}
+			return true;
 	}
 
 	/**
@@ -159,7 +125,7 @@ public class Tile {
 	/**
 	 * @param e
 	 */
-	public void setElement(Element e) { //Ha jól értem, ez csak inicializásnál lesz használva de idk
+	public void setElement(Element e) { //Ha jï¿½l ï¿½rtem, ez csak inicializï¿½snï¿½l lesz hasznï¿½lva de idk
 		Indent.print("Tile setElement()");
 		element = e;
 	}
@@ -177,10 +143,12 @@ public class Tile {
 	 */
 	public void swap(Tile t) {
 		Indent.print("Tile swap()");
+
 		Indent.inc();
+		
 		Element tempElement = element;
-		element = t.element;
-		t.element = tempElement;
+		this.setElement(t.element);
+		t.setElement(tempElement);
 		Indent.dec();
 	}
 

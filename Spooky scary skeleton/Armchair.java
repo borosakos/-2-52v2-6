@@ -22,10 +22,11 @@ public class Armchair extends Element {
 		
 		return isOccupied;
 	}
+	
 
 	/**
-	 * Jelzi, hogy az orangután nem ütközhet a fotellal.
-	 * @param o orangután
+	 * Jelzi, hogy az orangutï¿½n nem ï¿½tkï¿½zhet a fotellal.
+	 * @param o orangutï¿½n
 	 * @return
 	 */
 	public boolean hitBy(Orangutan o) {
@@ -35,7 +36,7 @@ public class Armchair extends Element {
 	}
 
 	/**
-	 * Jelzi, hogy a panda nem ütközhet a fotellal.
+	 * Jelzi, hogy a panda nem ï¿½tkï¿½zhet a fotellal.
 	 * @param p panda
 	 * @return
 	 */

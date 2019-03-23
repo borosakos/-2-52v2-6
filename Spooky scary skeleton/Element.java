@@ -10,7 +10,10 @@ public abstract class Element {
      */
     public Element() {
     }
-
+    
+    public void setPosition(Tile t) {
+    	position = t;
+    }
 
     /**
      * 

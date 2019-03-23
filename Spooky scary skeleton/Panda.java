@@ -1,8 +1,6 @@
 package skeleton;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 
 /**
  * 
@@ -12,7 +10,12 @@ import java.io.InputStreamReader;
 public class Panda extends Animal {
 
 	protected boolean isAlive;
-	protected Panda frontNeighbour;
+	protected Animal frontNeighbour;
+	
+	/**A szkeletonnak egy jelzo boolean, ami azt jelzi, hogy a tesztelo
+	*  iranyitja-e a pandat
+	**/
+	public boolean controlled = true;
 	
     /**
      * Default constructor
@@ -26,6 +29,18 @@ public class Panda extends Animal {
     	//frontNeighbour = null;
     	Indent.dec();
     }
+    
+    public Panda(boolean b) {
+    	Indent.print("Panda()");
+     	Indent.inc();
+    	controlled = b;
+    	if(!b) {
+    		Tile t = new Tile();
+    		this.position = t;
+    		t.setElement(this);
+    	}
+    	Indent.dec();
+    }
 
 
     /**
@@ -33,18 +48,23 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public void step() {
-    	Indent.print("step()");
+    	Indent.print("Panda step()");
     	Indent.inc();
     	
     	detect();
+    	
+    	Tile current = this.getTile();
+    	
     	if(isInQueue()) {
+    		if(!controlled) {
     		Indent.dec();
     		return;
+    		}
     	}
     	
     	Tile t2 = selectTile();
     	
-    	if(!t2.accept(this)) {
+    	if(t2==null || !t2.accept(this)) {
     		Indent.dec();
     		return;
     	}
@@ -52,7 +72,13 @@ public class Panda extends Animal {
     	getTile().remove(this);
     	t2.take(this);
     	
+    	
+		if(isInQueue()) {
+			backNeighbour.follow(current);
+		}
+    	
     	Indent.dec();
+    	
     }
 
 
@@ -61,17 +87,22 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public void follow(Tile t) {
-    	Indent.print("follow(Tile t)");
+    	Indent.print("Panda follow(Tile t)");
     	Indent.inc();
-    	
+    	if(!(t!=null)) { t = new Tile();
         if(!t.accept(this)) {
         	Indent.dec();
         	return;
         }
+    	}
         Tile t2 = getTile();
+        if(!(t2!=null)) {t2 = new Tile();
+        t2.element=this;
+        this.position = t2;
+        }
         t2.remove(this);
         t.take(this);
-        follow(t2);
+        if(backNeighbour!=null)backNeighbour.follow(t2);
         
         Indent.dec();
     }
@@ -81,7 +112,7 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public void detect() { 
-    	Indent.print("detect()");
+    	Indent.print("Panda detect()");
     	Indent.inc();
     	Indent.dec();
     }
@@ -90,28 +121,16 @@ public class Panda extends Animal {
      * @return
      * 
      */
+    
+    
     // COMPLETED /TODO - Ehhez a feladathoz nem kell.
     public Tile selectTile() {
     	Indent.print("Panda selectTile()");
+    	Indent.inc();
         //ArrayList<Tile> neighbours = getTile().getNeighbours();
-		Indent.print("Milyen csempere akarsz lepni? (T / BT / G)");
-		BufferedReader reader =  
-                new BufferedReader(new InputStreamReader(System.in)); 
-		try {
-			String answer = reader.readLine();
-			answer = answer.toUpperCase();
-			switch(answer) {
-			case "T": return new Tile();
-			case "BT": return new BreakableTile(10);
-			case "G": return new BreakableTile(0);
-			default: return new Tile();
-			}
-			
-		} catch (IOException e) {
-			Indent.print("Valami szornyu valaszt adhattal meg, ezert a rendszer osszeomlott.");
-			e.printStackTrace();
-		} 
-		return null;
+		Tile t = Question.selectTileQuestions();
+		Indent.dec();
+		return t;
     }
 
     /**
@@ -120,7 +139,7 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public boolean hitBy(Orangutan o) {
-    	Indent.print("hitBy()");
+    	Indent.print("Panda hitBy()");
     	Indent.inc();
     	if(isInQueue())
     		o.die();
@@ -137,11 +156,11 @@ public class Panda extends Animal {
         return false;
     }
 
-    protected void setFrontNeighbour(Panda panda) {
-    	Indent.print("Panda setFrontNeighbour(Panda panda)");
+    protected void setFrontNeighbour(Animal animal) {
+    	Indent.print("Panda setFrontNeighbour(Animal)");
     	Indent.inc();
     	
-    	frontNeighbour = panda;
+    	frontNeighbour = animal;
     	
     	Indent.dec();
 	}
@@ -153,7 +172,7 @@ public class Panda extends Animal {
      */
     //COMPLETED
     public boolean hitBy(Panda p) {
-    	Indent.print("hitBy()");
+    	Indent.print("Panda hitBy()");
     	Indent.inc();
     	Indent.dec();
         return false;
@@ -178,8 +197,10 @@ public class Panda extends Animal {
     	
     	isAlive = false;
     	getTile().setElement(null);
-    	getFrontNeighbour().setBackNeighbour(null);
+    	if(frontNeighbour!=null)getFrontNeighbour().setBackNeighbour(null);
     	if(backNeighbour != null) release();
+    	setFrontNeighbour(null);
+    	setBackNeighbour(null);
     	
     	Indent.dec();
     }
@@ -201,7 +222,7 @@ public class Panda extends Animal {
      */
     // COMPLETED
     public void grab(Animal a) {
-    	Indent.print("grab()");
+    	Indent.print("Panda grab()");
     	Indent.inc();
     	
     	a.setBackNeighbour(this);
@@ -215,16 +236,36 @@ public class Panda extends Animal {
 	/**
      * 
      */
-    // COMPLETED / TODO itt hibás volt a szekvencia? :OOOOOO vagy velem van a gond?
+    // COMPLETED / TODO itt hibï¿½s volt a szekvencia? :OOOOOO vagy velem van a gond?
     public void release() {
-    	Indent.print("release()");
+    	Indent.print("Panda release()");
     	Indent.inc();
     	
-    	getFrontNeighbour().setBackNeighbour(null);
-    	getBackNeighbour().setFrontNeighbour(null);
-    	getBackNeighbour().release();
+    	if(frontNeighbour!=null) {getFrontNeighbour().setBackNeighbour(null);}
+    	if(backNeighbour!=null) {getBackNeighbour().setFrontNeighbour(null);
+    	getBackNeighbour().release();}
 	
     	Indent.dec();
     }
+    
 
+    
+    public boolean isInQueue() {
+    	Indent.print("Panda isInQueue()");
+    	
+    	if(!controlled) {
+	    	if (backNeighbour!=null || frontNeighbour!=null) return true;
+	    	return false;
+    	}
+    	
+    	if(!(backNeighbour!=null)) {
+    		Question.queueQuestions(this);
+    	}
+		
+		Indent.dec();
+		return (backNeighbour!=null);
+    	
+		
 }
+}
+

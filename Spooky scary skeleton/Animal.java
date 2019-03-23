@@ -32,4 +32,5 @@ public abstract class Animal extends Element implements Steppable {
 		
 		Indent.dec();
 	}
+	
 }

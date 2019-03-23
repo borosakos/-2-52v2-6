@@ -10,23 +10,36 @@ public class ScaredPanda extends Panda {
      */
 	//COMPLETED
     public ScaredPanda() {
+
     	Indent.print("ScaredPanda()");
     	Indent.inc();
     	
     	isAlive = true;
-    	//super();
+
     	Indent.dec();
     }
 
-    /**
+    public ScaredPanda(boolean b) {
+    	Indent.print("TiredPanda()");
+     	Indent.inc();
+    	controlled = b;
+    	if(!b) {
+    		Tile t = new Tile();
+    		this.position = t;
+    		t.setElement(this);
+    	}
+    	Indent.dec();
+	}
+
+	/**
      * 
      */
-    //TODO Jó így? 
+    //TODO Jï¿½ ï¿½gy? 
     public void becomeScared() {
     	Indent.print("becomeScared()");
     	Indent.inc();
     	setFrontNeighbour(null);
-        getBackNeighbour().release();
+    	if(isInQueue()) {getBackNeighbour().release();}
         Indent.dec();
     }
 
@@ -38,10 +51,11 @@ public class ScaredPanda extends Panda {
     	Indent.print("detect()");
     	Indent.inc();
     	
+    	
         if(!getTile().getIsJingling()) return;
         becomeScared();
         setFrontNeighbour(null);
-        getBackNeighbour().release();
+        if(backNeighbour!=null) {getBackNeighbour().release();}
         
         Indent.dec();
     }

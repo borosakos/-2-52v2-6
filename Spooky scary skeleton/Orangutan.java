@@ -1,8 +1,6 @@
 package skeleton;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 
 public class Orangutan extends Animal {
 	
@@ -21,8 +19,8 @@ public class Orangutan extends Animal {
 		if (backNeighbour!=null) {
 			backNeighbour.release();
 		}
-		Game game = new Game();
-		game.endGame();
+		
+		Controller.game.endGame();
 		
 		Indent.dec();
 	}
@@ -30,26 +28,10 @@ public class Orangutan extends Animal {
 	@Override
 	public Tile selectTile() {
 		Indent.print("Orangutan selectTile()");
-		Indent.print("Milyen csempere akarsz lepni? (T / BT / G)");
 		Indent.inc();
-		BufferedReader reader =  
-                new BufferedReader(new InputStreamReader(System.in)); 
-		try {
-			String answer = reader.readLine();
-			answer = answer.toUpperCase();
-			switch(answer) {
-			case "T": return new Tile();
-			case "BT": return new BreakableTile(10);
-			case "G": return new BreakableTile(0);
-			default: return new Tile();
-			}
-			
-		} catch (IOException e) {
-			Indent.print("Valami szornyu valaszt adhattal meg, ezert a rendszer osszeomlott.");
-			e.printStackTrace();
-		} 
+		Tile t = Question.selectTileQuestions();
 		Indent.dec();
-		return null;
+		return t;
 	}
 
 	@Override
@@ -67,7 +49,7 @@ public class Orangutan extends Animal {
 
 	@Override
 	public boolean collideWith(Element e) {
-		Indent.print("Orangutan hitBy(Element)");
+		Indent.print("Orangutan collideWith(Element)");
 		Indent.inc();
 			boolean res = e.hitBy(this);
 		Indent.dec();
@@ -79,6 +61,7 @@ public class Orangutan extends Animal {
 		// TODO Auto-generated method stub
 		Indent.print("Orangutan step()");
 		Indent.inc();
+			Tile current = this.position;
 			Tile tostep = this.selectTile();
 			boolean accept = tostep.accept(this);
 			if(accept) {
@@ -87,7 +70,7 @@ public class Orangutan extends Animal {
 			}
 			boolean inQueue = this.isInQueue();
 			if(inQueue && accept) {
-				backNeighbour.follow(this.getTile());
+				backNeighbour.follow(current);
 			}
 		Indent.dec();
 	}
@@ -95,6 +78,11 @@ public class Orangutan extends Animal {
 	@Override
 	public boolean isInQueue() {
 		Indent.print("Orangutan isInQueue()");
+		Indent.inc();
+		if(!(backNeighbour!=null)) {
+		Question.orangutanQueueQuestions(this);
+		}
+		Indent.dec();
 		return (backNeighbour!=null);
 	}
 
@@ -118,11 +106,17 @@ public class Orangutan extends Animal {
 	public void deleteQueue() {
 		Indent.print("Orangutan deleteQueue()");
 		Panda lastBackNeighbour = backNeighbour;
+		backNeighbour = null;
 		while(lastBackNeighbour!=null) {
 			Panda current = lastBackNeighbour;
 			lastBackNeighbour = lastBackNeighbour.backNeighbour;
 			current.die();
 		}
+	}
+	public void grab(Panda p) {
+		Indent.print("Orangutan grab(Panda)");
+		setBackNeighbour(p);
+		getTile().swap(p.getTile());
 	}
 
 }

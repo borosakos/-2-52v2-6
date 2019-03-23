@@ -12,6 +12,7 @@ public class JumpingPanda extends Panda {
      */
 	//COMPLETED
     public JumpingPanda() {
+
     	Indent.print("JumpingPanda()");
     	Indent.inc();
     	//super();
@@ -20,7 +21,20 @@ public class JumpingPanda extends Panda {
     }
 
 
-    /**
+    public JumpingPanda(boolean b) {
+    	Indent.print("TiredPanda()");
+     	Indent.inc();
+    	controlled = b;
+    	if(!b) {
+    		Tile t = new Tile();
+    		this.position = t;
+    		t.setElement(this);
+    	}
+    	Indent.dec();
+	}
+
+
+	/**
      * 
      */
     //COMPLETED
@@ -30,8 +44,8 @@ public class JumpingPanda extends Panda {
     	
     	Random r = new Random();
         Tile t = getTile();
-        t.lifeDecrease(r.nextInt(10 - 3) + 3);
-        
+        boolean halalos = t.lifeDecrease(r.nextInt(10 - 3) + 3);
+        if(halalos) this.die();
         Indent.dec();
     }
 
@@ -43,7 +57,7 @@ public class JumpingPanda extends Panda {
     	Indent.print("JumpingPanda detect()");
     	Indent.inc();
     	
-    	if(!getTile().getIsWhistling()) {
+    	if(getTile().getIsWhistling()) {
     		jump();
     		Indent.dec();
     		return;
