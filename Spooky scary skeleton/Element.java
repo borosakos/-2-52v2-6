@@ -11,8 +11,12 @@ public abstract class Element {
     public Element() {
     }
     
-    public void setPosition(Tile t) {
+    public void setTile(Tile t) {
     	position = t;
+    }
+    
+    public Tile getTile() {
+    	return position;
     }
 
     /**

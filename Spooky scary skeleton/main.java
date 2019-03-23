@@ -13,12 +13,13 @@ public class Main {
 		BufferedReader reader =  
                 new BufferedReader(new InputStreamReader(System.in)); 
 		try {
-		String choice = reader.readLine();
-		
-		while(choice.toUpperCase().equals("S")) {
-			mainLoop();
-			choice = reader.readLine();
-		}
+			String choice = reader.readLine();
+			
+			while(choice.toUpperCase().equals("S")) {
+				mainLoop();
+				choice = reader.readLine();
+			}
+			if(choice.toUpperCase().equals("Q")) System.exit(0);
 		} catch (Exception e){
 			
 		}
@@ -81,7 +82,7 @@ public class Main {
 			}
 		}
 		position.setElement(jatekos);
-		jatekos.setPosition(position);
+		jatekos.setTile(position);
 		game.startGame();
 		
 		

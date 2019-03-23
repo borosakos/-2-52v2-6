@@ -146,7 +146,7 @@ public class Question {
 		} 
 	}
 public static void orangutanQueueQuestions(Orangutan go) {
-	Indent.printr("Áll mögötted panda? (P / TP / SP / JP / N)");
+	Indent.printr("All mogotted panda? (P / TP / SP / JP / N)");
 	ArrayList<Panda> pandasor = new ArrayList<>();
 	
 	BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in)); 
@@ -159,7 +159,7 @@ public static void orangutanQueueQuestions(Orangutan go) {
 					case "SP": pandasor.add(new ScaredPanda(false)); break;
 					case "JP": pandasor.add(new JumpingPanda(false)); break;
 				}
-			Indent.printr("Áll mögötte másik panda? (P / TP / SP / JP / N)");
+			Indent.printr("All mogotte masik panda? (P / TP / SP / JP / N)");
 			answer = reader.readLine().toUpperCase();
 		}
 		if(!pandasor.isEmpty()) {

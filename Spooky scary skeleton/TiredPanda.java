@@ -40,7 +40,7 @@ public class TiredPanda extends Panda {
 
 
 	private boolean isSitting;
-    private Armchair inArmchair;
+    private Armchair inArmchair; 
     private int sittingTimeLeft;
     ArrayList<Armchair> usedArmchairs = new ArrayList<>();
 
@@ -118,7 +118,13 @@ public class TiredPanda extends Panda {
     public void getUp() { 
         // TODO implement here
     	Indent.print("TiredPanda getUp()");
+    	
     	isSitting = false;
+    	for(Tile t : inArmchair.getTile().getNeighbours() ) {
+    		if(t.getElement().equals(null)) t.take(this);
+    	}
+    	inArmchair = null;
+    	
     	Indent.inc();
     	Indent.dec();
     }

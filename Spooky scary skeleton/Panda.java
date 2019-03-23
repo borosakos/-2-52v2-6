@@ -52,7 +52,10 @@ public class Panda extends Animal {
     	Indent.inc();
     	
     	detect();
-    	
+    	if(!isAlive) {
+    		Indent.dec();
+    		return;
+    		}
     	Tile current = this.getTile();
     	
     	if(isInQueue()) {
@@ -252,6 +255,7 @@ public class Panda extends Animal {
     
     public boolean isInQueue() {
     	Indent.print("Panda isInQueue()");
+    	Indent.inc();
     	
     	if(!controlled) {
 	    	if (backNeighbour!=null || frontNeighbour!=null) return true;

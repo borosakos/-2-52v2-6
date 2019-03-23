@@ -59,7 +59,7 @@ public class Wardrobe extends Element {
     	Indent.inc();
     	Wardrobe end = new Wardrobe();
     	Tile t = new Tile();
-    	end.setPosition(t);
+    	end.setTile(t);
     	end.doorTile = t;
         otherWardrobes.add(end);
     	int index = (int)( Math.random() * otherWardrobes.size() );

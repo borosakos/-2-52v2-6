@@ -31,7 +31,7 @@ public class BreakableTile extends Tile {
      * 
      */
     private int life=-1;
-    private boolean broken;
+    //private boolean broken;
 
     /**
      * @param a 
@@ -143,16 +143,6 @@ public class BreakableTile extends Tile {
     }
 
     /**
-     * 
-     */
-    public void breakTile() { //Kell ez egy�ltal�n? reeee de ut�lom ezt az eg�sz diagramozgat�st annyival egy�rtelm�bb lett volna sim�n leprogramozni istenem
-    	Indent.print("BreakableTile breakTile()");
-    	Indent.inc();
-        broken = true;
-        Indent.dec();
-    }
-
-    /**
      * @param i 
      * @return
      */
@@ -161,7 +151,7 @@ public class BreakableTile extends Tile {
     	Indent.inc();
         life -= i;
         Indent.dec();
-        if (life <= 0) { breakTile(); return true; }
+        if (life <= 0) return true; 
         return false;
     }
 

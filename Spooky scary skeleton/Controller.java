@@ -17,22 +17,13 @@ public  class Controller {
 				for (int i = 0; i< 3; i++) {
 					for(Orangutan o: orangutans) {
 						o.step();
-						if(game.hasEnded()) {
-							game.endGame(); Indent.dec(); break;
-						}
 					}
 				}
 				for(Panda p: pandas) {
 					if(p.getIsAlive()) p.step();
-					if(game.hasEnded()) {
-						game.endGame(); Indent.dec(); return;
-					}
 				}
 				for(Steppable s: steppables) {
 					s.step();
-					if(game.hasEnded()) {
-						game.endGame(); Indent.dec(); return;
-					}
 				}
 			}
 		Indent.dec();

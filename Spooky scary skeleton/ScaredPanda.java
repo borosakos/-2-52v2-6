@@ -34,7 +34,7 @@ public class ScaredPanda extends Panda {
 	/**
      * 
      */
-    //TODO J� �gy? 
+    //TODO J� �gy? //gesundheit
     public void becomeScared() {
     	Indent.print("becomeScared()");
     	Indent.inc();

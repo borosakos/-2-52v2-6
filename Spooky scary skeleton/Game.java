@@ -11,12 +11,7 @@ public class Game {
 	public void endGame() {
 		Indent.print("Game endGame()");
 		end = true;
-		try {
-			throw new Exception("The game has ended!");
-		} catch (Exception e) {
-			System.out.println("A jatek veget ert");
-			e.printStackTrace();
-		}
+		System.exit(0);
 	}
 	public void startGame() {
 		Indent.print("Game startGame()");

@@ -31,7 +31,9 @@ public class Tile {
 	 * @return
 	 */
 	
-
+	public Element getElement() {
+		return element;
+	}
 	
 	public boolean accept(Animal a) {
 		Indent.print("Tile accept()");
@@ -52,11 +54,13 @@ public class Tile {
 			accept(a);
 		}
 		Indent.inc();
-		Indent.dec();
+		
 		if (element!=null) {
+			Indent.dec();
 			return p.collideWith(element);
 		}
-			return true;
+		Indent.dec();
+		return true;
 	}
 
 	/**
