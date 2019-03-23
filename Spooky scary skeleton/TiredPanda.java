@@ -25,7 +25,9 @@ public class TiredPanda extends Panda {
     	Indent.dec();
     }
 
-    
+    /**
+     * Constructor
+     */
     public TiredPanda(boolean b) {
     	Indent.print("TiredPanda()");
      	Indent.inc();
@@ -45,9 +47,10 @@ public class TiredPanda extends Panda {
     ArrayList<Armchair> usedArmchairs = new ArrayList<>();
 
     /**
-     * @param a
+     * Az adott panda leul a parameterkent kapott fotelbe veletlenszeru ideig.
+     * @param ac - A fotel amelyikbe ulni fog a panda.
      */
-    // COMPLETED
+    
     public void sitDown(Armchair ac) {
     	Indent.print("TiredPanda sitDown()");
     	Indent.inc();
@@ -60,6 +63,11 @@ public class TiredPanda extends Panda {
     	Indent.dec();
     }
     
+    /**
+     * Veletlenszeruen kivalasztja a csempet, amire lepni fog.
+     * @param
+     * @return Viszzater a kivalasztott csempevel.
+     */
     public Tile selectTile() {
     
     	Indent.print("TiredPanda selectTile()");
@@ -72,6 +80,12 @@ public class TiredPanda extends Panda {
 		return t;
     }
     
+    /**
+     * A panda lep egy tetszoleges szomszedos mezore.
+     * @param
+     * @return Ha a panda sorban vagy olyan mezore lepne amire nem tud,
+     * 		   akkor visszater.
+     */
     public void step() {
 
     	if(isSitting) {
@@ -113,10 +127,11 @@ public class TiredPanda extends Panda {
     }
 
     /**
-     * 
+     * Az adott felall a fotelebol, es egy vele szomszedos mezore lep.
+     * @param
+     * @return
      */
     public void getUp() { 
-        // TODO implement here
     	Indent.print("TiredPanda getUp()");
     	
     	isSitting = false;
@@ -130,9 +145,10 @@ public class TiredPanda extends Panda {
     }
 
     /**
-     * 
+     * Megnezi, hogy van-e fotel a kornyeken.
+     * @param 
+     * @return Ha nincs korulotte fotel visszater.
      */
-    //COMPLETED
     public void detect() {
     	Indent.print("TiredPanda detect()");
     	Indent.inc();
@@ -153,9 +169,10 @@ public class TiredPanda extends Panda {
     }
 
     /**
-     * @return
+     * Lekerdezi a szomszedos foteleket, és kivalasztja kozuluk az elso olyat, ami nem foglalt.
+     * @param
+     * @return Visszater a valasztott fotellel.
      */
-    // COMPELETED
     public Armchair chooseArmchair() {
     	Indent.print("TiredPanda chooseArmchair()");
     	Indent.inc();
@@ -173,9 +190,10 @@ public class TiredPanda extends Panda {
     }
 
     /**
-     * @param a
+     * Beallitja, a fotelt amibe a panda beleul.
+     * @param ac - A fotel a mibe ulni fog a panda
+     * @reuturn 
      */
- // COMPLETED
     public void setArmchair(Armchair ac) {
     	Indent.print("TiredPanda chooseArmchair()");
     	Indent.inc();      

@@ -6,7 +6,6 @@ package skeleton;
  * 
  */
 
-//TODO - direkt van ketto release es grab???
 public class Panda extends Animal {
 
 	protected boolean isAlive;
@@ -20,7 +19,6 @@ public class Panda extends Animal {
     /**
      * Default constructor
      */
-	//COMPLETED
     public Panda() {
     	Indent.print("Panda()");
     	Indent.inc();
@@ -44,9 +42,11 @@ public class Panda extends Animal {
 
 
     /**
-     * 
+     * A panda lep egy tetszoleges szomszedos mezore.
+     * @param
+     * @return Ha a panda sorban vagy olyan mezore lepne amire nem tud,
+     * 		   akkor visszater.
      */
-    //COMPLETED
     public void step() {
     	Indent.print("Panda step()");
     	Indent.inc();
@@ -86,9 +86,11 @@ public class Panda extends Animal {
 
 
     /**
-     * @param t
+     * A lancban levo panda koveti az elotte halado allatot.
+     * @param t - A panda elott levo allat.
+     * @return Ha a panda olyan mezore lepne amire nem tud,
+     * 		   akkor visszater.
      */
-    //COMPLETED
     public void follow(Tile t) {
     	Indent.print("Panda follow(Tile t)");
     	Indent.inc();
@@ -111,9 +113,10 @@ public class Panda extends Animal {
     }
 
     /**
-     * 
+     * Ellenorzi, hogy van-e a mezon valamilyen flag.
+     * @param 
+     * @return 
      */
-    //COMPLETED
     public void detect() { 
     	Indent.print("Panda detect()");
     	Indent.inc();
@@ -121,12 +124,10 @@ public class Panda extends Animal {
     }
 
     /**
-     * @return
-     * 
+     * Veletlenszeruen kivalasztja a csempet, amire lepni fog.
+     * @param
+     * @return Viszzater a kivalasztott csempevel.
      */
-    
-    
-    // COMPLETED /TODO - Ehhez a feladathoz nem kell.
     public Tile selectTile() {
     	Indent.print("Panda selectTile()");
     	Indent.inc();
@@ -137,10 +138,10 @@ public class Panda extends Animal {
     }
 
     /**
-     * @param o 
-     * @return
+     * Az orangutan nekimegy a pandanak.
+     * @param o - Az orangutan amelyik nekimegy a pandanak.
+     * @return false 
      */
-    // COMPLETED
     public boolean hitBy(Orangutan o) {
     	Indent.print("Panda hitBy()");
     	Indent.inc();
@@ -159,6 +160,11 @@ public class Panda extends Animal {
         return false;
     }
 
+    /**
+     * Beallitja az elotte allo allatot.
+     * @param animal - Az elotte allo allat.
+     * @return 
+     */
     protected void setFrontNeighbour(Animal animal) {
     	Indent.print("Panda setFrontNeighbour(Animal)");
     	Indent.inc();
@@ -169,11 +175,11 @@ public class Panda extends Animal {
 	}
 
 
-	/**
-     * @param p 
-     * @return
+    /**
+     * Egy panda nekimegy a pandanak.
+     * @param p - A panda amelyik nekiment a pandanak.
+     * @return false
      */
-    //COMPLETED
     public boolean hitBy(Panda p) {
     	Indent.print("Panda hitBy()");
     	Indent.inc();
@@ -182,8 +188,9 @@ public class Panda extends Animal {
     }
 
     /**
-     * @param e 
-     * @return
+     * Lekezeli azt az esemenyt, amikor az adott elem utkozik a pandaval.
+     * @param e - Az elem amivel utkozik a panda.
+     * @return false
      */
     public boolean collideWith(Element e) {
         // TODO implement here
@@ -191,9 +198,10 @@ public class Panda extends Animal {
     }
 
     /**
-     * 
+     * Megoli a pandat.
+     * @param
+     * @return
      */
-    // COMPLETED
     public void die() {
     	Indent.print("Panda die()");
     	Indent.inc();
@@ -208,12 +216,20 @@ public class Panda extends Animal {
     	Indent.dec();
     }
 
+    /**
+     * Visszaadja, hogy a panda eletben van-e.
+     * @return A panda eletban van-e
+     */
     public boolean getIsAlive() {
     	Indent.print("Panda getIsAlive()");
     	return isAlive;
 	}
 
-
+    
+    /**
+     *  A panda elott allo allatot adja vissza.
+     * @return A panda elott allo allatot adja vissza.
+     */
 	protected Animal getFrontNeighbour() {
 		Indent.print("Panda getFrontNeighbour()");
 		return frontNeighbour;
@@ -221,9 +237,11 @@ public class Panda extends Animal {
 
 
 	/**
-     * @param a
+     * Az adott panda megfogja a parameterkent kapott panda kezet,
+     * aki igy a lancban ele kerul.
+     * @param a - Az allat amelyiknek a kezet megfogja a panda.
+     * @return
      */
-    // COMPLETED
     public void grab(Animal a) {
     	Indent.print("Panda grab()");
     	Indent.inc();
@@ -237,9 +255,10 @@ public class Panda extends Animal {
 
 
 	/**
-     * 
+     * Az adott panda elengedi a mogotte allo panda kezet, aki így megszunik szomszedja lenni.
+     * @param
+     * @return
      */
-    // COMPLETED / TODO itt hibï¿½s volt a szekvencia? :OOOOOO vagy velem van a gond?
     public void release() {
     	Indent.print("Panda release()");
     	Indent.inc();
@@ -252,7 +271,10 @@ public class Panda extends Animal {
     }
     
 
-    
+    /**
+     * Visszaadja hogy a panda sorban all-e
+     * @return A panda sorban all-e.
+     */
     public boolean isInQueue() {
     	Indent.print("Panda isInQueue()");
     	Indent.inc();
