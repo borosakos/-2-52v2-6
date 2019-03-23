@@ -1,30 +1,34 @@
 package skeleton;
 
+/**
+* Az absztrakt osztaly felelossege biztositani az allatok elvart viselkedeset.
+*/
 public abstract class Animal extends Element implements Steppable {
 	/**
-	* A láncban az adott állat mögött lévő állat. Ha ilyen nincs, értéke null.
+	* A lancban az adott allat mogott levo allat. Ha ilyen nincs, erteke null.
 	*/
 	protected Panda backNeighbour;
 	
 	/**
-	* Igazat ad vissza, ha az adott állat láncban van, különben hamisat.
+	* Igazat ad vissza, ha az adott allat lancban van, kulonben hamisat.
 	*/
 	public boolean isInQueue() {
 		if (backNeighbour!=null) return true;
 		return false;
 	}
 	/**
-	* Megöli az adott állatot.
+	* Megoli az adott allatot.
 	*/
 	public abstract void die();
 	
 	/**
-	* Kiválasztja azt a mezőt, amelyre az állat lépni fog.
+	* Kivalasztja azt a mezot, amelyre az allat lepni fog.
 	*/
 	public abstract Tile selectTile();
 	
 	/**
-	* Beállítja a BackNeighbour-t.
+	* Beallitja a BackNeighbour-t.
+	* @param p A panda ami a backNeighbour lesz.
 	*/
 	public void setBackNeighbour(Panda p) {
 		backNeighbour = p;
@@ -42,13 +46,14 @@ public abstract class Animal extends Element implements Steppable {
 		return position;
 	}
 	/**
-	* Lekezeli azt az eseményt, amikor az adott állat megfogja egy másik állat kezét.
+	* Lekezeli azt az esemenyt, amikor az adott allat megfogja egy masik allat kezet.
+	* @param p A panda amit megfog.
 	*/
 	public void grab(Panda p) {
 		backNeighbour = p;
 	}
 	/**
-	* Lekezeli azt az eseményt, amikor az adott állat elengedi egy másik állat kezét.
+	* Lekezeli azt az esemenyt, amikor az adott allat elengedi egy masik allat kezet.
 	*/
 	public void release() {
 		Indent.print("Animal release()");

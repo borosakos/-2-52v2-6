@@ -1,12 +1,12 @@
 package skeleton;
 
 /**
- * Egy csempén lévő játékgép. Körönként van esély arra, hogy csilingel.
+ * Egy csempen levo jatekgep. Koronkent van esely arra, hogy csilingel.
  */
 public class GameMachine extends Element {
 
     /**
-     * Lekezeli a gép időszakos csilingelését.
+     * Lekezeli a gep idoszakos csilingeleset.
      */
     public void step() {
 		Indent.print("GameMachine step()");
@@ -18,7 +18,7 @@ public class GameMachine extends Element {
     }
 
     /**
-     * Beállítja a szomszédos tile-okat jingling-re.
+     * Beallitja a szomszedos tile-okat jingling-re.
      */
     public void jingle() {
     	Indent.print("GameMachine jingle()");
@@ -33,9 +33,9 @@ public class GameMachine extends Element {
     }
 
     /**
-     * @param o Orángután
-	 * Az orángutánnal való ütközést kezeli, nem engedi, hogy rálépjen.
-     * @return Nem léphet rá, tehát hamis.
+	 * Az orangutannal valo utkozest kezeli, nem engedi, hogy ralepjen.
+     * @param o Orangutan
+     * @return Nem lephet ra, tehat hamis.
      */
     public boolean hitBy(Orangutan o) {
     	Indent.print("GameMachine hitBy(Orangutan)");
@@ -43,9 +43,9 @@ public class GameMachine extends Element {
     }
 
     /**
+	 * A Pandaval valo utkozest kezeli, nem engedi, hogy ralepjen.
      * @param p Panda
-	 * A Pandával való ütközést kezeli, nem engedi, hogy rálépjen.
-     * @return Nem léphet rá, tehát hamis.
+     * @return Nem lephet ra, tehat hamis.
      */
     public boolean hitBy(Panda p) {
     	Indent.print("GameMachine hitBy(Panda)");
@@ -53,8 +53,8 @@ public class GameMachine extends Element {
     }
 
     /**
-	 * Visszadja, hogy kell-e zenélni ebben a körben.
-     * @return Ha a random szám nagyobb vagy egyenlő mint 0.5 akkor nem fütyül, egyébként de.
+	 * Visszadja, hogy kell-e zenelni ebben a korben.
+     * @return Ha a random szam nagyobb vagy egyenlo mint 0.5 akkor nem futyul, egyebkent de.
      */
     private boolean rand() {
         Indent.print("GameMachine rand()");
@@ -62,8 +62,8 @@ public class GameMachine extends Element {
     }
 
     /**
+	 * Lekezeli azt az esemenyt, amikor az adott elem utkozik valamivel.
      * @param e Elem 
-	 * Lekezeli azt az eseményt, amikor az adott elem ütközik valamivel.
      * @return Itt hamist adunk vissza.
      */
     public boolean collideWith(Element e) {
