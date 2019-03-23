@@ -28,12 +28,13 @@ public class Tile {
 
 	/**
 	 * Visszaadja a csempen levo elementet
+	 *
 	 * @return a csempen levo element
 	 */
 	public Element getElement() {
 		return element;
 	}
-	
+
 	/**
 	 * Lekezeli azt az esemenyt, amikor az adott mezore egy allat lep.
 	 *
@@ -45,25 +46,26 @@ public class Tile {
 		Indent.inc();
 		Question.acceptQuestions(a, this);
 		Indent.dec();
-		if (element!=null) {
+		if (element != null) {
 			return a.collideWith(element);
 		}
-			return true;		
+		return true;
 	}
-	
+
 	/**
-	*Follow eseten feluliro accept fv, hogy ne kelljen minden followolo pandara megvalaszolni a kerdest
-	* @param p A panda aki ide akar lepni
-	* @return true, ha ide lephet, false ha nem
-	*/
+	 * Follow eseten feluliro accept fv, hogy ne kelljen minden followolo pandara megvalaszolni a kerdest
+	 *
+	 * @param p A panda aki ide akar lepni
+	 * @return true, ha ide lephet, false ha nem
+	 */
 	public boolean accept(Panda p) {
-		if(p.controlled) {
+		if (p.controlled) {
 			Animal a = p;
 			accept(a);
 		}
 		Indent.inc();
-		
-		if (element!=null) {
+
+		if (element != null) {
 			Indent.dec();
 			return p.collideWith(element);
 		}
@@ -177,7 +179,7 @@ public class Tile {
 		Indent.print("Tile swap()");
 
 		Indent.inc();
-		
+
 		Element tempElement = element;
 		this.setElement(t.element);
 		t.setElement(tempElement);

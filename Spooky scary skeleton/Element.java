@@ -1,45 +1,45 @@
 package skeleton;
 
 /**
- * 
+ *
  */
 public abstract class Element {
 
-    /**
-     * Default constructor
-     */
-    public Element() {
-    }
-    
-    public void setTile(Tile t) {
-    	position = t;
-    }
-    
-    public Tile getTile() {
-    	return position;
-    }
+	/**
+	 * Default constructor
+	 */
+	public Element() {
+	}
 
-    /**
-     * 
-     */
-    protected Tile position;
+	public void setTile(Tile t) {
+		position = t;
+	}
 
-    /**
-     * @param o 
-     * @return
-     */
-    public abstract boolean hitBy(Orangutan o);
+	public Tile getTile() {
+		return position;
+	}
 
-    /**
-     * @param p 
-     * @return
-     */
-    public abstract boolean hitBy(Panda p);
+	/**
+	 *
+	 */
+	protected Tile position;
 
-    /**
-     * @param e 
-     * @return
-     */
-    public abstract boolean collideWith(Element e);
+	/**
+	 * @param o
+	 * @return
+	 */
+	public abstract boolean hitBy(Orangutan o);
+
+	/**
+	 * @param p
+	 * @return
+	 */
+	public abstract boolean hitBy(Panda p);
+
+	/**
+	 * @param e
+	 * @return
+	 */
+	public abstract boolean collideWith(Element e);
 
 }

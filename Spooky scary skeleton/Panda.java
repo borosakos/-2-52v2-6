@@ -1,235 +1,248 @@
 package skeleton;
 
 
-
 /**
- * 
+ *
  */
 
 public class Panda extends Animal {
 
 	protected boolean isAlive;
 	protected Animal frontNeighbour;
-	
-	/**A szkeletonnak egy jelzo boolean, ami azt jelzi, hogy a tesztelo
-	*  iranyitja-e a pandat
-	**/
+
+	/**
+	 * A szkeletonnak egy jelzo boolean, ami azt jelzi, hogy a tesztelo
+	 * iranyitja-e a pandat
+	 **/
 	public boolean controlled = true;
-	
-    /**
-     * Default constructor
-     */
-    public Panda() {
-    	Indent.print("Panda()");
-    	Indent.inc();
-    	
-    	isAlive = true;
-    	//frontNeighbour = null;
-    	Indent.dec();
-    }
-    
-    public Panda(boolean b) {
-    	Indent.print("Panda()");
-     	Indent.inc();
-    	controlled = b;
-    	if(!b) {
-    		Tile t = new Tile();
-    		this.position = t;
-    		t.setElement(this);
-    	}
-    	Indent.dec();
-    }
+
+	/**
+	 * Default constructor
+	 */
+	public Panda() {
+		Indent.print("Panda()");
+		Indent.inc();
+
+		isAlive = true;
+		//frontNeighbour = null;
+		Indent.dec();
+	}
+
+	public Panda(boolean b) {
+		Indent.print("Panda()");
+		Indent.inc();
+		controlled = b;
+		if (!b) {
+			Tile t = new Tile();
+			this.position = t;
+			t.setElement(this);
+		}
+		Indent.dec();
+	}
 
 
-    /**
-     * A panda lep egy tetszoleges szomszedos mezore.
-     * @param
-     * @return Ha a panda sorban vagy olyan mezore lepne amire nem tud,
-     * 		   akkor visszater.
-     */
-    public void step() {
-    	Indent.print("Panda step()");
-    	Indent.inc();
-    	
-    	detect();
-    	if(!isAlive) {
-    		Indent.dec();
-    		return;
-    		}
-    	Tile current = this.getTile();
-    	
-    	if(isInQueue()) {
-    		if(!controlled) {
-    		Indent.dec();
-    		return;
-    		}
-    	}
-    	
-    	Tile t2 = selectTile();
-    	
-    	if(t2==null || !t2.accept(this)) {
-    		Indent.dec();
-    		return;
-    	}
-    			
-    	getTile().remove(this);
-    	t2.take(this);
-    	
-    	
-		if(isInQueue()) {
+	/**
+	 * A panda lep egy tetszoleges szomszedos mezore.
+	 *
+	 * @param
+	 * @return Ha a panda sorban vagy olyan mezore lepne amire nem tud,
+	 * akkor visszater.
+	 */
+	public void step() {
+		Indent.print("Panda step()");
+		Indent.inc();
+
+		detect();
+		if (!isAlive) {
+			Indent.dec();
+			return;
+		}
+		Tile current = this.getTile();
+
+		if (isInQueue()) {
+			if (!controlled) {
+				Indent.dec();
+				return;
+			}
+		}
+
+		Tile t2 = selectTile();
+
+		if (t2 == null || !t2.accept(this)) {
+			Indent.dec();
+			return;
+		}
+
+		getTile().remove();
+		t2.take(this);
+
+
+		if (isInQueue()) {
 			backNeighbour.follow(current);
 		}
-    	
-    	Indent.dec();
-    	
-    }
+
+		Indent.dec();
+
+	}
 
 
-    /**
-     * A lancban levo panda koveti az elotte halado allatot.
-     * @param t - A panda elott levo allat.
-     * @return Ha a panda olyan mezore lepne amire nem tud,
-     * 		   akkor visszater.
-     */
-    public void follow(Tile t) {
-    	Indent.print("Panda follow(Tile t)");
-    	Indent.inc();
-    	if(!(t!=null)) { t = new Tile();
-        if(!t.accept(this)) {
-        	Indent.dec();
-        	return;
-        }
-    	}
-        Tile t2 = getTile();
-        if(!(t2!=null)) {t2 = new Tile();
-        t2.element=this;
-        this.position = t2;
-        }
-        t2.remove(this);
-        t.take(this);
-        if(backNeighbour!=null)backNeighbour.follow(t2);
-        
-        Indent.dec();
-    }
+	/**
+	 * A lancban levo panda koveti az elotte halado allatot.
+	 *
+	 * @param t - A panda elott levo allat.
+	 * @return Ha a panda olyan mezore lepne amire nem tud,
+	 * akkor visszater.
+	 */
+	public void follow(Tile t) {
+		Indent.print("Panda follow(Tile t)");
+		Indent.inc();
+		if (!(t != null)) {
+			t = new Tile();
+			if (!t.accept(this)) {
+				Indent.dec();
+				return;
+			}
+		}
+		Tile t2 = getTile();
+		if (!(t2 != null)) {
+			t2 = new Tile();
+			t2.element = this;
+			this.position = t2;
+		}
+		t2.remove();
+		t.take(this);
+		if (backNeighbour != null) backNeighbour.follow(t2);
 
-    /**
-     * Ellenorzi, hogy van-e a mezon valamilyen flag.
-     * @param 
-     * @return 
-     */
-    public void detect() { 
-    	Indent.print("Panda detect()");
-    	Indent.inc();
-    	Indent.dec();
-    }
+		Indent.dec();
+	}
 
-    /**
-     * Veletlenszeruen kivalasztja a csempet, amire lepni fog.
-     * @param
-     * @return Viszzater a kivalasztott csempevel.
-     */
-    public Tile selectTile() {
-    	Indent.print("Panda selectTile()");
-    	Indent.inc();
-        //ArrayList<Tile> neighbours = getTile().getNeighbours();
+	/**
+	 * Ellenorzi, hogy van-e a mezon valamilyen flag.
+	 *
+	 * @param
+	 * @return
+	 */
+	public void detect() {
+		Indent.print("Panda detect()");
+		Indent.inc();
+		Indent.dec();
+	}
+
+	/**
+	 * Veletlenszeruen kivalasztja a csempet, amire lepni fog.
+	 *
+	 * @param
+	 * @return Viszzater a kivalasztott csempevel.
+	 */
+	public Tile selectTile() {
+		Indent.print("Panda selectTile()");
+		Indent.inc();
+		//ArrayList<Tile> neighbours = getTile().getNeighbours();
 		Tile t = Question.selectTileQuestions();
 		Indent.dec();
 		return t;
-    }
+	}
 
-    /**
-     * Az orangutan nekimegy a pandanak.
-     * @param o - Az orangutan amelyik nekimegy a pandanak.
-     * @return false 
-     */
-    public boolean hitBy(Orangutan o) {
-    	Indent.print("Panda hitBy()");
-    	Indent.inc();
-    	if(isInQueue())
-    		o.die();
-    	
-    	Panda p2 = o.getBackNeighbour();
-    	o.grab(this);
-    	
-    	if(p2 != null) {
-    		p2.setFrontNeighbour(this);
-    		setBackNeighbour(p2);
-    	}
-    	
-    	Indent.dec();
-        return false;
-    }
+	/**
+	 * Az orangutan nekimegy a pandanak.
+	 *
+	 * @param o - Az orangutan amelyik nekimegy a pandanak.
+	 * @return false
+	 */
+	public boolean hitBy(Orangutan o) {
+		Indent.print("Panda hitBy()");
+		Indent.inc();
+		if (isInQueue())
+			o.die();
 
-    /**
-     * Beallitja az elotte allo allatot.
-     * @param animal - Az elotte allo allat.
-     * @return 
-     */
-    protected void setFrontNeighbour(Animal animal) {
-    	Indent.print("Panda setFrontNeighbour(Animal)");
-    	Indent.inc();
-    	
-    	frontNeighbour = animal;
-    	
-    	Indent.dec();
+		Panda p2 = o.getBackNeighbour();
+		o.grab(this);
+
+		if (p2 != null) {
+			p2.setFrontNeighbour(this);
+			setBackNeighbour(p2);
+		}
+
+		Indent.dec();
+		return false;
+	}
+
+	/**
+	 * Beallitja az elotte allo allatot.
+	 *
+	 * @param animal - Az elotte allo allat.
+	 * @return
+	 */
+	protected void setFrontNeighbour(Animal animal) {
+		Indent.print("Panda setFrontNeighbour(Animal)");
+		Indent.inc();
+
+		frontNeighbour = animal;
+
+		Indent.dec();
 	}
 
 
-    /**
-     * Egy panda nekimegy a pandanak.
-     * @param p - A panda amelyik nekiment a pandanak.
-     * @return false
-     */
-    public boolean hitBy(Panda p) {
-    	Indent.print("Panda hitBy()");
-    	Indent.inc();
-    	Indent.dec();
-        return false;
-    }
-
-    /**
-     * Lekezeli azt az esemenyt, amikor az adott elem utkozik a pandaval.
-     * @param e - Az elem amivel utkozik a panda.
-     * @return false
-     */
-    public boolean collideWith(Element e) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * Megoli a pandat.
-     * @param
-     * @return
-     */
-    public void die() {
-    	Indent.print("Panda die()");
-    	Indent.inc();
-    	
-    	isAlive = false;
-    	getTile().setElement(null);
-    	if(frontNeighbour!=null)getFrontNeighbour().setBackNeighbour(null);
-    	if(backNeighbour != null) release();
-    	setFrontNeighbour(null);
-    	setBackNeighbour(null);
-    	
-    	Indent.dec();
-    }
-
-    /**
-     * Visszaadja, hogy a panda eletben van-e.
-     * @return A panda eletban van-e
-     */
-    public boolean getIsAlive() {
-    	Indent.print("Panda getIsAlive()");
-    	return isAlive;
+	/**
+	 * Egy panda nekimegy a pandanak.
+	 *
+	 * @param p - A panda amelyik nekiment a pandanak.
+	 * @return false
+	 */
+	public boolean hitBy(Panda p) {
+		Indent.print("Panda hitBy()");
+		Indent.inc();
+		Indent.dec();
+		return false;
 	}
 
-    
-    /**
-     *  A panda elott allo allatot adja vissza.
-     * @return A panda elott allo allatot adja vissza.
-     */
+	/**
+	 * Lekezeli azt az esemenyt, amikor az adott elem utkozik a pandaval.
+	 *
+	 * @param e - Az elem amivel utkozik a panda.
+	 * @return false
+	 */
+	public boolean collideWith(Element e) {
+		// TODO implement here
+		return false;
+	}
+
+	/**
+	 * Megoli a pandat.
+	 *
+	 * @param
+	 * @return
+	 */
+	public void die() {
+		Indent.print("Panda die()");
+		Indent.inc();
+
+		isAlive = false;
+		getTile().setElement(null);
+		if (frontNeighbour != null) getFrontNeighbour().setBackNeighbour(null);
+		if (backNeighbour != null) release();
+		setFrontNeighbour(null);
+		setBackNeighbour(null);
+
+		Indent.dec();
+	}
+
+	/**
+	 * Visszaadja, hogy a panda eletben van-e.
+	 *
+	 * @return A panda eletban van-e
+	 */
+	public boolean getIsAlive() {
+		Indent.print("Panda getIsAlive()");
+		return isAlive;
+	}
+
+
+	/**
+	 * A panda elott allo allatot adja vissza.
+	 *
+	 * @return A panda elott allo allatot adja vissza.
+	 */
 	protected Animal getFrontNeighbour() {
 		Indent.print("Panda getFrontNeighbour()");
 		return frontNeighbour;
@@ -237,61 +250,68 @@ public class Panda extends Animal {
 
 
 	/**
-     * Az adott panda megfogja a parameterkent kapott panda kezet,
-     * aki igy a lancban ele kerul.
-     * @param a - Az allat amelyiknek a kezet megfogja a panda.
-     * @return
-     */
-    public void grab(Animal a) {
-    	Indent.print("Panda grab()");
-    	Indent.inc();
-    	
-    	a.setBackNeighbour(this);
-    	Tile pt = this.getTile();
-    	a.getTile().swap(pt); //idk jo-e ez igy, de senki nem mond semmit es maganyos vagyok:^)
-    	
-    	Indent.dec();
+	 * Az adott panda megfogja a parameterkent kapott panda kezet,
+	 * aki igy a lancban ele kerul.
+	 *
+	 * @param a - Az allat amelyiknek a kezet megfogja a panda.
+	 * @return
+	 */
+	public void grab(Animal a) {
+		Indent.print("Panda grab()");
+		Indent.inc();
+
+		a.setBackNeighbour(this);
+		Tile pt = this.getTile();
+		a.getTile().swap(pt); //idk jo-e ez igy, de senki nem mond semmit es maganyos vagyok:^)
+
+		Indent.dec();
 	}
 
 
 	/**
-     * Az adott panda elengedi a mogotte allo panda kezet, aki így megszunik szomszedja lenni.
-     * @param
-     * @return
-     */
-    public void release() {
-    	Indent.print("Panda release()");
-    	Indent.inc();
-    	
-    	if(frontNeighbour!=null) {getFrontNeighbour().setBackNeighbour(null);}
-    	if(backNeighbour!=null) {getBackNeighbour().setFrontNeighbour(null);
-    	getBackNeighbour().release();}
-	
-    	Indent.dec();
-    }
-    
+	 * Az adott panda elengedi a mogotte allo panda kezet, aki így megszunik szomszedja lenni.
+	 *
+	 * @param
+	 * @return
+	 */
+	public void release() {
+		Indent.print("Panda release()");
+		Indent.inc();
 
-    /**
-     * Visszaadja hogy a panda sorban all-e
-     * @return A panda sorban all-e.
-     */
-    public boolean isInQueue() {
-    	Indent.print("Panda isInQueue()");
-    	Indent.inc();
-    	
-    	if(!controlled) {
-	    	if (backNeighbour!=null || frontNeighbour!=null) return true;
-	    	return false;
-    	}
-    	
-    	if(!(backNeighbour!=null)) {
-    		Question.queueQuestions(this);
-    	}
-		
+		if (frontNeighbour != null) {
+			getFrontNeighbour().setBackNeighbour(null);
+		}
+		if (backNeighbour != null) {
+			getBackNeighbour().setFrontNeighbour(null);
+			getBackNeighbour().release();
+		}
+
 		Indent.dec();
-		return (backNeighbour!=null);
-    	
-		
-}
+	}
+
+
+	/**
+	 * Visszaadja hogy a panda sorban all-e
+	 *
+	 * @return A panda sorban all-e.
+	 */
+	public boolean isInQueue() {
+		Indent.print("Panda isInQueue()");
+		Indent.inc();
+
+		if (!controlled) {
+			if (backNeighbour != null || frontNeighbour != null) return true;
+			return false;
+		}
+
+		if (!(backNeighbour != null)) {
+			Question.queueQuestions(this);
+		}
+
+		Indent.dec();
+		return (backNeighbour != null);
+
+
+	}
 }
 
