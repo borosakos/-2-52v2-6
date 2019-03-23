@@ -1,8 +1,10 @@
 package skeleton;
 
 /**
-* Az absztrakt osztaly felelossege biztositani az allatok elvart viselkedeset.
-*/
+ * Az absztrakt osztaly felelossege biztositani az allatok elvart viselkedeset.
+ * @author Bozi Roland
+ * @version 1.0
+ */
 public abstract class Animal extends Element implements Steppable {
 	/**
 	* A lancban az adott allat mogott levo allat. Ha ilyen nincs, erteke null.

@@ -2,6 +2,8 @@ package skeleton;
 
 /**
  * Egy csempen levo csokiautomata. Koronkent van esely arra, hogy sipol egyet.
+ * @author Bozi Roland
+ * @version 1.0
  */
 public class ChocolateMachine extends Element {
 	

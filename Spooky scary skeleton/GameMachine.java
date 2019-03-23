@@ -1,7 +1,9 @@
 package skeleton;
 
 /**
- * Egy csempen levo jatekgep. Koronkent van esely arra, hogy csilingel.
+ * Egy csempen levo jatekgep. Koronkent van esely arra, hogy csilingel. 
+ * @author Bozi Roland
+ * @version 1.0
  */
 public class GameMachine extends Element {
 
