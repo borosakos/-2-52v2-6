@@ -1,12 +1,12 @@
 package skeleton;
 
 /**
- * 
+ * Egy csempén lévő csokiautomata. Körönként van esély arra, hogy sípol egyet.
  */
 public class ChocolateMachine extends Element {
 	
     /**
-     * 
+     * Lekezeli a gép időszakos sípolását.
      */
     public void step() {
         Indent.print("ChocolateMachine step()");
@@ -14,7 +14,7 @@ public class ChocolateMachine extends Element {
     }
 
     /**
-     * 
+     * Beállítja a körülötte lévő tile-okat whistling-re.
      */
     public void whistle() {
 		Indent.print("ChocolateMachine whistle()");
@@ -29,8 +29,9 @@ public class ChocolateMachine extends Element {
     }
 
     /**
-     * @param o 
-     * @return
+     * @param o Orángután
+	 * Az orángutánnal való ütközést kezeli, nem engedi, hogy rálépjen.
+     * @return Nem léphet rá, tehát hamis.
      */
     public boolean hitBy(Orangutan o) {
 		Indent.print("ChocolateMachine hitBy(Orangutan)");
@@ -38,8 +39,9 @@ public class ChocolateMachine extends Element {
     }
 
     /**
-     * @param p 
-     * @return
+     * @param p Panda
+	 * A pandával való ütközést kezeli, nem engedi, hogy rálépjen.
+     * @return Nem léphet rá, tehát hamis.
      */
     public boolean hitBy(Panda p) {
 		Indent.print("ChocolateMachine hitBy(Panda)");
@@ -47,7 +49,8 @@ public class ChocolateMachine extends Element {
     }
 
     /**
-     * @return
+	 * Visszadja, hogy kell-e fütyülni ebben a körben.
+     * @return Ha a random szám nagyobb vagy egyenlő mint 0.5 akkor nem fütyül, egyébként de.
      */
     private boolean rand() {
         Indent.print("ChocolateMachine rand()");
@@ -55,8 +58,9 @@ public class ChocolateMachine extends Element {
     }
     
     /**
-     * @param e 
-     * @return
+     * @param e Elem
+	 * Lekezeli azt az eseményt, amikor az adott elem ütközik valamivel.
+     * @return Itt hamist adunk vissza.
      */
     public boolean collideWith(Element e) {
 		Indent.print("ChocolateMachine collideWith(Element)");
