@@ -20,7 +20,10 @@ public class JumpingPanda extends Panda {
     	
     }
 
-
+    /**
+     * Konstruktor, amely beallitja, iranyitott-e a panda
+     * @param b iranyitott-e
+     */
     public JumpingPanda(boolean b) {
     	Indent.print("TiredPanda()");
      	Indent.inc();
@@ -35,9 +38,8 @@ public class JumpingPanda extends Panda {
 
 
 	/**
-     * 
+     * A panda ugrik egyet, ezzel csokkenti a csempe eletet, amin all (ha torheto), es ha szakadekka valik, belezuhan
      */
-    //COMPLETED
     public void jump() {
     	Indent.print("jump()");
     	Indent.inc();
@@ -50,7 +52,7 @@ public class JumpingPanda extends Panda {
     }
 
     /**
-     * 
+     * A panda figyel, hall-e futyulest, es ha igen, ugrik egyet
      */
     // COMPLETED
     public void detect() {

@@ -13,7 +13,8 @@ public class ExitDoor extends Door {
     }
 
     /**
-     * @param o
+     * Elteleportalja az orangutant az ajto melletti mezore.
+     * @param o teleportalando orangutan
      */
     public void teleport(Orangutan o) {
     	Indent.print("ExitDoor teleport(Orangutan o)");
@@ -28,8 +29,9 @@ public class ExitDoor extends Door {
     }
 
     /**
-     * @param p 
-     * @return
+     * Megmutatja, hogy a kivezeto ajtonak utkozhet-e egy panda
+     * @param p utkozo panda
+     * @return hamis (nem utkozhet)
      */
     public boolean hitBy(Panda p) {
     	Indent.print("ExitDoor hitBy(Panda p)");
@@ -38,8 +40,9 @@ public class ExitDoor extends Door {
     }
 
     /**
-     * @param o 
-     * @return
+     * Jelzi, hogy az orangutan nem utkozhet a kivezeto ajtoval.
+     * @param o orangutan
+     * @return hamis (nem utkozhet)
      */
     @Override
     public boolean hitBy(Orangutan o) {
@@ -54,7 +57,7 @@ public class ExitDoor extends Door {
         teleport(o);
         
         Indent.dec();
-        return o.isInQueue(); //ide idk mi k�ne
+        return false;
     }
 
 }

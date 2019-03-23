@@ -19,6 +19,10 @@ public class ScaredPanda extends Panda {
     	Indent.dec();
     }
 
+    /**
+     * Konstruktor, amely beallitja, iranyitott-e a panda
+     * @param b iranyitott-e
+     */
     public ScaredPanda(boolean b) {
     	Indent.print("TiredPanda()");
      	Indent.inc();
@@ -32,9 +36,8 @@ public class ScaredPanda extends Panda {
 	}
 
 	/**
-     * 
+     * A panda megijed, ezzel felbontja a sort, ha benne volt
      */
-    //TODO J� �gy? //gesundheit
     public void becomeScared() {
     	Indent.print("becomeScared()");
     	Indent.inc();
@@ -44,7 +47,7 @@ public class ScaredPanda extends Panda {
     }
 
     /**
-     * 
+     * A panda figyel, hall-e csilingelest, es ha igen, megijed
      */
     //COMPLETED
     public void detect() {

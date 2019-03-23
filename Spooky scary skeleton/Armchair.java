@@ -15,7 +15,8 @@ public class Armchair extends Element {
 	private boolean isOccupied;
 
 	/**
-	 * @return
+	 * Megmutatja, foglalt-e a fotel
+	 * @return foglalt-e
 	 */
 	public boolean getIsOccupied() {
 		Indent.print("Armchair getIsOccupied()");
@@ -25,9 +26,9 @@ public class Armchair extends Element {
 	
 
 	/**
-	 * Jelzi, hogy az orangut�n nem �tk�zhet a fotellal.
-	 * @param o orangut�n
-	 * @return
+	 * Jelzi, hogy az orangutan nem utkozhet a fotellal.
+	 * @param o orangutan
+	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Orangutan o) {
 		Indent.print("Armchair hitby(Orangutan o)");
@@ -36,9 +37,9 @@ public class Armchair extends Element {
 	}
 
 	/**
-	 * Jelzi, hogy a panda nem �tk�zhet a fotellal.
+	 * Jelzi, hogy a panda nem utkozhet a fotellal.
 	 * @param p panda
-	 * @return
+	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Panda p) {
 		Indent.print("Armchair hitBy(Panda p)");
@@ -47,8 +48,9 @@ public class Armchair extends Element {
 	}
 
 	/**
-	 * @param e
-	 * @return
+	 * Megmutatja, hogy a fotelnak utkozhet-e egy elem
+	 * @param e elem
+	 * @return false (nem utkozhet)
 	 */
 	public boolean collideWith(Element e) {
 		Indent.print("Armchair collideWith(Element e)");

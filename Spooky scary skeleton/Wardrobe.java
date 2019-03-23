@@ -17,13 +17,21 @@ public class Wardrobe extends Element {
     /**
      * az a tile, amirol a szekrenybe lehet lepni
      */
-    private Tile doorTile; 
+    private Tile doorTile;
+    
+    /**
+     * az a szekreny, amelyhez elteleportal az aktualis szekreny
+     */
     private Wardrobe end;
+    
+    /**
+     * a tobbi szekreny
+     */
     private ArrayList<Wardrobe> otherWardrobes = new ArrayList<>();
 
     /**
      * Elteleportalja az orangutant a szekreny melletti mezore.
-     * @param o or�ngut�n
+     * @param o teleportalando orangutan
      */
     public void teleport(Orangutan o) {
     	Indent.print("Wardrobe teleport(Orangutan o)");
@@ -38,7 +46,8 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * @param p
+     * Elteleportalja az pandat a szekreny melletti mezore.
+     * @param p teleportalando panda
      */
     public void teleport(Panda p) {
     	Indent.print("Wardrobe teleport(Orangutan o)");
@@ -52,7 +61,8 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * @return
+     * Kivalaszt veletlenszeruen egy szekrenyt vegpontnak
+     * @return kivalasztott wardrobe
      */
     public Wardrobe selectRandomWardrobe() {
     	Indent.print("Wardrobe selectRandomWardrobe()");
@@ -70,8 +80,9 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * @param o 
-     * @return
+     * Megmutatja, hogy a szekrenynek utkozhet-e egy orangutan
+     * @param o utkozo orangutan
+     * @return hamis (nem utkozhet)
      */
     public boolean hitBy(Orangutan o) {
     	Indent.print("Wardrobe hitBy(Orangutan o)");
@@ -85,8 +96,9 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * @param p 
-     * @return
+     * Megmutatja, hogy a szekrenynek utkozhet-e egy panda
+     * @param p utkozo panda
+     * @return hamis (nem utkozhet)
      */
     public boolean hitBy(Panda p) {
     	Indent.print("Wardrobe hitBy(Panda p)");
@@ -100,7 +112,8 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * @param w
+     * Beallitja a vegpont szekrenyt
+     * @param w vegpont szekreny
      */
     public void setEnd(Wardrobe w) {
     	Indent.print("Wardrobe setEnd(Wardrobe w)");
@@ -112,8 +125,9 @@ public class Wardrobe extends Element {
     }
 
     /**
-     * @param e 
-     * @return
+     * Megmutatja, hogy a szekrenynek utkozhet-e egy elem
+     * @param e elem
+     * @return false (nem utkozhet)
      */
     public boolean collideWith(Element e) {
     	Indent.print("Wardrobe collideWith(Element e)");
