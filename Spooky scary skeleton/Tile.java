@@ -32,10 +32,10 @@ public class Tile extends Nameable{
 		neighbouringArmchairs.add(ac);
 	}
 
-	private boolean isJingling;
-	private boolean isWhistling;
+	protected boolean isJingling;
+	protected boolean isWhistling;
 	protected Element element;
-	private ArrayList<Tile> neighbours = new ArrayList<>();
+	protected ArrayList<Tile> neighbours = new ArrayList<>();
 	protected ArrayList<Armchair> neighbouringArmchairs = new ArrayList<>();
 
 	/**
@@ -209,4 +209,7 @@ public class Tile extends Nameable{
 		for (int i = 0; i < neighbouringArmchairs.size(); i++) {
 			Printer.print("neighbouringArmchair" + (i+1) + ": " + neighbouringArmchairs.get(i).getName());
 	}
+
+
+}
 }
