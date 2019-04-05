@@ -197,6 +197,14 @@ public class Controller {
 		}
 		return null;
 	}
+	public static Element getElement(String name) {
+		for(Element e:elements) {
+			if(e.getName().equals(name)) {
+				return e;
+			}
+		}
+		return null;
+	}
 	public static void reset() {
 		game = new Game();
 		steppables = new ArrayList<>();

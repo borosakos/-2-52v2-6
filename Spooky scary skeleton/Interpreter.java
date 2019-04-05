@@ -30,7 +30,8 @@ public class Interpreter {
 			case "armchair": handleAC(cmdParts); break;
 			case "doors": handleDoors(cmdParts); break;
 			case "wardrobe": handleWD(cmdParts); break;
-			case "stats": handleTile(cmdParts); break;
+			case "stats": handleStats(cmdParts); break;
+			case "release": handleRelease(cmdParts); break;
 			case "step": handleStep(cmdParts); break;
 			case "random": Controller.setRandom(-1*Controller.getRandom()); if(Controller.getRandom()==-1) Indent.print("Turning randomization off"); if(Controller.getRandom()==1) Indent.print("Turning randomization on"); break;
 			case "jingle": handleJingle(cmdParts); break;
@@ -95,6 +96,14 @@ public class Interpreter {
 			t.addNeighbour(board.getTByName(cmd[i]));
 		}
 	}
+	void handleStats(String[] cmd) {
+		Steppable s = Controller.getSteppable(cmd[1]);
+		if (s!=null) {
+			s.printStats();
+		}
+		Element e = Controller.getElement(cmd[1]);
+	}
+	
 	void handleBTile(String[] cmd) {
 		if(cmd.length < 3) {
 			Indent.print("No life/name given!");
