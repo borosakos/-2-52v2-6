@@ -6,7 +6,8 @@ package skeleton;
  * @author Bozi Roland
  * @version 1.0
  */
-public class GameMachine extends Element {
+public class GameMachine extends Element implements Steppable{
+
 	/**
 	 * Lekezeli a gep idoszakos csilingeleset.
 	 */
@@ -14,7 +15,9 @@ public class GameMachine extends Element {
 		Indent.print("GameMachine step()");
 		Indent.inc();
 
-		jingle();
+		if(Controller.getRandom()!=1) {
+			if(rand()) jingle();
+		}
 
 		Indent.dec();
 	}
@@ -25,8 +28,11 @@ public class GameMachine extends Element {
 	public void jingle() {
 		Indent.print("GameMachine jingle()");
 		Indent.inc();
-
+		
 		boolean jingling = rand();
+		if(Controller.getRandom()!=1) {
+				jingling = true;
+		}
 
 		for (Tile t : position.getNeighbours())
 			t.setIsJingling(jingling);
@@ -77,11 +83,10 @@ public class GameMachine extends Element {
 		return false;
 	}
 
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
+	@Override
+	public void step(Tile t) {
+		step();
+		
 	}
+
 }

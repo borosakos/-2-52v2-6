@@ -1,5 +1,6 @@
 package skeleton;
 
+import java.util.ArrayList;
 
 /**
  *
@@ -96,21 +97,11 @@ public class Panda extends Animal {
 	public void follow(Tile t) {
 		Indent.print("Panda follow(Tile t)");
 		Indent.inc();
-		if (!(t != null)) {
-			t = new Tile();
-			if (!t.accept(this)) {
-				Indent.dec();
-				return;
-			}
-		}
 		Tile t2 = getTile();
-		if (!(t2 != null)) {
-			t2 = new Tile();
-			t2.element = this;
-			this.position = t2;
-		}
+		
 		t2.remove();
 		t.take(this);
+		this.position = t;
 		if (backNeighbour != null) backNeighbour.follow(t2);
 
 		Indent.dec();
@@ -136,11 +127,8 @@ public class Panda extends Animal {
 	 */
 	public Tile selectTile() {
 		Indent.print("Panda selectTile()");
-		Indent.inc();
-		//ArrayList<Tile> neighbours = getTile().getNeighbours();
-		Tile t = Question.selectTileQuestions();
-		Indent.dec();
-		return t;
+		
+		return getTile().getNeighbours().get((int)(Math.random() * getTile().getNeighbours().size()));
 	}
 
 	/**
@@ -214,9 +202,7 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void die() {
-		Indent.print("Panda die()");
-		Indent.inc();
-
+		
 		isAlive = false;
 		getTile().setElement(null);
 		if (frontNeighbour != null) getFrontNeighbour().setBackNeighbour(null);
@@ -224,7 +210,6 @@ public class Panda extends Animal {
 		setFrontNeighbour(null);
 		setBackNeighbour(null);
 
-		Indent.dec();
 	}
 
 	/**
@@ -233,7 +218,7 @@ public class Panda extends Animal {
 	 * @return A panda eletban van-e
 	 */
 	public boolean getIsAlive() {
-		Indent.print("Panda getIsAlive()");
+		
 		return isAlive;
 	}
 
@@ -244,7 +229,7 @@ public class Panda extends Animal {
 	 * @return A panda elott allo allatot adja vissza.
 	 */
 	protected Animal getFrontNeighbour() {
-		Indent.print("Panda getFrontNeighbour()");
+		
 		return frontNeighbour;
 	}
 
@@ -257,26 +242,23 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void grab(Animal a) {
-		Indent.print("Panda grab()");
-		Indent.inc();
+	
 
 		a.setBackNeighbour(this);
 		Tile pt = this.getTile();
 		a.getTile().swap(pt); //idk jo-e ez igy, de senki nem mond semmit es maganyos vagyok:^)
 
-		Indent.dec();
 	}
 
 
 	/**
-	 * Az adott panda elengedi a mogotte allo panda kezet, aki így megszunik szomszedja lenni.
+	 * Az adott panda elengedi a mogotte allo panda kezet, aki ï¿½gy megszunik szomszedja lenni.
 	 *
 	 * @param
 	 * @return
 	 */
 	public void release() {
-		Indent.print("Panda release()");
-		Indent.inc();
+
 
 		if (frontNeighbour != null) {
 			getFrontNeighbour().setBackNeighbour(null);
@@ -286,7 +268,6 @@ public class Panda extends Animal {
 			getBackNeighbour().release();
 		}
 
-		Indent.dec();
 	}
 
 
@@ -296,31 +277,41 @@ public class Panda extends Animal {
 	 * @return A panda sorban all-e.
 	 */
 	public boolean isInQueue() {
-		Indent.print("Panda isInQueue()");
-		Indent.inc();
-
-		if (!controlled) {
-			if (backNeighbour != null || frontNeighbour != null) return true;
-			return false;
-		}
-
-		if (backNeighbour == null) {
-			Question.queueQuestions(this);
-		}
-
-		Indent.dec();
-		return (backNeighbour != null);
+		
+		return (backNeighbour != null && frontNeighbour !=null);
 	}
-	
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
-		Printer.print("isAlive" + isAlive);
-		Printer.print("backNeighbour: " + backNeighbour.getName());
-		Printer.print("frontNeighbour: " + frontNeighbour.getName());
-		//TODO: van egy controlled is, az csak skeletonban kellett, nem?
+
+	@Override
+	public void step(Tile t) {
+
+		detect();
+		if (!isAlive) {
+			Indent.dec();
+			return;
+		}
+		Tile current = this.getTile();
+
+		if (isInQueue()) {
+			if (Controller.getRandom()==1) {
+				Indent.dec();
+				return;
+			}
+		}
+		Tile t2 = t;
+		if(Controller.getRandom()==1) {
+			t2 = selectTile();
+		}
+
+		if (t2 == null || !t2.accept(this)) {
+			Indent.dec();
+			return;
+		}
+		getTile().remove();
+		t2.take(this);
+		if (isInQueue()) {backNeighbour.follow(current);}
+		
+
+		
 	}
 }
+

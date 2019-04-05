@@ -6,14 +6,17 @@ package skeleton;
  * @author Bozi Roland
  * @version 1.0
  */
-public class ChocolateMachine extends Element {
+public class ChocolateMachine extends Element implements Steppable {
 
 	/**
 	 * Lekezeli a gep idoszakos sipolasat.
 	 */
 	public void step() {
 		Indent.print("ChocolateMachine step()");
-		whistle();
+		if(Controller.getRandom()!=1) {
+			if(rand())whistle();
+		}
+
 	}
 
 	/**
@@ -75,11 +78,10 @@ public class ChocolateMachine extends Element {
 
 	}
 
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
+	@Override
+	public void step(Tile t) {
+		step();
+		
 	}
+
 }

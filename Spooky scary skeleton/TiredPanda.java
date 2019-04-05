@@ -40,6 +40,7 @@ public class TiredPanda extends Panda {
 		Indent.dec();
 	}
 
+
 	private boolean isSitting;
 	private Armchair inArmchair;
 	private int sittingTimeLeft;
@@ -76,9 +77,9 @@ public class TiredPanda extends Panda {
 		if (isSitting) {
 			return null;
 		}
-		Tile t = Question.selectTileQuestions();
+		
 		Indent.dec();
-		return t;
+		return getTile().getNeighbours().get((int)(Math.random() * getTile().getNeighbours().size()));
 	}
 
 	/**
@@ -104,13 +105,15 @@ public class TiredPanda extends Panda {
 
 
 		if (isInQueue()) {
-			if (!controlled) {
+			if (Controller.getRandom()==1) {
 				Indent.dec();
 				return;
 			}
 		}
-
-		Tile t2 = selectTile();
+		Tile t2 = null;
+		if(Controller.getRandom()==1) {
+			t2 = selectTile();
+		}
 
 		if (t2 == null || !t2.accept(this)) {
 			Indent.dec();
@@ -168,13 +171,12 @@ public class TiredPanda extends Panda {
 		if (isInQueue()) {
 			backNeighbour.release();
 		}
-		;
 
 		Indent.dec();
 	}
 
 	/**
-	 * Lekerdezi a szomszedos foteleket, és kivalasztja kozuluk az elso olyat, ami nem foglalt.
+	 * Lekerdezi a szomszedos foteleket, ï¿½s kivalasztja kozuluk az elso olyat, ami nem foglalt.
 	 *
 	 * @param
 	 * @return Visszater a valasztott fotellel.
@@ -207,18 +209,46 @@ public class TiredPanda extends Panda {
 		inArmchair = ac;
 		Indent.dec();
 	}
+	
+	public void step(Tile t) {
+		if (isSitting) {
+			sittingTimeLeft--;
+			if (sittingTimeLeft == 0) {
+				getUp();
+			}
+			return;
+		}
+		Indent.print("TiredPanda step()");
+		Indent.inc();
 
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
-		Printer.print("isAlive" + isAlive);
-		Printer.print("backNeighbour: " + backNeighbour.getName());
-		Printer.print("frontNeighbour: " + frontNeighbour.getName());
-		Printer.print("isSitting: " + isSitting);
-		Printer.print("isArmchair: " + inArmchair.getName());
-		Printer.print("sittingTimeLeft: " + sittingTimeLeft);
+		detect();
+
+
+		if (isInQueue()) {
+			if (Controller.getRandom()==1) {
+				Indent.dec();
+				return;
+			}
+		}
+		Tile t2 = t;
+		if(Controller.getRandom()==1) {
+			t2 = selectTile();
+		}
+
+		if (t2 == null || !t2.accept(this)) {
+			Indent.dec();
+			return;
+		}
+
+		getTile().remove();
+		t2.take(this);
+
+
+		if (isInQueue()) {
+			backNeighbour.follow(this.getTile());
+		}
+
+		Indent.dec();
 	}
+
 }

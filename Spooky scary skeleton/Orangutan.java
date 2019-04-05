@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.util.Scanner;
+
 /**
  * Az orangutan osztaly, ami az Animal osztalybol szarmazik, igy heterogen kollekcioban
  * tarolhato egyutt mas allatokkal.
@@ -51,9 +53,20 @@ public class Orangutan extends Animal {
 	public Tile selectTile() {
 		Indent.print("Orangutan selectTile()");
 		Indent.inc();
-		Tile t = Question.selectTileQuestions();
+		
+		Scanner sc = new Scanner(System.in);
+		String selection;
+		
+		for (int i = 1; i< position.getNeighbours().size(); i++) {
+			Indent.print(i + ".: " + position.getNeighbours().get(i).name);
+		}
+		Indent.print("Ird be a valasztott csempe szamat!");
+		selection = sc.nextLine();
+
+		int index = Integer.parseInt(selection);
+
 		Indent.dec();
-		return t;
+		return position.getNeighbours().get(index-1);
 	}
 
 	/**
@@ -132,11 +145,7 @@ public class Orangutan extends Animal {
 	@Override
 	public boolean isInQueue() {
 		Indent.print("Orangutan isInQueue()");
-		Indent.inc();
-		if (backNeighbour == null) {
-			Question.orangutanQueueQuestions(this);
-		}
-		Indent.dec();
+
 		return (backNeighbour != null);
 	}
 
@@ -195,14 +204,23 @@ public class Orangutan extends Animal {
 		getTile().swap(p.getTile());
 	}
 
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
-		Printer.print("points: " + points);
-		Printer.print("backNeighbour: " + backNeighbour.getName());
-		//TODO: stepCount? a doksiba írtuk de nincs olyan neki
+	@Override
+	public void step(Tile t) {
+		Indent.print("Orangutan step()");
+		Indent.inc();
+		Tile current = this.position;
+		Tile tostep = t;
+		boolean accept = tostep.accept(this);
+		if (accept) {
+			position.remove();
+			tostep.take(this);
+		}
+		boolean inQueue = this.isInQueue();
+		if (inQueue && accept) {
+			backNeighbour.follow(current);
+		}
+		Indent.dec();
+		
 	}
+
 }

@@ -1,5 +1,8 @@
 package skeleton;
 
 public interface Steppable {
-	public void step(); //get a sklifeon haha :^)
+	public void step();
+	public void step(Tile t);
+	public Tile getTile();
+	public String getName();
 }

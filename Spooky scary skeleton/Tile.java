@@ -6,12 +6,17 @@ import java.util.*;
 /**
  * Egy csempet reprezentalo osztaly
  */
-public class Tile {
+public class Tile extends Nameable{
 
 	/**
 	 * Default constructor
 	 */
 	public Tile() {
+		Indent.printr("Tile with name " + this.name + "has been created");
+	}
+	public Tile(String name) {
+		this.name = name;
+		Indent.printr("Tile with name " + this.name + "has been created");
 	}
 
 	public Tile(boolean b, boolean c, Armchair ac) {
@@ -19,20 +24,18 @@ public class Tile {
 		isWhistling = c;
 		neighbouringArmchairs.add(ac);
 	}
-
-	public String getName() {
-		return name;
+	
+	public Tile(String n, boolean b, boolean c, Armchair ac) {
+		name = n;
+		isJingling = b;
+		isWhistling = c;
+		neighbouringArmchairs.add(ac);
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	protected String name;
-	protected boolean isJingling;
-	protected boolean isWhistling;
+	private boolean isJingling;
+	private boolean isWhistling;
 	protected Element element;
-	protected ArrayList<Tile> neighbours;
+	private ArrayList<Tile> neighbours = new ArrayList<>();
 	protected ArrayList<Armchair> neighbouringArmchairs = new ArrayList<>();
 
 	/**
@@ -52,35 +55,12 @@ public class Tile {
 	 */
 	public boolean accept(Animal a) {
 		Indent.print("Tile accept()");
-		Indent.inc();
-		Question.acceptQuestions(a, this);
-		Indent.dec();
 		if (element != null) {
 			return a.collideWith(element);
 		}
 		return true;
 	}
 
-	/**
-	 * Follow eseten feluliro accept fv, hogy ne kelljen minden followolo pandara megvalaszolni a kerdest
-	 *
-	 * @param p A panda aki ide akar lepni
-	 * @return true, ha ide lephet, false ha nem
-	 */
-	public boolean accept(Panda p) {
-		if (p.controlled) {
-			Animal a = p;
-			accept(a);
-		}
-		Indent.inc();
-
-		if (element != null) {
-			Indent.dec();
-			return p.collideWith(element);
-		}
-		Indent.dec();
-		return true;
-	}
 
 	/**
 	 * Visszaadja az adott mezovel szomszedos mezok tombjet.
@@ -99,6 +79,7 @@ public class Tile {
 	 */
 	public void addNeighbour(Tile t) {
 		Indent.print("Tile addNeighbour()");
+		neighbours.add(t);
 	}
 
 	/**
@@ -167,6 +148,7 @@ public class Tile {
 	public void setElement(Element e) { //Ha j�l �rtem, ez csak inicializ�sn�l lesz haszn�lva de idk
 		Indent.print("Tile setElement()");
 		element = e;
+		e.setTile(this);
 	}
 
 	/**
@@ -177,6 +159,7 @@ public class Tile {
 	public void take(Animal a) {
 		Indent.print("Tile take()");
 		element = a;
+		a.position = this;
 	}
 
 	/**
@@ -196,7 +179,7 @@ public class Tile {
 	}
 
 	/**
-	 * Csokkenti a csempe eletet
+	 * Csokkenti a csempe eletét
 	 *
 	 * @param i mennyivel csokkentsuk az eletet
 	 */
@@ -204,21 +187,12 @@ public class Tile {
 		Indent.print("Tile lifeDecrease(int i)");
 		return false;
 	}
-
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("isJingling: " + isJingling);
-		Printer.print("isWhistling: " + isWhistling);
-		Printer.print("Element: " + element);
-		for (int i = 0; i < neighbours.size(); i++) {
-			Printer.print("neighbour" + (i+1) + ": " + neighbours.get(i).getName());
-		}
-		for (int i = 0; i < neighbouringArmchairs.size(); i++) {
-			Printer.print("neighbouringArmchair" + (i+1) + ": " + neighbouringArmchairs.get(i).getName());
-		}
+	public void removeNeighbours() {
+		neighbours.clear();
+		neighbouringArmchairs.clear();
+	}
+	public boolean isNeighbour(Tile t) {
+		return(neighbours.contains(t));
 	}
 
 }

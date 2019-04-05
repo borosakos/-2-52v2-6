@@ -7,7 +7,6 @@ package skeleton;
  * @version 1.0
  */
 public abstract class Animal extends Element implements Steppable {
-
 	/**
 	 * A lancban az adott allat mogott levo allat. Ha ilyen nincs, erteke null.
 	 */

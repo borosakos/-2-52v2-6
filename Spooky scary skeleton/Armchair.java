@@ -3,7 +3,7 @@ package skeleton;
 /**
  *
  */
-public class Armchair extends Element {
+public class Armchair extends Element{
 
 	/**
 	 * Default constructor
@@ -61,13 +61,8 @@ public class Armchair extends Element {
 
 		return false;
 	}
+
+
 	
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
-		Printer.print("isOccupied: " + isOccupied);
-	}
+
 }

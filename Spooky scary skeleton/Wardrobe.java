@@ -14,6 +14,11 @@ public class Wardrobe extends Element {
 		Indent.print("Wardrobe Wardrobe()");
 	}
 
+	public Wardrobe(String n) {
+		Indent.print("Wardrobe Wardrobe()");
+		name = n;
+	}
+
 	/**
 	 * az a tile, amirol a szekrenybe lehet lepni
 	 */
@@ -27,7 +32,8 @@ public class Wardrobe extends Element {
 	/**
 	 * a tobbi szekreny
 	 */
-	private ArrayList<Wardrobe> otherWardrobes = new ArrayList<>();
+	private ArrayList<Wardrobe> otherWardrobes = Controller.getWardrobes();
+	
 
 	/**
 	 * Elteleportalja az orangutant a szekreny melletti mezore.
@@ -67,14 +73,14 @@ public class Wardrobe extends Element {
 	 *
 	 * @return kivalasztott wardrobe
 	 */
+	
 	public Wardrobe selectRandomWardrobe() {
+		if(Controller.getRandom()==1) return end;
 		Indent.print("Wardrobe selectRandomWardrobe()");
 		Indent.inc();
-		Wardrobe end = new Wardrobe();
-		Tile t = new Tile();
-		end.setTile(t);
-		end.doorTile = t;
-		otherWardrobes.add(end);
+
+		
+
 		int index = (int)(Math.random() * otherWardrobes.size());
 
 
@@ -141,17 +147,12 @@ public class Wardrobe extends Element {
 
 		return false;
 	}
-
-	/**
-	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
-	 */
-	public void printStats() {
-		Printer.printName(name);
-		Printer.print("position: " + position.getName());
-		Printer.print("doorTile: " + doorTile.getName());
-		Printer.print("end: " + end.getName());
-		for (int i = 0; i < otherWardrobes.size(); i++) {
-			Printer.print("otherWardrobe" + (i+1) + ": " + otherWardrobes.get(i).getName());
-		}
+	
+	public void setDoorTile(Tile t) {
+		doorTile = t;
 	}
+
+
+	
+
 }

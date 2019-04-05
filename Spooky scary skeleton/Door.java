@@ -4,6 +4,7 @@ package skeleton;
  *
  */
 public class Door extends Element {
+
 	/**
 	 * Default constructor
 	 */
@@ -52,6 +53,14 @@ public class Door extends Element {
 	public boolean collideWith(Element e) {
 		Indent.print("Door collideWith(Element e)");
 		return false;
+	}
+	
+	public void setOther(Door d) {
+		otherDoor = d;
+	}
+	
+	public void setDoorTile(Tile t) {
+		doorTile = t;
 	}
 
 }
