@@ -320,8 +320,8 @@ public class Panda extends Animal {
 		Printer.print("position: " + position.getName());
 		Printer.print("isAlive" + isAlive);
 		
-		if(backNeighbour!=null)Printer.print("backNeighbour: " + backNeighbour.getName());
-		if(frontNeighbour!=null)Printer.print("frontNeighbour: " + frontNeighbour.getName());
+		if(backNeighbour!=null) Printer.print("backNeighbour: " + backNeighbour.getName());
+		if(frontNeighbour!=null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
 		//TODO: van egy controlled is, az csak skeletonban kellett, nem?
 	}
 }

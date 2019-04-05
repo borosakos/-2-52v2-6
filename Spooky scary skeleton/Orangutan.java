@@ -229,7 +229,7 @@ public class Orangutan extends Animal {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("points: " + points);
-		if(backNeighbour!=null)Printer.print("backNeighbour: " + backNeighbour.getName());
+		if(backNeighbour!=null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		//TODO: stepCount? a doksiba �rtuk de nincs olyan neki
 	}
 }
