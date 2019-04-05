@@ -133,7 +133,7 @@ public class Orangutan extends Animal {
 	public boolean isInQueue() {
 		Indent.print("Orangutan isInQueue()");
 		Indent.inc();
-		if (!(backNeighbour != null)) {
+		if (backNeighbour == null) {
 			Question.orangutanQueueQuestions(this);
 		}
 		Indent.dec();
@@ -195,4 +195,14 @@ public class Orangutan extends Animal {
 		getTile().swap(p.getTile());
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("points: " + points);
+		Printer.print("backNeighbour: " + backNeighbour.getName());
+		//TODO: stepCount? a doksiba írtuk de nincs olyan neki
+	}
 }

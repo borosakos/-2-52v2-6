@@ -304,14 +304,23 @@ public class Panda extends Animal {
 			return false;
 		}
 
-		if (!(backNeighbour != null)) {
+		if (backNeighbour == null) {
 			Question.queueQuestions(this);
 		}
 
 		Indent.dec();
 		return (backNeighbour != null);
-
-
+	}
+	
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("isAlive" + isAlive);
+		Printer.print("backNeighbour: " + backNeighbour.getName());
+		Printer.print("frontNeighbour: " + frontNeighbour.getName());
+		//TODO: van egy controlled is, az csak skeletonban kellett, nem?
 	}
 }
-

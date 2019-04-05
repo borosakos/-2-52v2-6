@@ -7,7 +7,6 @@ package skeleton;
  * @version 1.0
  */
 public class GameMachine extends Element {
-
 	/**
 	 * Lekezeli a gep idoszakos csilingeleset.
 	 */
@@ -78,4 +77,11 @@ public class GameMachine extends Element {
 		return false;
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+	}
 }

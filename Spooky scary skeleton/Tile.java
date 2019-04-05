@@ -20,10 +20,19 @@ public class Tile {
 		neighbouringArmchairs.add(ac);
 	}
 
-	private boolean isJingling;
-	private boolean isWhistling;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	protected String name;
+	protected boolean isJingling;
+	protected boolean isWhistling;
 	protected Element element;
-	private ArrayList<Tile> neighbours;
+	protected ArrayList<Tile> neighbours;
 	protected ArrayList<Armchair> neighbouringArmchairs = new ArrayList<>();
 
 	/**
@@ -187,13 +196,29 @@ public class Tile {
 	}
 
 	/**
-	 * Csokkenti a csempe eletét
+	 * Csokkenti a csempe eletet
 	 *
 	 * @param i mennyivel csokkentsuk az eletet
 	 */
 	public boolean lifeDecrease(int i) {
 		Indent.print("Tile lifeDecrease(int i)");
 		return false;
+	}
+
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("isJingling: " + isJingling);
+		Printer.print("isWhistling: " + isWhistling);
+		Printer.print("Element: " + element);
+		for (int i = 0; i < neighbours.size(); i++) {
+			Printer.print("neighbour" + (i+1) + ": " + neighbours.get(i).getName());
+		}
+		for (int i = 0; i < neighbouringArmchairs.size(); i++) {
+			Printer.print("neighbouringArmchair" + (i+1) + ": " + neighbouringArmchairs.get(i).getName());
+		}
 	}
 
 }

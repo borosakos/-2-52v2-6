@@ -5,6 +5,17 @@ package skeleton;
  */
 public abstract class Element {
 
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	protected String name;
+
 	/**
 	 * Default constructor
 	 */

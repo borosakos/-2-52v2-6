@@ -142,4 +142,16 @@ public class Wardrobe extends Element {
 		return false;
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("doorTile: " + doorTile.getName());
+		Printer.print("end: " + end.getName());
+		for (int i = 0; i < otherWardrobes.size(); i++) {
+			Printer.print("otherWardrobe" + (i+1) + ": " + otherWardrobes.get(i).getName());
+		}
+	}
 }
