@@ -81,7 +81,13 @@ public class ChocolateMachine extends Element implements Steppable {
 	@Override
 	public void step(Tile t) {
 		step();
-		
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+	}
 }

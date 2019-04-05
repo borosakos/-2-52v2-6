@@ -1,4 +1,0 @@
-tile t1
-tile t2
-tile t1 t2
-orangutan o1 t1

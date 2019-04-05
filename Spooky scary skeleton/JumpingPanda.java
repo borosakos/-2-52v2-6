@@ -10,7 +10,6 @@ public class JumpingPanda extends Panda {
 	/**
 	 * Default constructor
 	 */
-	//COMPLETED
 	public JumpingPanda() {
 
 		Indent.print("JumpingPanda()");
@@ -55,7 +54,6 @@ public class JumpingPanda extends Panda {
 	/**
 	 * A panda figyel, hall-e futyulest, es ha igen, ugrik egyet
 	 */
-	// COMPLETED
 	public void detect() {
 		Indent.print("JumpingPanda detect()");
 		Indent.inc();
@@ -69,4 +67,14 @@ public class JumpingPanda extends Panda {
 		Indent.dec();
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("isAlive" + isAlive);
+		Printer.print("backNeighbour" + backNeighbour.getName());
+		Printer.print("frontNeighbour" + frontNeighbour.getName());
+	}
 }

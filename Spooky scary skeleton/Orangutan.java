@@ -220,7 +220,16 @@ public class Orangutan extends Animal {
 			backNeighbour.follow(current);
 		}
 		Indent.dec();
-		
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("points: " + points);
+		Printer.print("backNeighbour: " + backNeighbour.getName());
+		//TODO: stepCount? a doksiba �rtuk de nincs olyan neki
+	}
 }

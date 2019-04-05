@@ -251,4 +251,17 @@ public class TiredPanda extends Panda {
 		Indent.dec();
 	}
 
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("isAlive" + isAlive);
+		Printer.print("backNeighbour: " + backNeighbour.getName());
+		Printer.print("frontNeighbour: " + frontNeighbour.getName());
+		Printer.print("isSitting: " + isSitting);
+		Printer.print("isArmchair: " + inArmchair.getName());
+		Printer.print("sittingTimeLeft: " + sittingTimeLeft);
+	}
 }

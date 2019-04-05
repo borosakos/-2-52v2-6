@@ -9,7 +9,7 @@ public class Board {
 		Indent.print("Board addTile()");
 		tiles.add(t);
 	}
-	public ArrayList<Tile> getTiles(){
+	public ArrayList<Tile> getTiles() {
 		return tiles;
 	}
 	public Tile getTByName(String name) {

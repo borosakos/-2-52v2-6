@@ -309,9 +309,19 @@ public class Panda extends Animal {
 		getTile().remove();
 		t2.take(this);
 		if (isInQueue()) {backNeighbour.follow(current);}
+	}
+	
 		
-
-		
+	/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("isAlive" + isAlive);
+		Printer.print("backNeighbour: " + backNeighbour.getName());
+		Printer.print("frontNeighbour: " + frontNeighbour.getName());
+		//TODO: van egy controlled is, az csak skeletonban kellett, nem?
 	}
 }
 

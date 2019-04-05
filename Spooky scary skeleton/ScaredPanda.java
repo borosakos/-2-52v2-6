@@ -8,7 +8,6 @@ public class ScaredPanda extends Panda {
 	/**
 	 * Default constructor
 	 */
-	//COMPLETED
 	public ScaredPanda() {
 
 		Indent.print("ScaredPanda()");
@@ -52,7 +51,6 @@ public class ScaredPanda extends Panda {
 	/**
 	 * A panda figyel, hall-e csilingelest, es ha igen, megijed
 	 */
-	//COMPLETED
 	public void detect() {
 		Indent.print("detect()");
 		Indent.inc();
@@ -67,5 +65,15 @@ public class ScaredPanda extends Panda {
 		Indent.dec();
 	}
 	
+		/**
+	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
+	 */
+	public void printStats() {
+		Printer.printName(name);
+		Printer.print("position: " + position.getName());
+		Printer.print("isAlive" + isAlive);
+		Printer.print("backNeighbour" + backNeighbour.getName());
+		Printer.print("frontNeighbour" + frontNeighbour.getName());
+	}
 
 }
