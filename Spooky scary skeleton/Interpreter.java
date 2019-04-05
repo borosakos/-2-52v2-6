@@ -73,6 +73,7 @@ public class Interpreter {
 						case "jingle": handleJingle(cmdParts); break;
 						case "whistle": handleWhistle(cmdParts); break;
 						case "queue": handleQueue(cmdParts); break;
+						case "release": handleRelease(cmdParts); break;
 						}
 						
 					}
@@ -178,6 +179,20 @@ public class Interpreter {
 			ti.neighbouringArmchairs.add(gm);
 		}
 		Controller.getElements().add(gm);
+	}
+	void handleRelease(String[] cmd) {
+		if(cmd.length<1) {
+			Indent.print("No orangutan was given.");
+			return;
+		}
+		for(Orangutan o : Controller.getOrangutans()) {
+			if(o.name.equals(cmd[1])) {
+				o.release();
+				return;
+			}
+		}
+		Indent.print("No orangutan with name "+cmd[1]+" found.");
+		return;
 	}
 	void handleDoors(String[] cmd) {
 		if(cmd.length<6) {
