@@ -261,11 +261,11 @@ public class TiredPanda extends Panda {
 	public void printStats() {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
-		Printer.print("isAlive" + isAlive);
+		Printer.print("isAlive: " + isAlive);
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
 		Printer.print("isSitting: " + isSitting);
-		Printer.print("isArmchair: " + inArmchair.getName());
+		if (inArmchair != null) Printer.print("isArmchair: " + inArmchair.getName());
 		Printer.print("sittingTimeLeft: " + sittingTimeLeft);
 	}
 }

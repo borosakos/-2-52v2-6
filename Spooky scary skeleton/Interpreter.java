@@ -522,14 +522,24 @@ public class Interpreter {
 		try {
 			FileReader outputFile = new FileReader(cmd[1]);
 			FileReader testFile = new FileReader(cmd[2]);
-			Scanner fRead = new Scanner(outputFile).useDelimiter("\\Z");
-			String outputString = fRead.next();
-			fRead = new Scanner(testFile).useDelimiter("\\Z");
-			String testString = fRead.next();
-			if (outputString.equals(testString)) {
-				Indent.print("A ket fajl egyezik.");
-			} else {
-				Indent.print("A ket fajl kulonbozik.");
+			Scanner outputRead = new Scanner(outputFile);
+			Scanner testRead = new Scanner(testFile);
+			String outputString = outputRead.nextLine();
+			String testString = testRead.nextLine();
+			int i = 0;
+			while(outputRead.hasNextLine() && testRead.hasNextLine()) {
+				if (!outputString.equals(testString)) {
+					Indent.print("--------\n\n"+i+".: \nTeszt:\t" + testString + "\nOutput:\t" +outputString+"\n");
+				}
+				i++;
+				outputString = outputRead.nextLine();
+				testString = testRead.nextLine();
+			}
+			if((outputRead.hasNextLine() && !testRead.hasNextLine()) || (!outputRead.hasNextLine() && testRead.hasNextLine())) {
+				Indent.print("A sorok szama kulonbozik!");
+			}
+			if(i==0) {
+				Indent.print("A teszt hiba nelkul lefutott.");
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
