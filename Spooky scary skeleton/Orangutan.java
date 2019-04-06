@@ -81,9 +81,13 @@ public class Orangutan extends Animal {
 		Indent.print("Orangutan hitBy(Orangutan)");
 		if(o.isInQueue())return false;
 		this.position.swap(o.position);
-		o.setBackNeighbour(this.backNeighbour);
-		this.backNeighbour.setFrontNeighbour(o);
-		return true;
+		
+		if(isInQueue()) {
+			o.setBackNeighbour(this.backNeighbour);
+			this.backNeighbour.setFrontNeighbour(o);
+		}
+		
+		return false;
 	}
 
 	/**
