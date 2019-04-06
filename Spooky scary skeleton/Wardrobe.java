@@ -18,7 +18,8 @@ public class Wardrobe extends Element {
 		Indent.print("Wardrobe Wardrobe()");
 		otherWardrobes = Controller.getWardrobes();
 		for (Wardrobe w : otherWardrobes) {
-			if (w == this) {
+			if (w.getName().equals(this.getName())) {
+				System.out.println("cica füle");
 				otherWardrobes.remove(w);
 				break;
 			}
@@ -30,7 +31,8 @@ public class Wardrobe extends Element {
 		name = n;
 		otherWardrobes = Controller.getWardrobes();
 		for (Wardrobe w : otherWardrobes) {
-			if (w == this) {
+			if (w.getName().equals(this.getName())) {
+				System.out.println("kutya farka");
 				otherWardrobes.remove(w);
 				break;
 			}
@@ -89,7 +91,7 @@ public class Wardrobe extends Element {
 	 */
 	
 	public Wardrobe selectRandomWardrobe() {
-		if(Controller.getRandom()) return end;
+		if(!Controller.getRandom()) return end;
 		Indent.print("Wardrobe selectRandomWardrobe()");
 		Indent.inc();
 
