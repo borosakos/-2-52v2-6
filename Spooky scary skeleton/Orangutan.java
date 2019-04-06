@@ -79,7 +79,11 @@ public class Orangutan extends Animal {
 	@Override
 	public boolean hitBy(Orangutan o) {
 		Indent.print("Orangutan hitBy(Orangutan)");
-		return false;
+		if(o.isInQueue())return false;
+		this.position.swap(o.position);
+		o.setBackNeighbour(this.backNeighbour);
+		this.backNeighbour.setFrontNeighbour(o);
+		return true;
 	}
 
 	/**
