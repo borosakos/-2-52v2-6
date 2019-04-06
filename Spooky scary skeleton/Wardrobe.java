@@ -6,17 +6,35 @@ import java.util.*;
  *
  */
 public class Wardrobe extends Element {
+	/**
+	 * a tobbi szekreny
+	 */
+	private ArrayList<Wardrobe> otherWardrobes = Controller.getWardrobes();
 
 	/**
 	 * Default constructor
 	 */
 	public Wardrobe() {
 		Indent.print("Wardrobe Wardrobe()");
+		otherWardrobes = Controller.getWardrobes();
+		for (Wardrobe w : otherWardrobes) {
+			if (w == this) {
+				otherWardrobes.remove(w);
+				break;
+			}
+		}
 	}
 
 	public Wardrobe(String n) {
 		Indent.print("Wardrobe Wardrobe()");
 		name = n;
+		otherWardrobes = Controller.getWardrobes();
+		for (Wardrobe w : otherWardrobes) {
+			if (w == this) {
+				otherWardrobes.remove(w);
+				break;
+			}
+		}
 	}
 
 	/**
@@ -29,11 +47,7 @@ public class Wardrobe extends Element {
 	 */
 	private Wardrobe end;
 
-	/**
-	 * a tobbi szekreny
-	 */
-	private ArrayList<Wardrobe> otherWardrobes = Controller.getWardrobes();
-	
+
 
 	/**
 	 * Elteleportalja az orangutant a szekreny melletti mezore.
