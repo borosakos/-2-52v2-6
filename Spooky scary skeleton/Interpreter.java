@@ -184,20 +184,28 @@ public class Interpreter {
 
 	void handleStats(String[] cmd) {
 		//TODO: írjon ki mindent ha nincs paraméter
-		Steppable s = Controller.getSteppable(cmd[1]);
-		if (s!=null) {
-			s.printStats();
+		if (cmd.length == 1) { //ha csak simán stats a paraméter
+			for (Tile t : board.getTiles()) {
+				t.printStats();
+				if (t.getElement() != null) {
+					t.getElement().printStats();
+				}
+			}
+		} else {
+			Steppable s = Controller.getSteppable(cmd[1]);
+			if (s != null) {
+				s.printStats();
+			}
+			Element e = Controller.getElement(cmd[1]);
+			if (e != null) {
+				e.printStats();
+			}
+			Tile t = board.getTByName(cmd[1]);
+			if (t != null) {
+				t.printStats();
+			}
+			if (t == null && e == null && s == null) Indent.print("No object with name " + cmd[1] + " was found.");
 		}
-		Element e = Controller.getElement(cmd[1]);
-		if (e!=null) {
-			e.printStats();
-		}
-		Tile t = board.getTByName(cmd[1]);
-		if (t!=null) {
-			t.printStats();
-		}
-		if(t==null && e ==null && s==null) Indent.print("No object with name " + cmd[1] + " was found.");
-		return;
 	}
 
 	private void handleBTile(String[] cmd) {

@@ -202,7 +202,7 @@ public class Tile extends Nameable{
 		Printer.printName(name);
 		Printer.print("isJingling: " + isJingling);
 		Printer.print("isWhistling: " + isWhistling);
-		Printer.print("Element: " + element);
+		Printer.print("Element: " + element.getName());
 		for (int i = 0; i < neighbours.size(); i++) {
 			Printer.print("neighbour" + (i+1) + ": " + neighbours.get(i).getName());
 		}
