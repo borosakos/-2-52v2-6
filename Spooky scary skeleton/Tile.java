@@ -148,6 +148,7 @@ public class Tile extends Nameable{
 	public void setElement(Element e) { //Ha jol ertem, ez csak inicializasnal lesz hasznalva de idk
 		Indent.print("Tile setElement()");
 		element = e;
+		if(e == null) return;
 		e.setTile(this);
 	}
 
