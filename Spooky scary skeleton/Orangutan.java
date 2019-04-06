@@ -7,8 +7,8 @@ import java.util.Scanner;
  * tarolhato egyutt mas allatokkal.
  * Ezt fogja iranyitani a jatekos, aki mas jatekosokkal ellenben haromszot lephet egy korben.
  *
- * @version 1.0
  * @author Ferenczy Balint
+ * @version 1.0
  */
 public class Orangutan extends Animal {
 
@@ -53,11 +53,11 @@ public class Orangutan extends Animal {
 	public Tile selectTile() {
 		Indent.print("Orangutan selectTile()");
 		Indent.inc();
-		
+
 		Scanner sc = new Scanner(System.in);
 		String selection;
-		
-		for (int i = 1; i< position.getNeighbours().size(); i++) {
+
+		for (int i = 1; i < position.getNeighbours().size(); i++) {
 			Indent.print(i + ".: " + position.getNeighbours().get(i).name);
 		}
 		Indent.print("Ird be a valasztott csempe szamat!");
@@ -66,7 +66,7 @@ public class Orangutan extends Animal {
 		int index = Integer.parseInt(selection);
 
 		Indent.dec();
-		return position.getNeighbours().get(index-1);
+		return position.getNeighbours().get(index - 1);
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class Orangutan extends Animal {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("points: " + points);
-		if(backNeighbour!=null) Printer.print("backNeighbour: " + backNeighbour.getName());
-		//TODO: stepCount? a doksiba �rtuk de nincs olyan neki
+		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
+		//TODO: stepCount? a doksiba irtuk de nincs olyan neki
 	}
 }

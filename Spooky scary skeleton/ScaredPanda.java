@@ -71,9 +71,9 @@ public class ScaredPanda extends Panda {
 	public void printStats() {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
-		Printer.print("isAlive" + isAlive);
-		Printer.print("backNeighbour" + backNeighbour.getName());
-		Printer.print("frontNeighbour" + frontNeighbour.getName());
+		Printer.print("isAlive: " + isAlive);
+		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
+		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
 	}
 
 }
