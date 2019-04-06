@@ -261,6 +261,7 @@ public class Panda extends Animal {
 
 		if (frontNeighbour != null) {
 			getFrontNeighbour().setBackNeighbour(null);
+			setFrontNeighbour(null);
 		}
 		if (backNeighbour != null) {
 			getBackNeighbour().setFrontNeighbour(null);
