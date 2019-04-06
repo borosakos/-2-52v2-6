@@ -9,19 +9,16 @@ public class Wardrobe extends Element {
 	/**
 	 * a tobbi szekreny
 	 */
-	private ArrayList<Wardrobe> otherWardrobes = Controller.getWardrobes();
+	private ArrayList<Wardrobe> otherWardrobes = new ArrayList<>();
 
 	/**
 	 * Default constructor
 	 */
 	public Wardrobe() {
 		Indent.print("Wardrobe Wardrobe()");
-		otherWardrobes = Controller.getWardrobes();
-		for (Wardrobe w : otherWardrobes) {
-			if (w.getName().equals(this.getName())) {
-				System.out.println("cica füle");
-				otherWardrobes.remove(w);
-				break;
+		for (Wardrobe w : Controller.getWardrobes()) {
+			if (!w.name.equals(this.getName())) {
+				otherWardrobes.add(w);
 			}
 		}
 	}
@@ -29,12 +26,9 @@ public class Wardrobe extends Element {
 	public Wardrobe(String n) {
 		Indent.print("Wardrobe Wardrobe()");
 		name = n;
-		otherWardrobes = Controller.getWardrobes();
-		for (Wardrobe w : otherWardrobes) {
-			if (w.getName().equals(this.getName())) {
-				System.out.println("kutya farka");
-				otherWardrobes.remove(w);
-				break;
+		for (Wardrobe w : Controller.getWardrobes()) {
+			if (!w.name.equals(this.getName())) {
+				otherWardrobes.add(w);
 			}
 		}
 	}
