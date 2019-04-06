@@ -103,13 +103,13 @@ public class BreakableTile extends Tile {
 		return life;
 	}
 	
-	public void setElement(Element e) {
+	public void setElement(Animal a) {
 		if(life<=0) {
-			((Animal)e).die();
+			a.die();
 			return;
 		}
-		element = e;
-		e.setTile(this);
+		element = a;
+		a.setTile(this);
 	}
 
 
