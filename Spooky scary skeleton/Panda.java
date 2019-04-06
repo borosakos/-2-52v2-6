@@ -140,8 +140,7 @@ public class Panda extends Animal {
 	public boolean hitBy(Orangutan o) {
 		Indent.print("Panda hitBy()");
 		Indent.inc();
-		if (isInQueue())
-			o.die();
+		if (isInQueue()) o.die();
 
 		Panda p2 = o.getBackNeighbour();
 		o.grab(this);
@@ -278,7 +277,7 @@ public class Panda extends Animal {
 	 */
 	public boolean isInQueue() {
 		
-		return (backNeighbour != null && frontNeighbour !=null);
+		return (frontNeighbour!=null);
 	}
 
 	@Override

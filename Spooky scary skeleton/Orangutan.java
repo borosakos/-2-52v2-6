@@ -210,7 +210,9 @@ public class Orangutan extends Animal {
 	public void grab(Panda p) {
 		Indent.print("Orangutan grab(Panda)");
 		setBackNeighbour(p);
-		getTile().swap(p.getTile());
+		if(!p.isInQueue()) {
+			getTile().swap(p.getTile());
+		}
 	}
 
 	@Override
