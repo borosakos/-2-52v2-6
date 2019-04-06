@@ -527,9 +527,11 @@ public class Interpreter {
 			String outputString = outputRead.nextLine();
 			String testString = testRead.nextLine();
 			int i = 0;
+			int hiba = 0;
 			while(outputRead.hasNextLine() && testRead.hasNextLine()) {
 				if (!outputString.equals(testString)) {
 					Indent.print("--------\n\n"+i+".: \nTeszt:\t" + testString + "\nOutput:\t" +outputString+"\n");
+					hiba++;
 				}
 				i++;
 				outputString = outputRead.nextLine();
@@ -538,7 +540,7 @@ public class Interpreter {
 			if((outputRead.hasNextLine() && !testRead.hasNextLine()) || (!outputRead.hasNextLine() && testRead.hasNextLine())) {
 				Indent.print("A sorok szama kulonbozik!");
 			}
-			if(i==0) {
+			if(hiba==0) {
 				Indent.print("A teszt hiba nelkul lefutott.");
 			}
 		} catch (FileNotFoundException e) {
