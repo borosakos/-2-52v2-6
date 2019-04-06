@@ -2,6 +2,7 @@ package skeleton;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -119,6 +120,9 @@ public class Interpreter {
 				break;
 			case "queue":
 				handleQueue(cmdParts);
+				break;
+			case "compare":
+				handleCompare(cmdParts);
 				break;
 		}
 	}
@@ -513,6 +517,25 @@ public class Interpreter {
 		}
 	}
 
+	private void handleCompare(String[] cmd) {
+		try {
+			FileReader outputFile = new FileReader(cmd[1]);
+			FileReader testFile = new FileReader(cmd[2]);
+			Scanner fRead = new Scanner(outputFile).useDelimiter("\\Z");
+			String outputString = fRead.next();
+			fRead = new Scanner(testFile).useDelimiter("\\Z");
+			String testString = fRead.next();
+			if (outputString.equals(testString)) {
+				Indent.print("A ket fajl egyezik.");
+			} else {
+				Indent.print("A ket fajl kulonbozik.");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			Indent.print("Valamelyik fajl nem talalhato, probald ujra.");
+		}
+	}
+
 
 	/*Checker functions*/
 	private boolean orangutanCheck(String[] cmd) {
@@ -526,7 +549,7 @@ public class Interpreter {
 		}
 		Tile t = board.getTByName(cmd[2]);
 		if (t == null) {
-			Indent.print("Tile with name " + cmd[2] + " does not exsist.");
+			Indent.print("Tile with name " + cmd[2] + " does not exist.");
 			return true;
 		}
 		if (t.getElement() != null) {
@@ -547,7 +570,7 @@ public class Interpreter {
 		}
 		Tile t = board.getTByName(cmd[2]);
 		if (t == null) {
-			Indent.print("Panda with name " + cmd[2] + " does not exsist.");
+			Indent.print("Panda with name " + cmd[2] + " does not exist.");
 			return true;
 		}
 		if (t.getElement() != null) {
@@ -568,7 +591,7 @@ public class Interpreter {
 		}
 		Tile t = board.getTByName(cmd[2]);
 		if (t == null) {
-			Indent.print("Tile with name " + cmd[2] + " does not exsist.");
+			Indent.print("Tile with name " + cmd[2] + " does not exist.");
 			return true;
 		}
 		if (t.getElement() != null) {
@@ -589,7 +612,7 @@ public class Interpreter {
 		}
 		Tile t = board.getTByName(cmd[2]);
 		if (t == null) {
-			Indent.print("Tile with name " + cmd[2] + " does not exsist.");
+			Indent.print("Tile with name " + cmd[2] + " does not exist.");
 			return true;
 		}
 		if (t.getElement() != null) {
