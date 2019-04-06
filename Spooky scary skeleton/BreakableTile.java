@@ -103,17 +103,17 @@ public class BreakableTile extends Tile {
 		return life;
 	}
 	
-	public void setElement(Animal a) {
+	public void setElement(Element e) {
 		if(life<=0) {
-			a.die();
+			((Animal)e).die();
 			return;
 		}
-		element = a;
-		a.setTile(this);
+		element = e;
+		e.setTile(this);
 	}
 
 
-/**
+	/**
 	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
 	 */
 	@Override
