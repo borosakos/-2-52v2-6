@@ -27,7 +27,7 @@ public class Printer {
 	public static void setFile(String outputFile) {
 		try {
 			printToFile = true;
-			fPrint = new PrintWriter("output.txt");
+			fPrint = new PrintWriter(outputFile);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

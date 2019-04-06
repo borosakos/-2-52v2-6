@@ -75,7 +75,7 @@ public class Wardrobe extends Element {
 	 */
 	
 	public Wardrobe selectRandomWardrobe() {
-		if(Controller.getRandom()==1) return end;
+		if(Controller.getRandom()) return end;
 		Indent.print("Wardrobe selectRandomWardrobe()");
 		Indent.inc();
 

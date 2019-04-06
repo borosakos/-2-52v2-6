@@ -18,7 +18,7 @@ public class Controller {
 	private static ArrayList<Steppable> steppables = new ArrayList<>();
 	private static ArrayList<Element> elements = new ArrayList<>();
 	private static ArrayList<Wardrobe> wardrobes = new ArrayList<>();
-	private static int random = 1;
+	private static boolean random = true;
 
 	/**
 	 * A pandakat tartalmazo tomb
@@ -171,12 +171,12 @@ public class Controller {
 	}
 
 
-	public static int getRandom() {
+	public static boolean getRandom() {
 		return random;
 	}
 
 
-	public static void setRandom(int random) {
+	public static void setRandom(boolean random) {
 		Controller.random = random;
 	}
 	public static Steppable getSteppable(String name) {

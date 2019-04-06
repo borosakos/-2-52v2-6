@@ -15,7 +15,7 @@ public class GameMachine extends Element implements Steppable{
 		Indent.print("GameMachine step()");
 		Indent.inc();
 
-		if(Controller.getRandom()!=1) {
+		if(Controller.getRandom()) {
 			if(rand()) jingle();
 		}
 
@@ -30,7 +30,7 @@ public class GameMachine extends Element implements Steppable{
 		Indent.inc();
 		
 		boolean jingling = rand();
-		if(Controller.getRandom()!=1) {
+		if(!Controller.getRandom()) {
 				jingling = true;
 		}
 

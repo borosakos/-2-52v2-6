@@ -13,7 +13,7 @@ public class ChocolateMachine extends Element implements Steppable {
 	 */
 	public void step() {
 		Indent.print("ChocolateMachine step()");
-		if(Controller.getRandom()!=1) {
+		if(!Controller.getRandom()) {
 			if(rand())whistle();
 		}
 

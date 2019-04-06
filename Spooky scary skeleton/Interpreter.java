@@ -18,17 +18,20 @@ public class Interpreter {
 
 		String[] cmdParts = cmd.split(" ");
 
+		Printer.setStandardOutput();
+		//Ha command linerol olvasunk
 		while (!cmdParts[0].equals("exit") && !cmdParts[0].equals("file")) {
 			handleCommand(cmdParts);
 			cmd = sc.nextLine().toLowerCase();
 			cmdParts = cmd.split(" ");
 		}
 
+		//Ha fajlbol olvasunk
 		if (cmdParts[0].equals("file")) {
 			while (!cmd.equals("exit")) {
 				board = new Board();
 				Controller.reset();
-				Indent.print("Type in the name of the file you wish to read commands from.");
+				Indent.print("Ird be az input fajl nevet:");
 				sc = new Scanner(System.in);
 				cmd = sc.nextLine();
 				try {
@@ -41,9 +44,12 @@ public class Interpreter {
 
 					}
 				} catch (FileNotFoundException e) {
-					Indent.print("File not found. Try again.");
+					Indent.print("Fajl nem letezik, probald ujra.");
 				}
 			}
+			Indent.print("Ird be az output fajl nevet:");
+			cmd = sc.nextLine();
+			Printer.setFile(cmd);
 		}
 	}
 
@@ -95,9 +101,9 @@ public class Interpreter {
 				handleStep(cmdParts);
 				break;
 			case "random":
-				Controller.setRandom(-1 * Controller.getRandom());
-				if (Controller.getRandom() == -1) Indent.print("Turning randomization off");
-				if (Controller.getRandom() == 1) Indent.print("Turning randomization on");
+				Controller.setRandom(!Controller.getRandom());
+				if (Controller.getRandom()) Indent.print("Turning randomization on");
+				if (!Controller.getRandom()) Indent.print("Turning randomization off");
 				break;
 			case "jingle":
 				handleJingle(cmdParts);
@@ -127,7 +133,7 @@ public class Interpreter {
 	}
 
 	void handleStats(String[] cmd) {
-		if (cmd.length == 1) { //ha nincs paraméter
+		if (cmd.length == 1) { //ha nincs parameter
 			for (Tile t : board.getTiles()) {
 				t.printStats();
 				if (t.getElement() != null) {
@@ -355,7 +361,7 @@ public class Interpreter {
 		w.setDoorTile(dt);
 
 		if (5 <= cmd.length) {
-			if (Controller.getRandom() == 1) {
+			if (Controller.getRandom()) {
 				Indent.print("Setting end point is not allowed as randomization is currently turned on.");
 			} else {
 				if (!Controller.hasWardrobe(cmd[4])) {
@@ -389,7 +395,7 @@ public class Interpreter {
 			Indent.print("No neighbouring tile with name " + cmd[2] + " was found.");
 			return;
 		}
-		if (Controller.getRandom() == -1) {
+		if (!Controller.getRandom()) {
 			if (cmd.length <= 2) {
 				Indent.print("No tile given.");
 			}

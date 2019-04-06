@@ -292,13 +292,13 @@ public class Panda extends Animal {
 		Tile current = this.getTile();
 
 		if (isInQueue()) {
-			if (Controller.getRandom()==1) {
+			if (Controller.getRandom()) {
 				Indent.dec();
 				return;
 			}
 		}
 		Tile t2 = t;
-		if(Controller.getRandom()==1) {
+		if(Controller.getRandom()) {
 			t2 = selectTile();
 		}
 
