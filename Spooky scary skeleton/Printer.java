@@ -38,4 +38,8 @@ public class Printer {
 	public static void setStandardOutput() {
 		printToFile = false;
 	}
+
+	public static void flushFile() {
+		fPrint.flush();
+	}
 }

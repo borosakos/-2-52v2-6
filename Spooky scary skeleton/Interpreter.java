@@ -33,9 +33,12 @@ public class Interpreter {
 				Controller.reset();
 				Indent.print("Ird be az input fajl nevet:");
 				sc = new Scanner(System.in);
-				cmd = sc.nextLine();
+				String inFile = sc.nextLine();
+				Indent.print("Ird be az output fajl nevet:");
+				String outFile = sc.nextLine();
+				Printer.setFile(outFile);
 				try {
-					sc = new Scanner(new File(cmd));
+					sc = new Scanner(new File(inFile));
 					String fileCmd;
 					while ((sc.hasNextLine())) {
 						fileCmd = sc.nextLine();
@@ -46,10 +49,8 @@ public class Interpreter {
 				} catch (FileNotFoundException e) {
 					Indent.print("Fajl nem letezik, probald ujra.");
 				}
+				Printer.flushFile();
 			}
-			Indent.print("Ird be az output fajl nevet:");
-			cmd = sc.nextLine();
-			Printer.setFile(cmd);
 		}
 	}
 
