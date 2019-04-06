@@ -12,6 +12,10 @@ public class Armchair extends Element {
 		Indent.print("Armchair Armchair()");
 	}
 
+	public void setOccupied(boolean occupied) {
+		isOccupied = occupied;
+	}
+
 	private boolean isOccupied;
 
 	/**

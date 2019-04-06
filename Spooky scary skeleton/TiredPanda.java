@@ -59,7 +59,9 @@ public class TiredPanda extends Panda {
 		sittingTimeLeft = 3;
 		usedArmchairs.add(ac);
 		setArmchair(ac);
+		ac.setOccupied(true);
 		getTile().remove();
+		position = null;
 
 		Indent.dec();
 	}
@@ -77,7 +79,7 @@ public class TiredPanda extends Panda {
 		if (isSitting) {
 			return null;
 		}
-		
+
 		Indent.dec();
 		return getTile().getNeighbours().get((int)(Math.random() * getTile().getNeighbours().size()));
 	}
@@ -111,7 +113,7 @@ public class TiredPanda extends Panda {
 			}
 		}
 		Tile t2 = null;
-		if(Controller.getRandom()) {
+		if (Controller.getRandom()) {
 			t2 = selectTile();
 		}
 
@@ -144,6 +146,7 @@ public class TiredPanda extends Panda {
 		for (Tile t : inArmchair.getTile().getNeighbours()) {
 			if (t.getElement().equals(null)) t.take(this);
 		}
+		inArmchair.setOccupied(false);
 		inArmchair = null;
 
 		Indent.inc();
@@ -209,7 +212,7 @@ public class TiredPanda extends Panda {
 		inArmchair = ac;
 		Indent.dec();
 	}
-	
+
 	public void step(Tile t) {
 		if (isSitting) {
 			sittingTimeLeft--;
@@ -231,7 +234,7 @@ public class TiredPanda extends Panda {
 			}
 		}
 		Tile t2 = t;
-		if(Controller.getRandom()) {
+		if (Controller.getRandom()) {
 			t2 = selectTile();
 		}
 
@@ -240,9 +243,10 @@ public class TiredPanda extends Panda {
 			return;
 		}
 
-		getTile().remove();
-		t2.take(this);
-
+		if (!isSitting) {
+			getTile().remove();
+			t2.take(this);
+		}
 
 		if (isInQueue()) {
 			backNeighbour.follow(this.getTile());

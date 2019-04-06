@@ -408,6 +408,7 @@ public class Interpreter {
 		if (!Controller.getRandom()) {
 			if (cmd.length <= 2) {
 				Indent.print("No tile given.");
+				return;
 			}
 		} else {
 			if (cmd.length >= 3) {
