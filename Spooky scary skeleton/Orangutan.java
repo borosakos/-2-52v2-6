@@ -166,6 +166,13 @@ public class Orangutan extends Animal {
 	 **/
 	public int countPoints() {
 		Indent.print("Orangutan countPoints()");
+		if(!isInQueue()) return 0;
+		Panda lastBackNeighbour = backNeighbour;
+		points = 0;
+		while (lastBackNeighbour != null) {
+			lastBackNeighbour = lastBackNeighbour.backNeighbour;
+			points++;
+		}
 		if (5 <= points && points < 10) {
 			points += 5;
 		} else if (10 < points) {

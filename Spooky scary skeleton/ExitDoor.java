@@ -21,10 +21,10 @@ public class ExitDoor extends Door {
 		Indent.print("ExitDoor teleport(Orangutan o)");
 		Indent.inc();
 
-		doorTile = new Tile();
-		doorTile.accept(o);
+		
+	
 		o.getTile().remove();
-		doorTile.take(o);
+		otherDoor.doorTile.take(o);
 
 		Indent.dec();
 	}
@@ -53,8 +53,8 @@ public class ExitDoor extends Door {
 		Indent.inc();
 
 		if (o.isInQueue()) {
-			int incr = o.countPoints();
-			o.addPoints(incr);
+			o.countPoints();
+			
 			o.deleteQueue();
 		}
 		teleport(o);
