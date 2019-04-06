@@ -28,15 +28,19 @@ public class Interpreter {
 
 		//Ha fajlbol olvasunk
 		if (cmdParts[0].equals("file")) {
-			while (!cmd.equals("exit")) {
+			String inFile ="", outFile = "";
+			while (true) {
 				board = new Board();
 				Controller.reset();
 				Indent.print("Ird be az input fajl nevet:");
 				sc = new Scanner(System.in);
-				String inFile = sc.nextLine();
+				inFile = sc.nextLine();
+				if (inFile.equals("exit")) break;
 				Indent.print("Ird be az output fajl nevet:");
-				String outFile = sc.nextLine();
+				outFile = sc.nextLine();
+				if (outFile.equals("exit")) break;
 				Printer.setFile(outFile);
+
 				try {
 					sc = new Scanner(new File(inFile));
 					String fileCmd;
@@ -51,6 +55,7 @@ public class Interpreter {
 				}
 				Printer.flushFile();
 			}
+			Printer.closeFile();
 		}
 	}
 

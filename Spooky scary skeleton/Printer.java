@@ -42,4 +42,8 @@ public class Printer {
 	public static void flushFile() {
 		fPrint.flush();
 	}
+
+	public static void closeFile() {
+		if (printToFile) fPrint.close();
+	}
 }
