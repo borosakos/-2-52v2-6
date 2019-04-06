@@ -46,7 +46,12 @@ public class JumpingPanda extends Panda {
 
 		Random r = new Random();
 		Tile t = getTile();
-		boolean halalos = t.lifeDecrease(r.nextInt(10 - 3) + 3);
+		boolean halalos;
+		if (Controller.getRandom()) {
+			halalos = t.lifeDecrease(r.nextInt(10 - 3) + 3);
+		} else {
+			halalos = t.lifeDecrease(1);
+		}
 		if (halalos) this.die();
 		Indent.dec();
 	}
@@ -58,7 +63,7 @@ public class JumpingPanda extends Panda {
 		Indent.print("JumpingPanda detect()");
 		Indent.inc();
 
-		if (getTile().getIsWhistling()) {
+		if (getTile().getIsJingling()) {
 			jump();
 			Indent.dec();
 			return;

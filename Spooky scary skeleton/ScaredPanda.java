@@ -56,7 +56,7 @@ public class ScaredPanda extends Panda {
 		Indent.inc();
 
 
-		if (!getTile().getIsJingling()) return;
+		if (!getTile().getIsWhistling()) return;
 		becomeScared();
 		setFrontNeighbour(null);
 		if (backNeighbour != null) {
