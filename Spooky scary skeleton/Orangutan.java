@@ -85,6 +85,7 @@ public class Orangutan extends Animal {
 		if(isInQueue()) {
 			o.setBackNeighbour(this.backNeighbour);
 			this.backNeighbour.setFrontNeighbour(o);
+			this.backNeighbour=null;
 		}
 		
 		return false;
