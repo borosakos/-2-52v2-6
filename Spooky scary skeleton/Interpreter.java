@@ -321,7 +321,7 @@ public class Interpreter {
 		EntryDoor ed = new EntryDoor();
 		ed.setName(cmd[1]);
 		ExitDoor xd = new ExitDoor();
-		xd.setName(cmd[2]);
+		xd.setName(cmd[4]);
 		e1.setElement(ed);
 		ed.setDoorTile(e2);
 		ed.setOther(xd);

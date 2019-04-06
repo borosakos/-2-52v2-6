@@ -145,7 +145,7 @@ public class Tile extends Nameable{
 	 *
 	 * @param e Az element ami a csempen lesz
 	 */
-	public void setElement(Element e) { //Ha j�l �rtem, ez csak inicializ�sn�l lesz haszn�lva de idk
+	public void setElement(Element e) { //Ha jol ertem, ez csak inicializasnal lesz hasznalva de idk
 		Indent.print("Tile setElement()");
 		element = e;
 		e.setTile(this);
