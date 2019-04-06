@@ -11,7 +11,7 @@ public class Main {
 		System.out.println("Add meg a parancsokat, es mi keszseggel kiszolgalunk (majdnem) mindent!");
 		
 		Game game = new Game();
-		Interpreter interp = new Interpreter(game.board, game.controller);
+		Interpreter interp = new Interpreter(game.board);
 		interp.getCommands();
 		
 	}

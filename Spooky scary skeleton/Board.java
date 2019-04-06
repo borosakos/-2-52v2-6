@@ -9,6 +9,7 @@ public class Board {
 		Indent.print("Board addTile()");
 		tiles.add(t);
 	}
+
 	public ArrayList<Tile> getTiles() {
 		return tiles;
 	}

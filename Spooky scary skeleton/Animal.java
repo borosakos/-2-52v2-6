@@ -16,8 +16,7 @@ public abstract class Animal extends Element implements Steppable {
 	 * Igazat ad vissza, ha az adott allat lancban van, kulonben hamisat.
 	 */
 	public boolean isInQueue() {
-		if (backNeighbour != null) return true;
-		return false;
+		return backNeighbour != null;
 	}
 
 	/**

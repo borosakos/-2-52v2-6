@@ -3,7 +3,7 @@ package skeleton;
 /**
  *
  */
-public class Door extends Element {
+public abstract class Door extends Element {
 
 	/**
 	 * Default constructor

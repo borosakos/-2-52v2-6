@@ -12,11 +12,11 @@ public class Tile extends Nameable{
 	 * Default constructor
 	 */
 	public Tile() {
-		Indent.printr("Tile with name " + this.name + "has been created");
+		Indent.printr("Tile with name " + this.name + " has been created");
 	}
 	public Tile(String name) {
 		this.name = name;
-		Indent.printr("Tile with name " + this.name + "has been created");
+		Indent.printr("Tile with name " + this.name + " has been created");
 	}
 
 	public Tile(boolean b, boolean c, Armchair ac) {

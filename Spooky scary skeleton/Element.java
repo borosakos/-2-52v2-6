@@ -42,4 +42,6 @@ public abstract class Element extends Nameable {
 	 */
 	public abstract boolean collideWith(Element e);
 
+	public abstract void printStats();
+
 }

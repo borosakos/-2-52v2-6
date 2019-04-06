@@ -14,6 +14,11 @@ public class BreakableTile extends Tile {
 		this.life = life;
 	}
 
+	public BreakableTile(String name, int life) {
+		this.name = name;
+		this.life = life;
+	}
+
 	public BreakableTile(boolean b, boolean c, Armchair ac, int life) {
 		super(b, c, ac);
 		this.life = life;
