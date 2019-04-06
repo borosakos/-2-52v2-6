@@ -19,67 +19,7 @@ public class Interpreter {
 		String[] cmdParts = cmd.split(" ");
 
 		while (!cmdParts[0].equals("exit") && !cmdParts[0].equals("file")) {
-			switch (cmdParts[0]) {
-				case "tile":
-					handleTile(cmdParts);
-					break;
-				case "btile":
-					handleBTile(cmdParts);
-					break;
-				case "orangutan":
-					handleOrangutan(cmdParts);
-					break;
-				case "panda":
-					handlePanda(cmdParts);
-					break;
-				case "tpanda":
-					handleTPanda(cmdParts);
-					break;
-				case "spanda":
-					handleSPanda(cmdParts);
-					break;
-				case "jpanda":
-					handleJPanda(cmdParts);
-					break;
-				case "gamemachine":
-					handleGM(cmdParts);
-					break;
-				case "chocolatemachine":
-					handleCM(cmdParts);
-					break;
-				case "armchair":
-					handleAC(cmdParts);
-					break;
-				case "doors":
-					handleDoors(cmdParts);
-					break;
-				case "wardrobe":
-					handleWD(cmdParts);
-					break;
-				case "stats":
-					handleStats(cmdParts);
-					break;
-				case "release":
-					handleRelease(cmdParts);
-					break;
-				case "step":
-					handleStep(cmdParts);
-					break;
-				case "random":
-					Controller.setRandom(-1 * Controller.getRandom());
-					if (Controller.getRandom() == -1) Indent.print("Turning randomization off");
-					if (Controller.getRandom() == 1) Indent.print("Turning randomization on");
-					break;
-				case "jingle":
-					handleJingle(cmdParts);
-					break;
-				case "whistle":
-					handleWhistle(cmdParts);
-					break;
-				case "queue":
-					handleQueue(cmdParts);
-					break;
-			}
+			handleCommand(cmdParts);
 			cmd = sc.nextLine().toLowerCase();
 			cmdParts = cmd.split(" ");
 		}
@@ -97,73 +37,77 @@ public class Interpreter {
 					while ((sc.hasNextLine())) {
 						fileCmd = sc.nextLine();
 						cmdParts = fileCmd.split(" ");
-						switch (cmdParts[0]) {
-							case "tile":
-								handleTile(cmdParts);
-								break;
-							case "btile":
-								handleBTile(cmdParts);
-								break;
-							case "orangutan":
-								handleOrangutan(cmdParts);
-								break;
-							case "panda":
-								handlePanda(cmdParts);
-								break;
-							case "tpanda":
-								handleTPanda(cmdParts);
-								break;
-							case "spanda":
-								handleSPanda(cmdParts);
-								break;
-							case "jpanda":
-								handleJPanda(cmdParts);
-								break;
-							case "gamemachine":
-								handleGM(cmdParts);
-								break;
-							case "chocolatemachine":
-								handleCM(cmdParts);
-								break;
-							case "armchair":
-								handleAC(cmdParts);
-								break;
-							case "doors":
-								handleDoors(cmdParts);
-								break;
-							case "wardrobe":
-								handleWD(cmdParts);
-								break;
-							case "stats":
-								handleTile(cmdParts);
-								break;
-							case "step":
-								handleStep(cmdParts);
-								break;
-							case "random":
-								Controller.setRandom(-1 * Controller.getRandom());
-								if (Controller.getRandom() == -1) Indent.print("Turning randomization off");
-								if (Controller.getRandom() == 1) Indent.print("Turning randomization on");
-								break;
-							case "jingle":
-								handleJingle(cmdParts);
-								break;
-							case "whistle":
-								handleWhistle(cmdParts);
-								break;
-							case "queue":
-								handleQueue(cmdParts);
-								break;
-							case "release":
-								handleRelease(cmdParts);
-								break;
-						}
+						handleCommand(cmdParts);
 
 					}
 				} catch (FileNotFoundException e) {
 					Indent.print("File not found. Try again.");
 				}
 			}
+		}
+	}
+
+	private void handleCommand(String[] cmdParts) {
+		switch (cmdParts[0]) {
+			case "tile":
+				handleTile(cmdParts);
+				break;
+			case "btile":
+				handleBTile(cmdParts);
+				break;
+			case "orangutan":
+				handleOrangutan(cmdParts);
+				break;
+			case "panda":
+				handlePanda(cmdParts);
+				break;
+			case "tpanda":
+				handleTPanda(cmdParts);
+				break;
+			case "spanda":
+				handleSPanda(cmdParts);
+				break;
+			case "jpanda":
+				handleJPanda(cmdParts);
+				break;
+			case "gamemachine":
+				handleGM(cmdParts);
+				break;
+			case "chocolatemachine":
+				handleCM(cmdParts);
+				break;
+			case "armchair":
+				handleAC(cmdParts);
+				break;
+			case "doors":
+				handleDoors(cmdParts);
+				break;
+			case "wardrobe":
+				handleWD(cmdParts);
+				break;
+			case "stats":
+				handleStats(cmdParts);
+				break;
+			case "release":
+				handleRelease(cmdParts);
+				break;
+			case "step":
+				handleStep(cmdParts);
+				break;
+			case "random":
+				Controller.setRandom(-1 * Controller.getRandom());
+				if (Controller.getRandom() == -1) Indent.print("Turning randomization off");
+				if (Controller.getRandom() == 1) Indent.print("Turning randomization on");
+				break;
+			case "jingle":
+				handleJingle(cmdParts);
+				break;
+			case "whistle":
+				handleWhistle(cmdParts);
+				break;
+			case "queue":
+				handleQueue(cmdParts);
+				break;
 		}
 	}
 
@@ -183,8 +127,7 @@ public class Interpreter {
 	}
 
 	void handleStats(String[] cmd) {
-		//TODO: írjon ki mindent ha nincs paraméter
-		if (cmd.length == 1) { //ha csak simán stats a paraméter
+		if (cmd.length == 1) { //ha nincs paraméter
 			for (Tile t : board.getTiles()) {
 				t.printStats();
 				if (t.getElement() != null) {
@@ -425,7 +368,7 @@ public class Interpreter {
 	}
 
 	private void handleStep(String[] cmd) {
-		if (cmd.length < 1) {
+		if (cmd.length <= 1) {
 			Indent.print("No object given.");
 		}
 		Steppable s = Controller.getSteppable(cmd[1]);
@@ -447,11 +390,11 @@ public class Interpreter {
 			return;
 		}
 		if (Controller.getRandom() == -1) {
-			if (cmd.length < 2) {
+			if (cmd.length <= 2) {
 				Indent.print("No tile given.");
 			}
 		} else {
-			if (3 <= cmd.length) {
+			if (cmd.length >= 3) {
 				Indent.print("As randomization is currently turned on, the tile given will not be used (except for Orangutans).");
 			}
 		}

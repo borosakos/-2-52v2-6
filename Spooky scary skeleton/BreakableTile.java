@@ -109,6 +109,7 @@ public class BreakableTile extends Tile {
 			return;
 		}
 		element = a;
+		a.setTile(this);
 	}
 
 
