@@ -13,7 +13,6 @@ public class Game {
 	public void endGame() {
 		Indent.print("Game endGame()");
 		end = true;
-		System.exit(0);
 	}
 
 	public void startGame() {

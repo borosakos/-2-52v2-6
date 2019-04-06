@@ -35,10 +35,9 @@ public class Orangutan extends Animal {
 	public void die() {
 		Indent.print("Orangutan die()");
 		Indent.inc();
-
-		if (backNeighbour != null) {
-			backNeighbour.release();
-		}
+		release();
+		position.element=null;
+		position = null;
 		Controller.game.endGame();
 		Indent.dec();
 	}
