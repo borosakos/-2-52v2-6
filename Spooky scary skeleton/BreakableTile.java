@@ -47,7 +47,6 @@ public class BreakableTile extends Tile {
 	 * @return true, ha a mezore lephet az allat, false ha nem
 	 */
 	public boolean accept(Animal a) { //Ez idk jo-e, meglatjuk
-		Indent.print("BreakableTile accept()");
 		if (life != 0) {
 			if (element != null) {
 				return a.collideWith(element);
@@ -74,10 +73,7 @@ public class BreakableTile extends Tile {
 	 * @return true-val ter vissza, ha eltort a csempe, kulonben false
 	 */
 	public boolean lifeDecrease(int i) {
-		Indent.print("BreakableTile lifeDecrease()");
-		Indent.inc();
 		life -= i;
-		Indent.dec();
 		if (life <= 0) return true;
 		return false;
 	}
@@ -86,11 +82,8 @@ public class BreakableTile extends Tile {
 	 * Leszedi az allatot magarol, es meghivja a lifeDecrease fuggvenyt.
 	 */
 	public void remove() {
-		Indent.print("BreakableTile remove()");
-		Indent.inc();
 		if(lifeDecrease(1)) Indent.print("gel");
 		element = null;
-		Indent.dec();
 	}
 
 	/**
@@ -99,7 +92,6 @@ public class BreakableTile extends Tile {
 	 * @return a csempe elete
 	 */
 	public int getLife() {
-		Indent.print("BreakableTile getLife()");
 		return life;
 	}
 	

@@ -15,7 +15,6 @@ public class Wardrobe extends Element {
 	 * Default constructor
 	 */
 	public Wardrobe() {
-		Indent.print("Wardrobe Wardrobe()");
 		for (Wardrobe w : Controller.getWardrobes()) {
 			if (!w.name.equals(this.getName())) {
 				otherWardrobes.add(w);
@@ -24,7 +23,6 @@ public class Wardrobe extends Element {
 	}
 
 	public Wardrobe(String n) {
-		Indent.print("Wardrobe Wardrobe()");
 		name = n;
 		for (Wardrobe w : Controller.getWardrobes()) {
 			if (!w.name.equals(this.getName())) {
@@ -51,15 +49,10 @@ public class Wardrobe extends Element {
 	 * @param o teleportalando orangutan
 	 */
 	public void teleport(Orangutan o) {
-		Indent.print("Wardrobe teleport(Orangutan o)");
-		Indent.inc();
-
 		doorTile.accept(o);
 		o.getTile().remove();
 		doorTile.take(o);
 		if (o.isInQueue()) o.getBackNeighbour().follow(doorTile);
-
-		Indent.dec();
 	}
 
 	/**
@@ -68,14 +61,10 @@ public class Wardrobe extends Element {
 	 * @param p teleportalando panda
 	 */
 	public void teleport(Panda p) {
-		Indent.print("Wardrobe teleport(Orangutan o)");
-		Indent.inc();
 
 		doorTile.accept(p);
 		p.getTile().remove();
 		doorTile.take(p);
-
-		Indent.dec();
 	}
 
 	/**
@@ -86,15 +75,8 @@ public class Wardrobe extends Element {
 	
 	public Wardrobe selectRandomWardrobe() {
 		if(!Controller.getRandom()) return end;
-		Indent.print("Wardrobe selectRandomWardrobe()");
-		Indent.inc();
-
-		
-
 		int index = (int)(Math.random() * otherWardrobes.size());
 
-
-		Indent.dec();
 		return otherWardrobes.get(index);
 	}
 
@@ -105,13 +87,8 @@ public class Wardrobe extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Orangutan o) {
-		Indent.print("Wardrobe hitBy(Orangutan o)");
-		Indent.inc();
-
 		setEnd(selectRandomWardrobe());
 		end.teleport(o);
-
-		Indent.dec();
 		return false;
 	}
 
@@ -122,13 +99,8 @@ public class Wardrobe extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("Wardrobe hitBy(Panda p)");
-		Indent.inc();
-
 		setEnd(selectRandomWardrobe());
 		end.teleport(p);
-
-		Indent.dec();
 		return false;
 	}
 
@@ -138,12 +110,7 @@ public class Wardrobe extends Element {
 	 * @param w vegpont szekreny
 	 */
 	public void setEnd(Wardrobe w) {
-		Indent.print("Wardrobe setEnd(Wardrobe w)");
-		Indent.inc();
-
 		end = w;
-
-		Indent.dec();
 	}
 
 	/**
@@ -153,8 +120,6 @@ public class Wardrobe extends Element {
 	 * @return false (nem utkozhet)
 	 */
 	public boolean collideWith(Element e) {
-		Indent.print("Wardrobe collideWith(Element e)");
-
 		return false;
 	}
 	

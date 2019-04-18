@@ -65,15 +65,10 @@ public abstract class Animal extends Element implements Steppable {
 	 * Lekezeli azt az esemenyt, amikor az adott allat elengedi egy masik allat kezet.
 	 */
 	public void release() {
-		Indent.print("Animal release()");
-		Indent.inc();
-
 		if (backNeighbour != null) {
 			backNeighbour.release();
 			backNeighbour = null;
 		}
-
-		Indent.dec();
 	}
 
 }

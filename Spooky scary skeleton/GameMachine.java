@@ -12,23 +12,15 @@ public class GameMachine extends Element implements Steppable{
 	 * Lekezeli a gep idoszakos csilingeleset.
 	 */
 	public void step() {
-		Indent.print("GameMachine step()");
-		Indent.inc();
-
 		if(Controller.getRandom()) {
 			if(rand()) jingle();
 		}
-
-		Indent.dec();
 	}
 
 	/**
 	 * Beallitja a szomszedos tile-okat jingling-re.
 	 */
 	public void jingle() {
-		Indent.print("GameMachine jingle()");
-		Indent.inc();
-		
 		boolean jingling = rand();
 		if(!Controller.getRandom()) {
 				jingling = true;
@@ -36,8 +28,6 @@ public class GameMachine extends Element implements Steppable{
 
 		for (Tile t : position.getNeighbours())
 			t.setIsJingling(jingling);
-
-		Indent.dec();
 	}
 
 	/**
@@ -47,7 +37,6 @@ public class GameMachine extends Element implements Steppable{
 	 * @return Nem lephet ra, tehat hamis.
 	 */
 	public boolean hitBy(Orangutan o) {
-		Indent.print("GameMachine hitBy(Orangutan)");
 		return false;
 	}
 
@@ -58,7 +47,6 @@ public class GameMachine extends Element implements Steppable{
 	 * @return Nem lephet ra, tehat hamis.
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("GameMachine hitBy(Panda)");
 		return false;
 	}
 
@@ -68,7 +56,6 @@ public class GameMachine extends Element implements Steppable{
 	 * @return Ha a random szam nagyobb vagy egyenlo mint 0.5 akkor nem futyul, egyebkent de.
 	 */
 	private boolean rand() {
-		Indent.print("GameMachine rand()");
 		return Math.random() < 0.5;
 	}
 
@@ -79,7 +66,6 @@ public class GameMachine extends Element implements Steppable{
 	 * @return Itt hamist adunk vissza.
 	 */
 	public boolean collideWith(Element e) {
-		Indent.print("GameMachine collideWith(Element)");
 		return false;
 	}
 

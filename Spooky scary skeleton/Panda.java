@@ -241,8 +241,6 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void grab(Animal a) {
-	
-
 		a.setBackNeighbour(this);
 		Tile pt = this.getTile();
 		a.getTile().swap(pt); //idk jo-e ez igy, de senki nem mond semmit es maganyos vagyok:^)
@@ -286,14 +284,12 @@ public class Panda extends Animal {
 
 		detect();
 		if (!isAlive) {
-			Indent.dec();
 			return;
 		}
 		Tile current = this.getTile();
 
 		if (isInQueue()) {
 			if (Controller.getRandom()) {
-				Indent.dec();
 				return;
 			}
 		}
@@ -303,7 +299,6 @@ public class Panda extends Animal {
 		}
 
 		if (t2 == null || !t2.accept(this)) {
-			Indent.dec();
 			return;
 		}
 		getTile().remove();
@@ -322,7 +317,6 @@ public class Panda extends Animal {
 		
 		if(backNeighbour!=null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		if(frontNeighbour!=null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
-		//TODO: van egy controlled is, az csak skeletonban kellett, nem?
 	}
 }
 

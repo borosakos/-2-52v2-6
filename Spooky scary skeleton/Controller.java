@@ -44,8 +44,6 @@ public class Controller {
 	 * a pandakat).
 	 */
 	public void tick() {
-		Indent.print("Controller tick()");
-		Indent.inc();
 		if (game.hasEnded()) {
 			game.endGame();
 			return;
@@ -62,7 +60,6 @@ public class Controller {
 				s.step();
 			}
 		}
-		Indent.dec();
 	}
 
 
@@ -72,7 +69,6 @@ public class Controller {
 	 * @param p A panda amit hozzaadunk a listahoz
 	 */
 	public static void addPanda(Panda p) {
-		Indent.print("Controller addPanda(Panda)");
 		pandas.add(p);
 	}
 
@@ -82,7 +78,6 @@ public class Controller {
 	 * @param o Az orangutan amit hozzaadunk a listahoz
 	 */
 	public static void addOrangutan(Orangutan o) {
-		Indent.print("Controller addOrangutan(Orangutan)");
 		orangutans.add(o);
 	}
 

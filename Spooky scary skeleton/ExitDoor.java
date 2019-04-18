@@ -8,9 +8,7 @@ public class ExitDoor extends Door {
 	/**
 	 * Default constructor
 	 */
-	public ExitDoor() {
-		Indent.print("ExitDoor ExitDoor()");
-	}
+	public ExitDoor() {}
 
 	/**
 	 * Elteleportalja az orangutant az ajto melletti mezore.
@@ -18,15 +16,8 @@ public class ExitDoor extends Door {
 	 * @param o teleportalando orangutan
 	 */
 	public void teleport(Orangutan o) {
-		Indent.print("ExitDoor teleport(Orangutan o)");
-		Indent.inc();
-
-		
-	
 		o.getTile().remove();
 		otherDoor.doorTile.take(o);
-
-		Indent.dec();
 	}
 
 	/**
@@ -36,8 +27,6 @@ public class ExitDoor extends Door {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("ExitDoor hitBy(Panda p)");
-
 		return false;
 	}
 
@@ -49,17 +38,12 @@ public class ExitDoor extends Door {
 	 */
 	@Override
 	public boolean hitBy(Orangutan o) {
-		Indent.print("ExitDoor hitBy(Orangutan o)");
-		Indent.inc();
-
 		if (o.isInQueue()) {
 			o.countPoints();
 			
 			o.deleteQueue();
 		}
 		teleport(o);
-
-		Indent.dec();
 		return false;
 	}
 

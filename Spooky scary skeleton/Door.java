@@ -8,9 +8,7 @@ public abstract class Door extends Element {
 	/**
 	 * Default constructor
 	 */
-	public Door() {
-		Indent.print("Door Door()");
-	}
+	public Door() {}
 
 	/**
 	 * Az a mezo, amelyrol az ajto nyilik, vagy amelyre nyilik
@@ -29,7 +27,6 @@ public abstract class Door extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Orangutan o) {
-		Indent.print("Door hitBy(Orangutan o)");
 		return false;
 	}
 
@@ -40,7 +37,6 @@ public abstract class Door extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("Door hitBy(Panda p)");
 		return false;
 	}
 
@@ -51,7 +47,6 @@ public abstract class Door extends Element {
 	 * @return false (nem utkozhet)
 	 */
 	public boolean collideWith(Element e) {
-		Indent.print("Door collideWith(Element e)");
 		return false;
 	}
 	

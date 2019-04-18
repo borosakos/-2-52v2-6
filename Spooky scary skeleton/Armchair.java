@@ -8,9 +8,7 @@ public class Armchair extends Element {
 	/**
 	 * Default constructor
 	 */
-	public Armchair() {
-		Indent.print("Armchair Armchair()");
-	}
+	public Armchair() {}
 
 	public void setOccupied(boolean occupied) {
 		isOccupied = occupied;
@@ -24,8 +22,6 @@ public class Armchair extends Element {
 	 * @return foglalt-e
 	 */
 	public boolean getIsOccupied() {
-		Indent.print("Armchair getIsOccupied()");
-
 		return isOccupied;
 	}
 
@@ -37,8 +33,6 @@ public class Armchair extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Orangutan o) {
-		Indent.print("Armchair hitby(Orangutan o)");
-
 		return false;
 	}
 
@@ -49,8 +43,6 @@ public class Armchair extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("Armchair hitBy(Panda p)");
-
 		return false;
 	}
 
@@ -61,8 +53,6 @@ public class Armchair extends Element {
 	 * @return false (nem utkozhet)
 	 */
 	public boolean collideWith(Element e) {
-		Indent.print("Armchair collideWith(Element e)");
-
 		return false;
 	}
 

@@ -12,32 +12,23 @@ public class TiredPanda extends Panda {
 	 * Default constructor
 	 */
 	public TiredPanda() {
-
-		Indent.print("TiredPanda()");
-		Indent.inc();
-
 		isAlive = true;
 		//super();
 		isSitting = false;
 		inArmchair = null;
 		sittingTimeLeft = -1;
-
-		Indent.dec();
 	}
 
 	/**
 	 * Constructor
 	 */
 	public TiredPanda(boolean b) {
-		Indent.print("TiredPanda()");
-		Indent.inc();
 		controlled = b;
 		if (!b) {
 			Tile t = new Tile();
 			this.position = t;
 			t.setElement(this);
 		}
-		Indent.dec();
 	}
 
 
@@ -53,8 +44,6 @@ public class TiredPanda extends Panda {
 	 */
 
 	public void sitDown(Armchair ac) {
-		Indent.print("TiredPanda sitDown()");
-		Indent.inc();
 		isSitting = true;
 		sittingTimeLeft = 3;
 		usedArmchairs.add(ac);
@@ -62,8 +51,6 @@ public class TiredPanda extends Panda {
 		ac.setOccupied(true);
 		getTile().remove();
 		position = null;
-
-		Indent.dec();
 	}
 
 	/**
@@ -73,14 +60,10 @@ public class TiredPanda extends Panda {
 	 * @return Viszzater a kivalasztott csempevel.
 	 */
 	public Tile selectTile() {
-
-		Indent.print("TiredPanda selectTile()");
-		Indent.inc();
 		if (isSitting) {
 			return null;
 		}
 
-		Indent.dec();
 		return getTile().getNeighbours().get((int)(Math.random() * getTile().getNeighbours().size()));
 	}
 
@@ -100,15 +83,12 @@ public class TiredPanda extends Panda {
 			}
 			return;
 		}
-		Indent.print("TiredPanda step()");
-		Indent.inc();
 
 		detect();
 
 
 		if (isInQueue()) {
 			if (Controller.getRandom()) {
-				Indent.dec();
 				return;
 			}
 		}
@@ -118,7 +98,6 @@ public class TiredPanda extends Panda {
 		}
 
 		if (t2 == null || !t2.accept(this)) {
-			Indent.dec();
 			return;
 		}
 
@@ -129,8 +108,6 @@ public class TiredPanda extends Panda {
 		if (isInQueue()) {
 			backNeighbour.follow(this.getTile());
 		}
-
-		Indent.dec();
 	}
 
 	/**
@@ -140,7 +117,6 @@ public class TiredPanda extends Panda {
 	 * @return
 	 */
 	public void getUp() {
-		Indent.print("TiredPanda getUp()");
 
 		isSitting = false;
 		for (Tile t : inArmchair.getTile().getNeighbours()) {
@@ -148,9 +124,6 @@ public class TiredPanda extends Panda {
 		}
 		inArmchair.setOccupied(false);
 		inArmchair = null;
-
-		Indent.inc();
-		Indent.dec();
 	}
 
 	/**
@@ -160,12 +133,8 @@ public class TiredPanda extends Panda {
 	 * @return Ha nincs korulotte fotel visszater.
 	 */
 	public void detect() {
-		Indent.print("TiredPanda detect()");
-		Indent.inc();
-
 		Armchair ac = chooseArmchair();
 		if (ac == null) {
-			Indent.dec();
 			return;
 		}
 		sitDown(ac);
@@ -174,29 +143,22 @@ public class TiredPanda extends Panda {
 		if (isInQueue()) {
 			backNeighbour.release();
 		}
-
-		Indent.dec();
 	}
 
 	/**
 	 * Lekerdezi a szomszedos foteleket, �s kivalasztja kozuluk az elso olyat, ami nem foglalt.
 	 *
-	 * @param
 	 * @return Visszater a valasztott fotellel.
 	 */
 	public Armchair chooseArmchair() {
-		Indent.print("TiredPanda chooseArmchair()");
-		Indent.inc();
 
 		ArrayList<Armchair> armchairs = getTile().getNeighbouringArmchairs();
 		for (Armchair armchair : armchairs) {
 			if (!armchair.getIsOccupied() && !usedArmchairs.contains(armchair)) {
-				Indent.dec();
 				return armchair;
 			}
 		}
 
-		Indent.dec();
 		return null;
 	}
 
@@ -204,13 +166,9 @@ public class TiredPanda extends Panda {
 	 * Beallitja, a fotelt amibe a panda beleul.
 	 *
 	 * @param ac - A fotel a mibe ulni fog a panda
-	 * @reuturn
 	 */
 	public void setArmchair(Armchair ac) {
-		Indent.print("TiredPanda chooseArmchair()");
-		Indent.inc();
 		inArmchair = ac;
-		Indent.dec();
 	}
 
 	public void step(Tile t) {
@@ -221,15 +179,12 @@ public class TiredPanda extends Panda {
 			}
 			return;
 		}
-		Indent.print("TiredPanda step()");
-		Indent.inc();
 
 		detect();
 
 
 		if (isInQueue()) {
 			if (Controller.getRandom()) {
-				Indent.dec();
 				return;
 			}
 		}
@@ -239,7 +194,6 @@ public class TiredPanda extends Panda {
 		}
 
 		if (t2 == null || !t2.accept(this)) {
-			Indent.dec();
 			return;
 		}
 
@@ -251,8 +205,6 @@ public class TiredPanda extends Panda {
 		if (isInQueue()) {
 			backNeighbour.follow(this.getTile());
 		}
-
-		Indent.dec();
 	}
 
 	/**

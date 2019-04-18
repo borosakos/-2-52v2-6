@@ -23,15 +23,10 @@ public class ChocolateMachine extends Element implements Steppable {
 	 * Beallitja a korulotte levo tile-okat whistling-re.
 	 */
 	public void whistle() {
-		Indent.print("ChocolateMachine whistle()");
-		Indent.inc();
-
 		boolean whistling = rand();
 
 		for (Tile t : position.getNeighbours())
 			t.setIsWhistling(whistling);
-
-		Indent.dec();
 	}
 
 	/**
@@ -41,7 +36,6 @@ public class ChocolateMachine extends Element implements Steppable {
 	 * @return Nem lephet ra, tehat hamis.
 	 */
 	public boolean hitBy(Orangutan o) {
-		Indent.print("ChocolateMachine hitBy(Orangutan)");
 		return false;
 	}
 
@@ -52,7 +46,6 @@ public class ChocolateMachine extends Element implements Steppable {
 	 * @return Nem lephet ra, tehat hamis.
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("ChocolateMachine hitBy(Panda)");
 		return false;
 	}
 
@@ -62,7 +55,6 @@ public class ChocolateMachine extends Element implements Steppable {
 	 * @return Ha a random szam nagyobb vagy egyenlo mint 0.5 akkor nem futyul, egyebkent de.
 	 */
 	private boolean rand() {
-		Indent.print("ChocolateMachine rand()");
 		return Math.random() < 0.5;
 	}
 
@@ -73,7 +65,6 @@ public class ChocolateMachine extends Element implements Steppable {
 	 * @return Itt hamist adunk vissza.
 	 */
 	public boolean collideWith(Element e) {
-		Indent.print("ChocolateMachine collideWith(Element)");
 		return false;
 
 	}

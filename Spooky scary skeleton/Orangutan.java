@@ -22,7 +22,6 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void release() {
-		Indent.print("Orangutan release()");
 		if (backNeighbour != null) {
 			backNeighbour.release();
 		}
@@ -33,13 +32,10 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void die() {
-		Indent.print("Orangutan die()");
-		Indent.inc();
 		release();
 		position.element=null;
 		position = null;
 		Controller.game.endGame();
-		Indent.dec();
 	}
 
 	/**
@@ -50,9 +46,6 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public Tile selectTile() {
-		Indent.print("Orangutan selectTile()");
-		Indent.inc();
-
 		Scanner sc = new Scanner(System.in);
 		String selection;
 
@@ -64,7 +57,6 @@ public class Orangutan extends Animal {
 
 		int index = Integer.parseInt(selection);
 
-		Indent.dec();
 		return position.getNeighbours().get(index - 1);
 	}
 
@@ -77,7 +69,6 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public boolean hitBy(Orangutan o) {
-		Indent.print("Orangutan hitBy(Orangutan)");
 		if(o.isInQueue())return false;
 		this.position.swap(o.position);
 		
@@ -99,8 +90,6 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public boolean hitBy(Panda p) {
-		// TODO Auto-generated method stub
-		Indent.print("Orangutan hitBy(Orangutan)");
 		return false;
 	}
 
@@ -113,10 +102,7 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public boolean collideWith(Element e) {
-		Indent.print("Orangutan collideWith(Element)");
-		Indent.inc();
 		boolean res = e.hitBy(this);
-		Indent.dec();
 		return res;
 	}
 
@@ -127,9 +113,6 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void step() {
-		// TODO Auto-generated method stub
-		Indent.print("Orangutan step()");
-		Indent.inc();
 		Tile current = this.position;
 		Tile tostep = this.selectTile();
 		boolean accept = tostep.accept(this);
@@ -141,7 +124,6 @@ public class Orangutan extends Animal {
 		if (inQueue && accept) {
 			backNeighbour.follow(current);
 		}
-		Indent.dec();
 	}
 
 	/**
@@ -152,8 +134,6 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public boolean isInQueue() {
-		Indent.print("Orangutan isInQueue()");
-
 		return (backNeighbour != null);
 	}
 
@@ -165,7 +145,6 @@ public class Orangutan extends Animal {
 	 * @return visszaadja pontok szamat
 	 **/
 	public int countPoints() {
-		Indent.print("Orangutan countPoints()");
 		if(!isInQueue()) return 0;
 		Panda lastBackNeighbour = backNeighbour;
 		points = 0;
@@ -187,10 +166,7 @@ public class Orangutan extends Animal {
 	 * @param incr hozzaad egy pontot a jatekos pontjaihoz
 	 **/
 	public void addPoints(int incr) {
-		Indent.print("Orangutan addPoints()");
-		Indent.inc();
 		points++;
-		Indent.dec();
 	}
 
 	/**
@@ -198,7 +174,6 @@ public class Orangutan extends Animal {
 	 * Meghivodik ExitDoor-ba lepes eseten.
 	 **/
 	public void deleteQueue() {
-		Indent.print("Orangutan deleteQueue()");
 		Panda lastBackNeighbour = backNeighbour;
 		backNeighbour = null;
 		while (lastBackNeighbour != null) {
@@ -214,7 +189,6 @@ public class Orangutan extends Animal {
 	 * @param p A panda, amit hatso szomszednak allit
 	 **/
 	public void grab(Panda p) {
-		Indent.print("Orangutan grab(Panda)");
 		setBackNeighbour(p);
 		if(!p.isInQueue()) {
 			getTile().swap(p.getTile());
@@ -223,8 +197,6 @@ public class Orangutan extends Animal {
 
 	@Override
 	public void step(Tile t) {
-		Indent.print("Orangutan step()");
-		Indent.inc();
 		Tile current = this.position;
 		Tile tostep = t;
 		boolean accept = tostep.accept(this);
@@ -236,7 +208,6 @@ public class Orangutan extends Animal {
 		if (inQueue && accept) {
 			backNeighbour.follow(current);
 		}
-		Indent.dec();
 	}
 
 	/**
@@ -247,6 +218,5 @@ public class Orangutan extends Animal {
 		Printer.print("position: " + position.getName());
 		Printer.print("points: " + points);
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
-		//TODO: stepCount? a doksiba irtuk de nincs olyan neki
 	}
 }
