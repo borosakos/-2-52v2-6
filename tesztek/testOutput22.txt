@@ -1,0 +1,30 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	Element: ed
+	neighbour1: t2
+ed:
+	position: t1
+	doorTile: t2
+t2:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t1
+	neighbour2: t3
+t3:
+	isJingling: false
+	isWhistling: false
+	Element: p
+	neighbour1: t2
+	neighbour2: t4
+p:
+	position: t3
+	isAlive: true
+t4:
+	isJingling: false
+	isWhistling: false
+	Element: xd
+	neighbour1: t3
+xd:
+	position: t4
+	doorTile: t3

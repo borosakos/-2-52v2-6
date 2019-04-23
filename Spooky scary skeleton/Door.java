@@ -8,7 +8,8 @@ public abstract class Door extends Element {
 	/**
 	 * Default constructor
 	 */
-	public Door() {}
+	public Door() {
+	}
 
 	/**
 	 * Az a mezo, amelyrol az ajto nyilik, vagy amelyre nyilik
@@ -49,11 +50,11 @@ public abstract class Door extends Element {
 	public boolean collideWith(Element e) {
 		return false;
 	}
-	
+
 	public void setOther(Door d) {
 		otherDoor = d;
 	}
-	
+
 	public void setDoorTile(Tile t) {
 		doorTile = t;
 	}

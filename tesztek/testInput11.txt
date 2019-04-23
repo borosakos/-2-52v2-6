@@ -1,0 +1,6 @@
+tile t1
+btile 0 t2
+tile t1 t2
+orangutan o t1
+step o t2
+stats

@@ -1,0 +1,29 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	Element: o
+	neighbour1: t2
+o:
+	position: t1
+	points: 0
+	backNeighbour: p1
+t2:
+	isJingling: false
+	isWhistling: false
+	Element: p1
+	neighbour1: t1
+	neighbour2: t3
+p1:
+	position: t2
+	isAlive: true
+	backNeighbour: p2
+	frontNeighbour: o
+t3:
+	isJingling: false
+	isWhistling: false
+	Element: p2
+	neighbour1: t2
+p2:
+	position: t3
+	isAlive: true
+	frontNeighbour: p1

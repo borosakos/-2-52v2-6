@@ -1,0 +1,14 @@
+tile t1
+tile t2 t1
+tile t3 t2
+tile t4 t3
+doors ed t2 t1 xd t3 t4
+tile t5 t4
+tile t6 t5
+orangutan o1 t4
+panda p1 t5
+panda p2 t6
+queue o1 p1
+queue p1 p2
+step o1 t3
+stats

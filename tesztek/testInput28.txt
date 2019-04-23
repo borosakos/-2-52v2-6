@@ -1,0 +1,9 @@
+random
+tile t1
+tile t3
+btile 1 bt2 t1 t3
+orangutan o bt2
+panda p t1
+queue o p
+step o t3
+stats

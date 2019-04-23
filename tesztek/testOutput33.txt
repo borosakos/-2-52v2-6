@@ -1,0 +1,35 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t2
+t2:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t1
+	neighbour2: t3
+	neighbouringArmchair1: ac
+t3:
+	isJingling: false
+	isWhistling: false
+	Element: ac
+	neighbour1: t2
+	neighbour2: t4
+ac:
+	position: t3
+	isOccupied: true
+t4:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t3
+	neighbour2: t5
+	neighbouringArmchair1: ac
+t5:
+	isJingling: false
+	isWhistling: false
+	Element: tp2
+	neighbour1: t4
+tp2:
+	position: t5
+	isAlive: true
+	isSitting: false
+	sittingTimeLeft: -1

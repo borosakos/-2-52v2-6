@@ -1,0 +1,8 @@
+random
+tile t1
+tile t2 t1
+tile t3 t2
+tpanda tp t2
+armchair ac t1
+step tp t3
+stats

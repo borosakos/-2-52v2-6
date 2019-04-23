@@ -1,0 +1,13 @@
+t1:
+	life: 0
+	isJingling: false
+	isWhistling: false
+	neighbour1: t2
+t2:
+	isJingling: false
+	isWhistling: false
+	Element: o
+	neighbour1: t1
+o:
+	position: t2
+	points: 0

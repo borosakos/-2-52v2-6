@@ -1,0 +1,6 @@
+tile t1
+tile t2
+tile t1 t2
+panda p t1
+step p t2
+stats

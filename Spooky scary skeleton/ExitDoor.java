@@ -8,7 +8,8 @@ public class ExitDoor extends Door {
 	/**
 	 * Default constructor
 	 */
-	public ExitDoor() {}
+	public ExitDoor() {
+	}
 
 	/**
 	 * Elteleportalja az orangutant az ajto melletti mezore.
@@ -40,7 +41,7 @@ public class ExitDoor extends Door {
 	public boolean hitBy(Orangutan o) {
 		if (o.isInQueue()) {
 			o.countPoints();
-			
+
 			o.deleteQueue();
 		}
 		teleport(o);

@@ -1,0 +1,6 @@
+random
+tile t1
+btile 0 bt t1
+panda p t1
+step p bt
+stats

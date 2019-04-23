@@ -12,11 +12,11 @@ public class ChocolateMachine extends Element implements Steppable {
 	 * Lekezeli a gep idoszakos sipolasat.
 	 */
 	public void step() {
-		if(!Controller.getRandom()) {
-			if(rand()) {
-				if(Controller.gameOn) {
+		if (!Controller.getRandom()) {
+			if (rand()) {
+				if (Controller.gameOn) {
 					Indent.inc();
-					Indent.print("ChocolateMachine "+this.name+" whistles.");
+					Indent.print("ChocolateMachine " + this.name + " whistles.");
 					Indent.dec();
 				}
 				whistle();
@@ -33,8 +33,8 @@ public class ChocolateMachine extends Element implements Steppable {
 	 */
 	public void whistle() {
 		boolean whistling = rand();
-		if(!Controller.getRandom()) {
-				whistling = true;
+		if (!Controller.getRandom()) {
+			whistling = true;
 		}
 
 		for (Tile t : position.getNeighbours())

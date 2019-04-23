@@ -8,7 +8,8 @@ public class Armchair extends Element {
 	/**
 	 * Default constructor
 	 */
-	public Armchair() {}
+	public Armchair() {
+	}
 
 	public void setOccupied(boolean occupied) {
 		isOccupied = occupied;
@@ -64,6 +65,6 @@ public class Armchair extends Element {
 		Printer.print("position: " + position.getName());
 		Printer.print("isOccupied: " + isOccupied);
 	}
-	
+
 
 }

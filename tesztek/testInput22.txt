@@ -1,0 +1,12 @@
+random
+tile t1
+tile t2
+tile t2 t1
+tile t3
+tile t3 t2
+tile t4
+tile t4 t3
+doors ed t1 t2 xd t4 t3
+panda p t3
+step p t4
+stats

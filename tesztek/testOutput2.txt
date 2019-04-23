@@ -1,0 +1,48 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t2
+	neighbour2: t5
+	neighbour3: t0
+t2:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t1
+	neighbour2: t3
+	neighbour3: t0
+t3:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t2
+	neighbour2: t4
+	neighbour3: t0
+t4:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t3
+	neighbour2: t5
+	neighbour3: t0
+t5:
+	isJingling: false
+	isWhistling: false
+	Element: p1
+	neighbour1: t4
+	neighbour2: t1
+	neighbour3: t0
+p1:
+	position: t5
+	isAlive: true
+	frontNeighbour: o1
+t0:
+	isJingling: false
+	isWhistling: false
+	Element: o1
+	neighbour1: t1
+	neighbour2: t2
+	neighbour3: t3
+	neighbour4: t4
+	neighbour5: t5
+o1:
+	position: t0
+	points: 0
+	backNeighbour: p1

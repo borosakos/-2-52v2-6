@@ -6,17 +6,17 @@ package skeleton;
  * @author Bozi Roland
  * @version 1.0
  */
-public class GameMachine extends Element implements Steppable{
+public class GameMachine extends Element implements Steppable {
 
 	/**
 	 * Lekezeli a gep idoszakos csilingeleset.
 	 */
 	public void step() {
-		if(Controller.getRandom()) {
-			if(rand()) {
-				if(Controller.gameOn) {
+		if (Controller.getRandom()) {
+			if (rand()) {
+				if (Controller.gameOn) {
 					Indent.inc();
-					Indent.print("GameMachine "+this.name+" jingles.");
+					Indent.print("GameMachine " + this.name + " jingles.");
 					Indent.dec();
 				}
 				jingle();
@@ -32,8 +32,8 @@ public class GameMachine extends Element implements Steppable{
 	 */
 	public void jingle() {
 		boolean jingling = rand();
-		if(!Controller.getRandom()) {
-				jingling = true;
+		if (!Controller.getRandom()) {
+			jingling = true;
 		}
 
 		for (Tile t : position.getNeighbours())
@@ -82,7 +82,7 @@ public class GameMachine extends Element implements Steppable{
 	@Override
 	public void step(Tile t) {
 		step();
-		
+
 	}
 
 	/**

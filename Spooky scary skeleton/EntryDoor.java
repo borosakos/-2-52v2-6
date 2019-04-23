@@ -8,7 +8,8 @@ public class EntryDoor extends Door {
 	/**
 	 * Default constructor
 	 */
-	public EntryDoor() {}
+	public EntryDoor() {
+	}
 
 	/**
 	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.

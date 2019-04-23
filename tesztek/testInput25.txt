@@ -1,0 +1,8 @@
+random
+tile t1
+tile t2
+tile t1 t2
+orangutan o t1
+gamemachine gm t2
+step o t2
+stats

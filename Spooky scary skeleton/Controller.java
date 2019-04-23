@@ -108,58 +108,67 @@ public class Controller {
 	public static ArrayList<Panda> getPandas() {
 		return pandas;
 	}
+
 	public static ArrayList<Steppable> getSteppables() {
 		return steppables;
 	}
+
 	public static ArrayList<Wardrobe> getWardrobes() {
 		return wardrobes;
 	}
+
 	public static ArrayList<Element> getElements() {
 		return elements;
 	}
+
 	public static Wardrobe getWardrobe(String name) {
-		for(Wardrobe o:wardrobes) {
-			if(o.getName().equals(name)) {
+		for (Wardrobe o : wardrobes) {
+			if (o.getName().equals(name)) {
 				return o;
 			}
 		}
 		return null;
 	}
+
 	public static boolean hasOrangutan(String name) {
-		for(Orangutan o:orangutans) {
-			if(o.getName().equals(name)) {
+		for (Orangutan o : orangutans) {
+			if (o.getName().equals(name)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	public static boolean hasWardrobe(String name) {
-		for(Wardrobe o:wardrobes) {
-			if(o.getName().equals(name)) {
+		for (Wardrobe o : wardrobes) {
+			if (o.getName().equals(name)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	public static boolean hasElement(String name) {
-		for(Element o:elements) {
-			if(o.getName().equals(name)) {
+		for (Element o : elements) {
+			if (o.getName().equals(name)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	public static boolean hasPanda(String name) {
-		for(Panda p:pandas) {
-			if(p.getName().equals(name)) {
+		for (Panda p : pandas) {
+			if (p.getName().equals(name)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	public static boolean hasSteppable(String name) {
-		for(Steppable s:steppables) {
-			if(s.getName().equals(name)) {
+		for (Steppable s : steppables) {
+			if (s.getName().equals(name)) {
 				return true;
 			}
 		}
@@ -175,38 +184,41 @@ public class Controller {
 	public static void setRandom(boolean random) {
 		Controller.random = random;
 	}
+
 	public static Steppable getSteppable(String name) {
-		for(Orangutan o:orangutans) {
-			if(o.getName().equals(name)) {
+		for (Orangutan o : orangutans) {
+			if (o.getName().equals(name)) {
 				return o;
 			}
 		}
-		for(Panda p:pandas) {
-			if(p.getName().equals(name)) {
+		for (Panda p : pandas) {
+			if (p.getName().equals(name)) {
 				return p;
 			}
 		}
-		for(Steppable s:steppables) {
-			if(s.getName().equals(name)) {
+		for (Steppable s : steppables) {
+			if (s.getName().equals(name)) {
 				return s;
 			}
 		}
 		return null;
 	}
+
 	public static Element getElement(String name) {
-		for(Element e:elements) {
-			if(e.getName().equals(name)) {
+		for (Element e : elements) {
+			if (e.getName().equals(name)) {
 				return e;
 			}
 		}
 		return null;
 	}
+
 	public static void reset() {
 		game = new Game();
-		steppables = new ArrayList<>();
-		elements= new ArrayList<>();
-		orangutans= new ArrayList<>();
-		wardrobes= new ArrayList<>();
-		pandas= new ArrayList<>();
+		steppables.clear();
+		elements.clear();
+		orangutans.clear();
+		wardrobes.clear();
+		pandas.clear();
 	}
 }

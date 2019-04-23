@@ -12,12 +12,17 @@ public class Board {
 	public ArrayList<Tile> getTiles() {
 		return tiles;
 	}
+
 	public Tile getTByName(String name) {
-		for(Tile t : tiles){
-			if(t.getName().equals(name)) {
+		for (Tile t : tiles) {
+			if (t.getName().equals(name)) {
 				return t;
 			}
 		}
 		return null;
+	}
+
+	public void reset() {
+		tiles.clear();
 	}
 }

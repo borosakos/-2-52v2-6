@@ -1,0 +1,15 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	Element: p
+	neighbour1: t2
+p:
+	position: t1
+	isAlive: true
+t2:
+	isJingling: false
+	isWhistling: false
+	Element: gm
+	neighbour1: t1
+gm:
+	position: t2

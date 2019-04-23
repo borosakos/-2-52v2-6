@@ -1,0 +1,7 @@
+random
+tile t1
+tile t2 t1
+orangutan o t1
+chocolatemachine cm t2
+step o t2
+stats

@@ -1,0 +1,8 @@
+random
+tile t1
+tile t2
+tile t2 t1
+orangutan o t1
+armchair ac t2
+step o t2
+stats

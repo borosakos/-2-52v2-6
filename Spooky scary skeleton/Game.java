@@ -7,6 +7,7 @@ public class Game {
 	Game() {
 		board = new Board();
 	}
+
 	Game(Board _board) {
 		board = _board;
 	}
@@ -16,8 +17,8 @@ public class Game {
 	}
 
 	public void startGame() {
-		while(!this.hasEnded()) {
-		Controller.tick();
+		while (!this.hasEnded()) {
+			Controller.tick();
 		}
 	}
 

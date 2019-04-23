@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class Printer {
-	
+
 	private static boolean printToFile = false;
 	private static PrintWriter fPrint;
 
@@ -23,7 +23,7 @@ public class Printer {
 			System.out.println("\t" + str);
 		}
 	}
-	
+
 	public static void setFile(String outputFile) {
 		try {
 			printToFile = true;
@@ -32,9 +32,9 @@ public class Printer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void setStandardOutput() {
 		printToFile = false;
 	}

@@ -1,12 +1,12 @@
 package skeleton;
 
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Egy csempet reprezentalo osztaly
  */
-public class Tile extends Nameable{
+public class Tile extends Nameable {
 
 	/**
 	 * Default constructor
@@ -14,6 +14,7 @@ public class Tile extends Nameable{
 	public Tile() {
 		//Indent.printr("Tile with name " + this.name + " has been created");
 	}
+
 	public Tile(String name) {
 		this.name = name;
 		//Indent.printr("Tile with name " + this.name + " has been created");
@@ -24,7 +25,7 @@ public class Tile extends Nameable{
 		isWhistling = c;
 		neighbouringArmchairs.add(ac);
 	}
-	
+
 	public Tile(String n, boolean b, boolean c, Armchair ac) {
 		name = n;
 		isJingling = b;
@@ -138,7 +139,7 @@ public class Tile extends Nameable{
 	 */
 	public void setElement(Element e) {
 		element = e;
-		if(e == null) return;
+		if (e == null) return;
 		e.setTile(this);
 	}
 
@@ -171,12 +172,14 @@ public class Tile extends Nameable{
 	public boolean lifeDecrease(int i) {
 		return false;
 	}
+
 	public void removeNeighbours() {
 		neighbours.clear();
 		neighbouringArmchairs.clear();
 	}
+
 	public boolean isNeighbour(Tile t) {
-		return(neighbours.contains(t));
+		return (neighbours.contains(t));
 	}
 
 	/**
@@ -188,12 +191,12 @@ public class Tile extends Nameable{
 		Printer.print("isWhistling: " + isWhistling);
 		if (element != null) Printer.print("Element: " + element.getName());
 		for (int i = 0; i < neighbours.size(); i++) {
-			Printer.print("neighbour" + (i+1) + ": " + neighbours.get(i).getName());
+			Printer.print("neighbour" + (i + 1) + ": " + neighbours.get(i).getName());
 		}
 		for (int i = 0; i < neighbouringArmchairs.size(); i++) {
-			Printer.print("neighbouringArmchair" + (i+1) + ": " + neighbouringArmchairs.get(i).getName());
+			Printer.print("neighbouringArmchair" + (i + 1) + ": " + neighbouringArmchairs.get(i).getName());
+		}
+
+
 	}
-
-
-}
 }

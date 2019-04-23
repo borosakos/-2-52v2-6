@@ -1,0 +1,11 @@
+random
+tile t1
+tile t2 t1
+tile t3 t2
+tile t4 t3
+tile t5 t4
+doors ed t1 t2 xd t5 t4
+orangutan o1 t3
+step o1 t2
+step o1 t1
+stats

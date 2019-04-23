@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * Fuggvenyei statikusak, hogy minden osztaly elerje oket, es ne
  * kelljen peldanyositani az osztalyt a hasznalatahoz.
  *
- * @version 1.0
  * @author Ferenczy Balint
+ * @version 1.0
  */
 
 public class Question {

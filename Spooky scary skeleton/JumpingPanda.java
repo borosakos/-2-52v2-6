@@ -10,7 +10,8 @@ public class JumpingPanda extends Panda {
 	/**
 	 * Default constructor
 	 */
-	public JumpingPanda() {}
+	public JumpingPanda() {
+	}
 
 	/**
 	 * Konstruktor, amely beallitja, iranyitott-e a panda

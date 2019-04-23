@@ -29,7 +29,7 @@ public class Interpreter {
 
 		//Ha fajlbol olvasunk
 		if (cmdParts[0].equals("file")) {
-			String inFile ="", outFile = "";
+			String inFile = "", outFile = "";
 			while (true) {
 				board = new Board();
 				Controller.reset();
@@ -123,6 +123,9 @@ public class Interpreter {
 				break;
 			case "compare":
 				handleCompare(cmdParts);
+				break;
+			case "compareall":
+				handleCompareAll(cmdParts);
 				break;
 			case "start":
 				try {
@@ -367,7 +370,7 @@ public class Interpreter {
 			Indent.print("No door tile given.");
 			return;
 		}
-		if(cmd[1].equals("connect")) {
+		if (cmd[1].equals("connect")) {
 			Wardrobe w1 = Controller.getWardrobe(cmd[2]);
 			Wardrobe w2 = Controller.getWardrobe(cmd[3]);
 			w1.setEnd(w2);
@@ -552,20 +555,22 @@ public class Interpreter {
 			String testString = testRead.nextLine();
 			int i = 0;
 			int hiba = 0;
-			while(outputRead.hasNextLine() && testRead.hasNextLine()) {
+			while (outputRead.hasNextLine() && testRead.hasNextLine()) {
 				if (!outputString.equals(testString)) {
-					Indent.print("--------\n\n"+i+".: \nTeszt:\t" + testString + "\nOutput:\t" +outputString+"\n");
+					Indent.print("--------\n\n" + (i + 1) + ". sor: \nTeszt:\t" + testString + "\nOutput:\t" + outputString + "\n");
 					hiba++;
 				}
 				i++;
 				outputString = outputRead.nextLine();
 				testString = testRead.nextLine();
 			}
-			if((outputRead.hasNextLine() && !testRead.hasNextLine()) || (!outputRead.hasNextLine() && testRead.hasNextLine())) {
+			if ((outputRead.hasNextLine() && !testRead.hasNextLine()) || (!outputRead.hasNextLine() && testRead.hasNextLine())) {
 				Indent.print("A sorok szama kulonbozik!");
 			}
-			if(hiba==0) {
+			if (hiba == 0) {
 				Indent.print("A teszt hiba nelkul lefutott.");
+			} else {
+				Indent.print("A hibak szama: " + hiba);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -573,6 +578,33 @@ public class Interpreter {
 		}
 	}
 
+	private void handleCompareAll(String[] cmd) {
+		int testFileCount = 37;
+		if (cmd.length > 1) {
+			testFileCount = Integer.parseInt(cmd[1]);
+		}
+
+
+		for (int i = 0; i < testFileCount; i++) {
+			Printer.setFile("tesztek/tempFile.txt");
+			try {
+				Scanner sc = new Scanner(new File("tesztek/testInput" + (i + 1) + ".txt"));
+				String fileCmd;
+				while ((sc.hasNextLine())) {
+					fileCmd = sc.nextLine();
+					String[] cmdParts = fileCmd.split(" ");
+					handleCommand(cmdParts);
+				}
+			} catch (FileNotFoundException e) {
+				Indent.print("Fajl nem letezik, probald ujra.");
+			}
+			resetGame();
+			Printer.closeFile();
+			System.out.println((i + 1) + ". teszt:");
+			String[] command = {"compare", "tesztek/tempFile.txt", "tesztek/testOutput" + (i + 1) + ".txt"};
+			handleCompare(command);
+		}
+	}
 
 	/*Checker functions*/
 	private boolean orangutanCheck(String[] cmd) {
@@ -657,5 +689,10 @@ public class Interpreter {
 			return true;
 		}
 		return false;
+	}
+
+	private void resetGame() {
+		Controller.reset();
+		board.reset();
 	}
 }

@@ -1,0 +1,8 @@
+random
+tile t1
+tile t2
+tile t2 t1
+panda p t1
+gamemachine gm t2
+step p t2
+stats

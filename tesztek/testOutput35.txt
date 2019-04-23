@@ -1,0 +1,23 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	Element: gm1
+	neighbour1: bt1
+	neighbour2: t2
+gm1:
+	position: t1
+bt1:
+	life: 18
+	isJingling: true
+	isWhistling: false
+	neighbour1: t1
+	neighbour2: t2
+t2:
+	isJingling: true
+	isWhistling: false
+	Element: jp1
+	neighbour1: t1
+	neighbour2: bt1
+jp1:
+	position: t2
+	isAlive: true

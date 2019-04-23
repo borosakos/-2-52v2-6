@@ -1,0 +1,32 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	Element: o1
+	neighbour1: t2
+o1:
+	position: t1
+	points: 0
+t2:
+	isJingling: false
+	isWhistling: false
+	Element: w1
+	neighbour1: t1
+	neighbour2: t3
+w1:
+	position: t2
+	doorTile: t1
+t3:
+	isJingling: false
+	isWhistling: false
+	Element: w2
+	neighbour1: t2
+	neighbour2: t4
+w2:
+	position: t3
+	doorTile: t4
+	end: w1
+	otherWardrobe1: w1
+t4:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t3

@@ -1,0 +1,8 @@
+tile t1
+tile t2
+tile t3
+tile t2 t1 t3
+armchair ac t3
+tpanda tp t2
+step tp t1
+stats

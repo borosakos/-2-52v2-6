@@ -1,6 +1,6 @@
 package skeleton;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -42,7 +42,6 @@ public class Wardrobe extends Element {
 	private Wardrobe end;
 
 
-
 	/**
 	 * Elteleportalja az orangutant a szekreny melletti mezore.
 	 *
@@ -72,9 +71,9 @@ public class Wardrobe extends Element {
 	 *
 	 * @return kivalasztott wardrobe
 	 */
-	
+
 	public Wardrobe selectRandomWardrobe() {
-		if(!Controller.getRandom()) return end;
+		if (!Controller.getRandom()) return end;
 		int index = (int)(Math.random() * otherWardrobes.size());
 
 		return otherWardrobes.get(index);
@@ -122,7 +121,7 @@ public class Wardrobe extends Element {
 	public boolean collideWith(Element e) {
 		return false;
 	}
-	
+
 	public void setDoorTile(Tile t) {
 		doorTile = t;
 	}
@@ -134,11 +133,11 @@ public class Wardrobe extends Element {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("doorTile: " + doorTile.getName());
-		if(end!=null) Printer.print("end: " + end.getName());
-		if(otherWardrobes.size()!=0) {
-		for (int i = 0; i < otherWardrobes.size(); i++) {
-			Printer.print("otherWardrobe" + (i+1) + ": " + otherWardrobes.get(i).getName());
-		}
+		if (end != null) Printer.print("end: " + end.getName());
+		if (otherWardrobes.size() != 0) {
+			for (int i = 0; i < otherWardrobes.size(); i++) {
+				Printer.print("otherWardrobe" + (i + 1) + ": " + otherWardrobes.get(i).getName());
+			}
 		}
 	}
 }

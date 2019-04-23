@@ -1,0 +1,9 @@
+random
+tile t1
+gamemachine gm1 t1
+btile 20 bt1 t1
+jpanda jp1 bt1
+tile t2 t1 bt1
+jingle gm1
+step jp1 t2
+stats

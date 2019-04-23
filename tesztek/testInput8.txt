@@ -1,0 +1,5 @@
+btile 1 t1
+tile t2 t1
+panda p t1
+step p t2
+stats

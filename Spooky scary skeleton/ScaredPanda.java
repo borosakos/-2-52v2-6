@@ -47,8 +47,8 @@ public class ScaredPanda extends Panda {
 			getBackNeighbour().release();
 		}
 	}
-	
-		/**
+
+	/**
 	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
 	 */
 	public void printStats() {

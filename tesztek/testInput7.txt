@@ -1,0 +1,13 @@
+tile t1
+tile t2
+tile t3
+tile t4
+tile t2 t1 t4 t3
+spanda sp t2
+panda p t1
+queue sp p
+random -1
+chocolatemachine chm t4
+whistle chm
+step sp t3
+stats

@@ -1,6 +1,5 @@
 package skeleton;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -22,24 +21,17 @@ public class Panda extends Animal {
 	 * Default constructor
 	 */
 	public Panda() {
-		Indent.print("Panda()");
-		Indent.inc();
-
 		isAlive = true;
 		//frontNeighbour = null;
-		Indent.dec();
 	}
 
 	public Panda(boolean b) {
-		Indent.print("Panda()");
-		Indent.inc();
 		controlled = b;
 		if (!b) {
 			Tile t = new Tile();
 			this.position = t;
 			t.setElement(this);
 		}
-		Indent.dec();
 	}
 
 
@@ -51,40 +43,36 @@ public class Panda extends Animal {
 	 * akkor visszater.
 	 */
 	public void step() {
-		
+
 
 		detect();
 		if (!isAlive) {
-			Indent.dec();
 			return;
 		}
 		Tile current = this.getTile();
 
 		if (isInQueue()) {
-			
-				return;
-		
+
+			return;
+
 		}
 
 		Tile t2 = selectTile();
 
 		if (t2 == null || !t2.accept(this)) {
-			Indent.dec();
 			return;
 		}
 
 		getTile().remove();
 		t2.take(this);
-		
-		if(Controller.gameOn) {
-			Indent.print("Panda "+this.getName()+" steps to "+t2.name);
+
+		if (Controller.gameOn) {
+			Indent.print("Panda " + this.getName() + " steps to " + t2.name);
 		}
 
 		if (isInQueue()) {
 			backNeighbour.follow(current);
 		}
-		
-		Indent.dec();
 	}
 
 
@@ -96,21 +84,16 @@ public class Panda extends Animal {
 	 * akkor visszater.
 	 */
 	public void follow(Tile t) {
-		Indent.print("Panda follow(Tile t)");
-		Indent.inc();
 		Tile t2 = getTile();
-		
+
 		t2.remove();
 		t.take(this);
 		this.position = t;
 		if (backNeighbour != null) backNeighbour.follow(t2);
-		
-		if(Controller.gameOn) {
-			Indent.print("Panda "+this.getName()+" follows "+this.frontNeighbour.name+" to "+t.name);
+
+		if (Controller.gameOn) {
+			Indent.print("Panda " + this.getName() + " follows " + this.frontNeighbour.name + " to " + t.name);
 		}
-		
-		
-		Indent.dec();
 	}
 
 	/**
@@ -120,8 +103,6 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void detect() {
-		Indent.inc();
-		Indent.dec();
 	}
 
 	/**
@@ -134,7 +115,7 @@ public class Panda extends Animal {
 		Random r = new Random();
 		int low = 0;
 		int high = getTile().getNeighbours().size();
-		int result = r.nextInt(high-low) + low;
+		int result = r.nextInt(high - low) + low;
 		return getTile().getNeighbours().get(result);
 	}
 
@@ -145,8 +126,6 @@ public class Panda extends Animal {
 	 * @return false
 	 */
 	public boolean hitBy(Orangutan o) {
-		Indent.print("Panda hitBy()");
-		Indent.inc();
 		if (isInQueue()) o.die();
 
 		Panda p2 = o.getBackNeighbour();
@@ -156,8 +135,6 @@ public class Panda extends Animal {
 			p2.setFrontNeighbour(this);
 			setBackNeighbour(p2);
 		}
-
-		Indent.dec();
 		return false;
 	}
 
@@ -168,7 +145,8 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	protected void setFrontNeighbour(Animal animal) {
-		if(Controller.gameOn && animal!=null) Indent.print("Panda "+this.name+" got in queue after "+animal.name);
+		if (Controller.gameOn && animal != null)
+			Indent.print("Panda " + this.name + " got in queue after " + animal.name);
 		frontNeighbour = animal;
 	}
 
@@ -180,9 +158,6 @@ public class Panda extends Animal {
 	 * @return false
 	 */
 	public boolean hitBy(Panda p) {
-		Indent.print("Panda hitBy()");
-		Indent.inc();
-		Indent.dec();
 		return false;
 	}
 
@@ -204,7 +179,7 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void die() {
-		
+
 		isAlive = false;
 		getTile().setElement(null);
 		if (frontNeighbour != null) getFrontNeighbour().setBackNeighbour(null);
@@ -220,7 +195,7 @@ public class Panda extends Animal {
 	 * @return A panda eletban van-e
 	 */
 	public boolean getIsAlive() {
-		
+
 		return isAlive;
 	}
 
@@ -231,7 +206,7 @@ public class Panda extends Animal {
 	 * @return A panda elott allo allatot adja vissza.
 	 */
 	protected Animal getFrontNeighbour() {
-		
+
 		return frontNeighbour;
 	}
 
@@ -276,8 +251,8 @@ public class Panda extends Animal {
 	 * @return A panda sorban all-e.
 	 */
 	public boolean isInQueue() {
-		
-		return (frontNeighbour!=null);
+
+		return (frontNeighbour != null);
 	}
 
 	@Override
@@ -295,7 +270,7 @@ public class Panda extends Animal {
 			}
 		}
 		Tile t2 = t;
-		if(Controller.getRandom()) {
+		if (Controller.getRandom()) {
 			t2 = selectTile();
 		}
 
@@ -304,10 +279,12 @@ public class Panda extends Animal {
 		}
 		getTile().remove();
 		t2.take(this);
-		if (isInQueue()) {backNeighbour.follow(current);}
+		if (isInQueue()) {
+			backNeighbour.follow(current);
+		}
 	}
-	
-		
+
+
 	/**
 	 * Kiprinteli standard outputra vagy egy fajlba az objektum allapotat.
 	 */
@@ -315,9 +292,9 @@ public class Panda extends Animal {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("isAlive: " + isAlive);
-		
-		if(backNeighbour!=null) Printer.print("backNeighbour: " + backNeighbour.getName());
-		if(frontNeighbour!=null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
+
+		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
+		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
 	}
 }
 

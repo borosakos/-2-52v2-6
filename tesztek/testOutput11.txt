@@ -1,0 +1,9 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	neighbour1: t2
+t2:
+	life: 0
+	isJingling: false
+	isWhistling: false
+	neighbour1: t1

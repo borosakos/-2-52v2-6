@@ -1,0 +1,17 @@
+t1:
+	isJingling: false
+	isWhistling: false
+	Element: p
+	neighbour1: t2
+	neighbouringArmchair1: ac
+p:
+	position: t1
+	isAlive: true
+t2:
+	isJingling: false
+	isWhistling: false
+	Element: ac
+	neighbour1: t1
+ac:
+	position: t2
+	isOccupied: false

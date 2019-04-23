@@ -1,0 +1,10 @@
+random
+tile t1
+tile t2 t1
+tile t3 t2
+panda p1 t1
+orangutan o1 t2
+orangutan o2 t3
+queue o1 p1
+step o2 t2
+stats

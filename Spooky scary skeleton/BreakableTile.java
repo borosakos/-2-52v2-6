@@ -1,10 +1,5 @@
 package skeleton;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
 /**
  * Egy torekeny csempet reprezentalo osztaly
  */
@@ -52,7 +47,7 @@ public class BreakableTile extends Tile {
 				return a.collideWith(element);
 			}
 		}
-			
+
 		if (life < 1) {
 			a.die();
 			Indent.dec();
@@ -74,15 +69,14 @@ public class BreakableTile extends Tile {
 	 */
 	public boolean lifeDecrease(int i) {
 		life -= i;
-		if (life <= 0) return true;
-		return false;
+		return life <= 0;
 	}
 
 	/**
 	 * Leszedi az allatot magarol, es meghivja a lifeDecrease fuggvenyt.
 	 */
 	public void remove() {
-		if(lifeDecrease(1));
+		if (lifeDecrease(1)) ;
 		element = null;
 	}
 
@@ -94,9 +88,9 @@ public class BreakableTile extends Tile {
 	public int getLife() {
 		return life;
 	}
-	
+
 	public void setElement(Animal a) {
-		if(life<=0) {
+		if (life <= 0) {
 			a.die();
 			return;
 		}
@@ -116,10 +110,10 @@ public class BreakableTile extends Tile {
 		Printer.print("isWhistling: " + isWhistling);
 		if (element != null) Printer.print("Element: " + element.getName());
 		for (int i = 0; i < neighbours.size(); i++) {
-			Printer.print("neighbour" + (i+1) + ": " + neighbours.get(i).getName());
+			Printer.print("neighbour" + (i + 1) + ": " + neighbours.get(i).getName());
 		}
 		for (int i = 0; i < neighbouringArmchairs.size(); i++) {
-			Printer.print("neighbouringArmchair" + (i+1) + ": " + neighbouringArmchairs.get(i).getName());
+			Printer.print("neighbouringArmchair" + (i + 1) + ": " + neighbouringArmchairs.get(i).getName());
 		}
 	}
 }
