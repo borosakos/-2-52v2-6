@@ -13,7 +13,17 @@ public class GameMachine extends Element implements Steppable{
 	 */
 	public void step() {
 		if(Controller.getRandom()) {
-			if(rand()) jingle();
+			if(rand()) {
+				if(Controller.gameOn) {
+					Indent.inc();
+					Indent.print("GameMachine "+this.name+" jingles.");
+					Indent.dec();
+				}
+				jingle();
+			} else {
+				for (Tile t : position.getNeighbours())
+					t.setIsJingling(false);
+			}
 		}
 	}
 

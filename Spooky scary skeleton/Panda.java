@@ -1,6 +1,7 @@
 package skeleton;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -50,8 +51,7 @@ public class Panda extends Animal {
 	 * akkor visszater.
 	 */
 	public void step() {
-		Indent.print("Panda step()");
-		Indent.inc();
+		
 
 		detect();
 		if (!isAlive) {
@@ -61,10 +61,9 @@ public class Panda extends Animal {
 		Tile current = this.getTile();
 
 		if (isInQueue()) {
-			if (!controlled) {
-				Indent.dec();
+			
 				return;
-			}
+		
 		}
 
 		Tile t2 = selectTile();
@@ -76,14 +75,16 @@ public class Panda extends Animal {
 
 		getTile().remove();
 		t2.take(this);
-
+		
+		if(Controller.gameOn) {
+			Indent.print("Panda "+this.getName()+" steps to "+t2.name);
+		}
 
 		if (isInQueue()) {
 			backNeighbour.follow(current);
 		}
-
+		
 		Indent.dec();
-
 	}
 
 
@@ -103,7 +104,12 @@ public class Panda extends Animal {
 		t.take(this);
 		this.position = t;
 		if (backNeighbour != null) backNeighbour.follow(t2);
-
+		
+		if(Controller.gameOn) {
+			Indent.print("Panda "+this.getName()+" follows "+this.frontNeighbour.name+" to "+t.name);
+		}
+		
+		
 		Indent.dec();
 	}
 
@@ -114,7 +120,6 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void detect() {
-		Indent.print("Panda detect()");
 		Indent.inc();
 		Indent.dec();
 	}
@@ -126,9 +131,11 @@ public class Panda extends Animal {
 	 * @return Viszzater a kivalasztott csempevel.
 	 */
 	public Tile selectTile() {
-		Indent.print("Panda selectTile()");
-		
-		return getTile().getNeighbours().get((int)(Math.random() * getTile().getNeighbours().size()));
+		Random r = new Random();
+		int low = 0;
+		int high = getTile().getNeighbours().size();
+		int result = r.nextInt(high-low) + low;
+		return getTile().getNeighbours().get(result);
 	}
 
 	/**
@@ -161,12 +168,8 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	protected void setFrontNeighbour(Animal animal) {
-		Indent.print("Panda setFrontNeighbour(Animal)");
-		Indent.inc();
-
+		if(Controller.gameOn && animal!=null) Indent.print("Panda "+this.name+" got in queue after "+animal.name);
 		frontNeighbour = animal;
-
-		Indent.dec();
 	}
 
 
@@ -255,8 +258,6 @@ public class Panda extends Animal {
 	 * @return
 	 */
 	public void release() {
-
-
 		if (frontNeighbour != null) {
 			getFrontNeighbour().setBackNeighbour(null);
 			setFrontNeighbour(null);

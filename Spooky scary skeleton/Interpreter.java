@@ -124,6 +124,24 @@ public class Interpreter {
 			case "compare":
 				handleCompare(cmdParts);
 				break;
+			case "start":
+				try {
+					Scanner sc = new Scanner(new File("palya.txt"));
+					String fileCmd;
+					while ((sc.hasNextLine())) {
+						fileCmd = sc.nextLine();
+						cmdParts = fileCmd.split(" ");
+						handleCommand(cmdParts);
+					}
+				} catch (FileNotFoundException e) {
+					Indent.print("Fajl nem letezik, probald ujra.");
+				}
+				Controller.setRandom(true);
+				if (Controller.getRandom()) Indent.print("Turning randomization on");
+				Controller.gameOn = true;
+				Game game = new Game(board);
+				game.startGame();
+				break;
 		}
 	}
 
@@ -348,6 +366,12 @@ public class Interpreter {
 		if (cmd.length < 4) {
 			Indent.print("No door tile given.");
 			return;
+		}
+		if(cmd[1].equals("connect")) {
+			Wardrobe w1 = Controller.getWardrobe(cmd[2]);
+			Wardrobe w2 = Controller.getWardrobe(cmd[3]);
+			w1.setEnd(w2);
+			w2.setEnd(w1);
 		}
 		Tile t = board.getTByName(cmd[2]);
 

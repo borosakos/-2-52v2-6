@@ -19,6 +19,7 @@ public class Controller {
 	private static ArrayList<Element> elements = new ArrayList<>();
 	private static ArrayList<Wardrobe> wardrobes = new ArrayList<>();
 	private static boolean random = true;
+	public static boolean gameOn = false;
 
 	/**
 	 * A pandakat tartalmazo tomb
@@ -43,7 +44,7 @@ public class Controller {
 	 * belso for ciklusnak (igy a jatekban konnyebb lesz elkapni
 	 * a pandakat).
 	 */
-	public void tick() {
+	public static void tick() {
 		if (game.hasEnded()) {
 			game.endGame();
 			return;

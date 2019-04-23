@@ -1,13 +1,14 @@
 package skeleton;
 
 public class Game {
-	public Controller controller;
 	public Board board;
 	boolean end = false;
 
 	Game() {
-		controller = new Controller();
 		board = new Board();
+	}
+	Game(Board _board) {
+		board = _board;
 	}
 
 	public void endGame() {
@@ -15,9 +16,9 @@ public class Game {
 	}
 
 	public void startGame() {
-		//while(!this.hasEnded()) {
-		controller.tick();
-		//}
+		while(!this.hasEnded()) {
+		Controller.tick();
+		}
 	}
 
 	public boolean hasEnded() {

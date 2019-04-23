@@ -134,9 +134,11 @@ public class Wardrobe extends Element {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("doorTile: " + doorTile.getName());
-		Printer.print("end: " + end.getName());
+		if(end!=null) Printer.print("end: " + end.getName());
+		if(otherWardrobes.size()!=0) {
 		for (int i = 0; i < otherWardrobes.size(); i++) {
 			Printer.print("otherWardrobe" + (i+1) + ": " + otherWardrobes.get(i).getName());
+		}
 		}
 	}
 }

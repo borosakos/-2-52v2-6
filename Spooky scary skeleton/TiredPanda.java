@@ -51,6 +51,9 @@ public class TiredPanda extends Panda {
 		ac.setOccupied(true);
 		getTile().remove();
 		position = null;
+		if(Controller.gameOn) {
+			Indent.print("TiredPanda "+this.name+" sits down on "+ac.name);
+		}
 	}
 
 	/**
@@ -120,7 +123,7 @@ public class TiredPanda extends Panda {
 
 		isSitting = false;
 		for (Tile t : inArmchair.getTile().getNeighbours()) {
-			if (t.getElement().equals(null)) t.take(this);
+			if (t.getElement()==null) t.take(this);
 		}
 		inArmchair.setOccupied(false);
 		inArmchair = null;

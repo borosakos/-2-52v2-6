@@ -48,16 +48,22 @@ public class Orangutan extends Animal {
 	public Tile selectTile() {
 		Scanner sc = new Scanner(System.in);
 		String selection;
-
-		for (int i = 1; i < position.getNeighbours().size(); i++) {
-			Indent.print(i + ".: " + position.getNeighbours().get(i).name);
+		Indent.print("***Orangutan "+this.name+" lep***");
+		Indent.print("Jelenlegi helyzet: "+this.position.getName());
+		for (int i = 0; i < position.getNeighbours().size(); i++) {
+			if(this.backNeighbour!=null) {
+				if(position.getNeighbours().get(i)!=this.backNeighbour.position) Indent.print(i + ".: " + position.getNeighbours().get(i).name);
+			} else {
+				Indent.print(i + ".: " + position.getNeighbours().get(i).name);
+			}
+			
 		}
 		Indent.print("Ird be a valasztott csempe szamat!");
 		selection = sc.nextLine();
 
 		int index = Integer.parseInt(selection);
 
-		return position.getNeighbours().get(index - 1);
+		return position.getNeighbours().get(index);
 	}
 
 	/**
@@ -119,6 +125,7 @@ public class Orangutan extends Animal {
 		if (accept) {
 			position.remove();
 			tostep.take(this);
+			this.position = tostep;
 		}
 		boolean inQueue = this.isInQueue();
 		if (inQueue && accept) {
@@ -157,6 +164,9 @@ public class Orangutan extends Animal {
 		} else if (10 < points) {
 			points += 10;
 		}
+		if(Controller.gameOn) {
+			Indent.print("Orangutan "+this.name+" got "+points+" points.");
+		}
 		return points;
 	}
 
@@ -193,6 +203,7 @@ public class Orangutan extends Animal {
 		if(!p.isInQueue()) {
 			getTile().swap(p.getTile());
 		}
+		this.backNeighbour.setFrontNeighbour(this);
 	}
 
 	@Override

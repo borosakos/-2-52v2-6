@@ -82,7 +82,7 @@ public class BreakableTile extends Tile {
 	 * Leszedi az allatot magarol, es meghivja a lifeDecrease fuggvenyt.
 	 */
 	public void remove() {
-		if(lifeDecrease(1)) Indent.print("gel");
+		if(lifeDecrease(1));
 		element = null;
 	}
 
