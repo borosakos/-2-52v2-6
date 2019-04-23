@@ -54,7 +54,7 @@ tile t52 t51 t42
 btile 20 t53 t52 t43
 tile t54 t53 t44
 tile t55 t54 t45
-tile t56 t55 t46
+btile 0 t56 t55 t46
 tile t57 t56 t47
 tile t58 t57 t48
 tile t59 t58 t49
@@ -99,7 +99,7 @@ tile t97 t96 t87
 tile t98 t97 t88
 tile t99 t98 t89
 orangutan o1 t00
-orangutann o2 t29
+orangutan o2 t29
 panda p1 t08
 panda p2 t32
 panda p3 t41

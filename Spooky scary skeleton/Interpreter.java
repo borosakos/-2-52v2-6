@@ -694,5 +694,6 @@ public class Interpreter {
 	private void resetGame() {
 		Controller.reset();
 		board.reset();
+		Controller.setRandom(true);
 	}
 }

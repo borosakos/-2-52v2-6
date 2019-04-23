@@ -44,6 +44,7 @@ public class ScaredPanda extends Panda {
 		becomeScared();
 		setFrontNeighbour(null);
 		if (backNeighbour != null) {
+			Indent.print("A ScaredPanda, named "+this.name+" got scared, hence the dissolution of its queue.");
 			getBackNeighbour().release();
 		}
 	}

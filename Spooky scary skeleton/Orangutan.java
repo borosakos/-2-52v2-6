@@ -22,6 +22,7 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void release() {
+		Indent.print("Orangutan "+this.name+" released its queue." );
 		if (backNeighbour != null) {
 			backNeighbour.release();
 		}
@@ -35,6 +36,11 @@ public class Orangutan extends Animal {
 		release();
 		position.element = null;
 		position = null;
+		Indent.print("!*!*!*!*!*!*!* R.I.P "+this.name +" *!*!*!*!*!*!*!");
+		Indent.print("Our brave fighter, under the legendary name of "+this.name+" has suffered tragic death amongst unbearable circumstances.");
+		Indent.print("You will be missed, and will always have a well-kept place within all our hearts.");
+		Indent.print("You've been a great friend, a perfect lover, and a loving husband.");
+		Indent.print("Thy name shall not be forgotten. Rest in peace, brother! ;(");
 		Controller.game.endGame();
 	}
 
@@ -61,7 +67,10 @@ public class Orangutan extends Animal {
 		}
 		Indent.print("Ird be a valasztott csempe szamat!");
 		selection = sc.nextLine();
-
+		if(selection.equals("release")) {
+			this.release();
+			return this.selectTile();
+		}
 		int index = Integer.parseInt(selection);
 
 		return position.getNeighbours().get(index);

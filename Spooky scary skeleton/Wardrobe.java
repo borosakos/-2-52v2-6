@@ -48,10 +48,11 @@ public class Wardrobe extends Element {
 	 * @param o teleportalando orangutan
 	 */
 	public void teleport(Orangutan o) {
+	
 		doorTile.accept(o);
 		o.getTile().remove();
 		doorTile.take(o);
-		if (o.isInQueue()) o.getBackNeighbour().follow(doorTile);
+		//if (o.isInQueue()) o.getBackNeighbour().follow(doorTile);
 	}
 
 	/**
@@ -87,7 +88,15 @@ public class Wardrobe extends Element {
 	 */
 	public boolean hitBy(Orangutan o) {
 		setEnd(selectRandomWardrobe());
+		Tile followTile = o.position;
 		end.teleport(o);
+		Tile tpTile = o.position;
+
+		if (o.isInQueue()) {
+			o.position = followTile;
+			o.getBackNeighbour().follow(doorTile);
+			o.position = tpTile;
+		}
 		return false;
 	}
 
