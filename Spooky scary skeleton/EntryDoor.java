@@ -1,5 +1,8 @@
 package skeleton;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  */
@@ -18,6 +21,17 @@ public class EntryDoor extends Door {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("doorTile: " + doorTile.getName());
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("ed.png"));
 	}
 
 }

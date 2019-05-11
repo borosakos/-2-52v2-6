@@ -20,6 +20,7 @@ public class Controller {
 	private static ArrayList<Wardrobe> wardrobes = new ArrayList<>();
 	private static boolean random = true;
 	public static boolean gameOn = false;
+	public static Graphics graphics = new Graphics();
 
 	/**
 	 * A pandakat tartalmazo tomb
@@ -51,15 +52,33 @@ public class Controller {
 		} else {
 			for (int i = 0; i < 3; i++) {
 				for (Orangutan o : orangutans) {
-					o.step();
+					Controller.graphics.stepHighlight(o);
+					o.wannaStep();
+					while(o.toStep==true) {try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}}
+					Controller.graphics.redraw();
 				}
 			}
 			for (Panda p : pandas) {
 				if (p.getIsAlive()) p.step();
+				if(!p.isInQueue() && p.isAlive){
+					{try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}}
+				}
+				Controller.graphics.redraw();
 			}
 			for (Steppable s : steppables) {
 				s.step();
 			}
+			Controller.graphics.redraw();
 		}
 	}
 
@@ -137,6 +156,15 @@ public class Controller {
 			}
 		}
 		return false;
+	}
+	
+	public static Orangutan getOrangutan(String name) {
+		for (Orangutan o : orangutans) {
+			if (o.getName().equals(name)) {
+				return o;
+			}
+		}
+		return null;
 	}
 
 	public static boolean hasWardrobe(String name) {
@@ -220,5 +248,15 @@ public class Controller {
 		orangutans.clear();
 		wardrobes.clear();
 		pandas.clear();
+	}
+
+
+	public Graphics getGraphics() {
+		return graphics;
+	}
+
+
+	public void setGraphics(Graphics graphics) {
+		this.graphics = graphics;
 	}
 }

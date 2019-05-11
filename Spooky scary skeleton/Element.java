@@ -1,15 +1,20 @@
 package skeleton;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  */
-public abstract class Element extends Nameable {
+public abstract class Element extends Nameable implements IDrawable{
 
 	/**
 	 * Default constructor
 	 */
 	public Element() {
+
 	}
+	
 
 	public void setTile(Tile t) {
 		position = t;

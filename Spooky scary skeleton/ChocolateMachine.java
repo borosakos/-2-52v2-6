@@ -1,5 +1,8 @@
 package skeleton;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  * Egy csempen levo csokiautomata. Koronkent van esely arra, hogy sipol egyet.
  *
@@ -92,5 +95,16 @@ public class ChocolateMachine extends Element implements Steppable {
 	public void printStats() {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("csoki.png"));
 	}
 }

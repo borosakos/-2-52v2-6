@@ -2,6 +2,9 @@ package skeleton;
 
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  */
@@ -10,7 +13,7 @@ public class Panda extends Animal {
 
 	protected boolean isAlive;
 	protected Animal frontNeighbour;
-
+	
 	/**
 	 * A szkeletonnak egy jelzo boolean, ami azt jelzi, hogy a tesztelo
 	 * iranyitja-e a pandat
@@ -33,6 +36,8 @@ public class Panda extends Animal {
 			t.setElement(this);
 		}
 	}
+	
+
 
 
 	/**
@@ -91,9 +96,7 @@ public class Panda extends Animal {
 		this.position = t;
 		if (backNeighbour != null) backNeighbour.follow(t2);
 
-		if (Controller.gameOn) {
-			Indent.print("Panda " + this.getName() + " follows " + this.frontNeighbour.name + " to " + t.name);
-		}
+		
 	}
 
 	/**
@@ -126,7 +129,8 @@ public class Panda extends Animal {
 	 * @return false
 	 */
 	public boolean hitBy(Orangutan o) {
-		if (isInQueue()) o.die();
+		if (isInQueue() && !isInQueueOf(o)) o.die();
+		if(isInQueueOf(o)) return false;
 
 		Panda p2 = o.getBackNeighbour();
 		o.grab(this);
@@ -134,6 +138,17 @@ public class Panda extends Animal {
 		if (p2 != null) {
 			p2.setFrontNeighbour(this);
 			setBackNeighbour(p2);
+		}
+		return false;
+	}
+	
+	public boolean isInQueueOf(Orangutan o) {
+		Panda lastBackNeighbour = o.backNeighbour;
+		while (lastBackNeighbour != null) {
+			if(lastBackNeighbour.equals(this)) {
+				return true;
+			}
+			lastBackNeighbour = lastBackNeighbour.backNeighbour;
 		}
 		return false;
 	}
@@ -257,7 +272,6 @@ public class Panda extends Animal {
 
 	@Override
 	public void step(Tile t) {
-
 		detect();
 		if (!isAlive) {
 			return;
@@ -295,6 +309,19 @@ public class Panda extends Animal {
 
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		// TODO Auto-generated method stub
+		ImageIcon image = new ImageIcon("panda.png");
+		label.setIcon(image);
 	}
 }
 

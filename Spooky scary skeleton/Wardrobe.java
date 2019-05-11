@@ -2,6 +2,9 @@ package skeleton;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  */
@@ -24,6 +27,14 @@ public class Wardrobe extends Element {
 
 	public Wardrobe(String n) {
 		name = n;
+		for (Wardrobe w : Controller.getWardrobes()) {
+			if (!w.name.equals(this.getName())) {
+				otherWardrobes.add(w);
+			}
+		}
+	}
+	
+	public void resetOtherWardrobes() {
 		for (Wardrobe w : Controller.getWardrobes()) {
 			if (!w.name.equals(this.getName())) {
 				otherWardrobes.add(w);
@@ -75,9 +86,13 @@ public class Wardrobe extends Element {
 
 	public Wardrobe selectRandomWardrobe() {
 		if (!Controller.getRandom()) return end;
-		int index = (int)(Math.random() * otherWardrobes.size());
-
-		return otherWardrobes.get(index);
+		
+			for(Wardrobe w:otherWardrobes) {
+				if(Math.random() < 0.5) return w;
+			}
+		
+		return otherWardrobes.get(0);
+		
 	}
 
 	/**
@@ -148,5 +163,16 @@ public class Wardrobe extends Element {
 				Printer.print("otherWardrobe" + (i + 1) + ": " + otherWardrobes.get(i).getName());
 			}
 		}
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("wd.png"));
 	}
 }

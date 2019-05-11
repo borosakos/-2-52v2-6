@@ -1,5 +1,8 @@
 package skeleton;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  */
@@ -64,6 +67,18 @@ public class Armchair extends Element {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
 		Printer.print("isOccupied: " + isOccupied);
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("ac.png"));
+		if(isOccupied) label.setIcon(new ImageIcon("acs.png"));
 	}
 
 

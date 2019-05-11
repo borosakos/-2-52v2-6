@@ -1,5 +1,8 @@
 package skeleton;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  * Egy csempen levo jatekgep. Koronkent van esely arra, hogy csilingel.
  *
@@ -91,5 +94,16 @@ public class GameMachine extends Element implements Steppable {
 	public void printStats() {
 		Printer.printName(name);
 		Printer.print("position: " + position.getName());
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("gm.png"));
 	}
 }

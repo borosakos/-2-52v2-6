@@ -1,6 +1,11 @@
 package skeleton;
 
+import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * Az orangutan osztaly, ami az Animal osztalybol szarmazik, igy heterogen kollekcioban
@@ -17,6 +22,14 @@ public class Orangutan extends Animal {
 	 **/
 	int points;
 
+	public boolean toStep = false;
+	private int canSteal = 0;
+	ArrayList<Float> color = new ArrayList<>();
+	
+	public Orangutan() {
+		setColor(1.0f, 1.0f, 1.0f, 0.0f);
+	}
+
 	/**
 	 * Elengedi a mogotte allo panda kezet, ha van olyan.
 	 **/
@@ -26,6 +39,15 @@ public class Orangutan extends Animal {
 		if (backNeighbour != null) {
 			backNeighbour.release();
 		}
+	}
+	
+	public void wannaStep() {
+		toStep=true;
+	}
+	
+	public void setColor(float r, float g, float b, float a) {
+		color.clear();
+		color.add(r); color.add(g); color.add(b); color.add(a);
 	}
 
 	/**
@@ -86,12 +108,14 @@ public class Orangutan extends Animal {
 	@Override
 	public boolean hitBy(Orangutan o) {
 		if (o.isInQueue()) return false;
-		this.position.swap(o.position);
+		
 
-		if (isInQueue()) {
+		if (isInQueue() && o.canSteal<=0) {
+			this.position.swap(o.position);
 			o.setBackNeighbour(this.backNeighbour);
 			this.backNeighbour.setFrontNeighbour(o);
 			this.backNeighbour = null;
+			this.canSteal = 3;
 		}
 
 		return false;
@@ -129,6 +153,7 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void step() {
+		
 		Tile current = this.position;
 		Tile tostep = this.selectTile();
 		boolean accept = tostep.accept(this);
@@ -218,6 +243,8 @@ public class Orangutan extends Animal {
 
 	@Override
 	public void step(Tile t) {
+		this.canSteal--;
+		toStep = false;
 		Tile current = this.position;
 		Tile tostep = t;
 		boolean accept = tostep.accept(this);
@@ -239,5 +266,19 @@ public class Orangutan extends Animal {
 		Printer.print("position: " + position.getName());
 		Printer.print("points: " + points);
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(JLabel label) {
+		// TODO Auto-generated method stub
+		ImageIcon image = new ImageIcon("orangutan.png");
+		label.setIcon(image);
+		
 	}
 }

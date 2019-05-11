@@ -1,5 +1,10 @@
 package skeleton;
 
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  * Egy torekeny csempet reprezentalo osztaly
  */
@@ -30,6 +35,7 @@ public class BreakableTile extends Tile {
 			a.die();
 		} else {
 			element = a;
+			a.position = this;
 		}
 	}
 
@@ -116,4 +122,23 @@ public class BreakableTile extends Tile {
 			Printer.print("neighbouringArmchair" + (i + 1) + ": " + neighbouringArmchairs.get(i).getName());
 		}
 	}
+	
+	public void draw(JLabel label) {
+		ImageIcon image = new ImageIcon("btile.png");
+		if(this.life<=0) image = new ImageIcon("gap.png");
+		label.setIcon(image);
+	}
+	
+	public void draw(JLabel label, JLabel element) {
+		ImageIcon image = new ImageIcon("btile.png");
+		label.setIcon(image);
+		element.setOpaque(false);
+		element.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		if(this.element!=null)this.getElement().draw(element);
+		if(this.element==null)element.setIcon(new ImageIcon("empty.png"));
+		if(this.isJingling)label.setIcon(new ImageIcon("jbtile.png"));
+		if(this.isWhistling)label.setIcon(new ImageIcon("wbtile.png"));
+		if(this.life<=0) label.setIcon(new ImageIcon("gap.png"));
+	}
+	
 }

@@ -3,6 +3,9 @@ package skeleton;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  */
@@ -54,6 +57,7 @@ public class TiredPanda extends Panda {
 		if (Controller.gameOn) {
 			Indent.print("TiredPanda " + this.name + " sits down on " + ac.name);
 		}
+		if(frontNeighbour!=null)frontNeighbour.release();
 	}
 
 	/**
@@ -123,7 +127,9 @@ public class TiredPanda extends Panda {
 
 		isSitting = false;
 		for (Tile t : inArmchair.getTile().getNeighbours()) {
-			if (t.getElement() == null) t.take(this);
+			if (t.getElement() == null) {
+				t.take(this); break;
+			}
 		}
 		inArmchair.setOccupied(false);
 		inArmchair = null;
@@ -222,5 +228,9 @@ public class TiredPanda extends Panda {
 		Printer.print("isSitting: " + isSitting);
 		if (inArmchair != null) Printer.print("isArmchair: " + inArmchair.getName());
 		Printer.print("sittingTimeLeft: " + sittingTimeLeft);
+	}
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("tpanda.png"));
 	}
 }

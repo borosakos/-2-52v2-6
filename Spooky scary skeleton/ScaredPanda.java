@@ -1,5 +1,8 @@
 package skeleton;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  */
@@ -58,6 +61,10 @@ public class ScaredPanda extends Panda {
 		Printer.print("isAlive: " + isAlive);
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
+	}
+	@Override
+	public void draw(JLabel label) {
+		label.setIcon(new ImageIcon("spanda.png"));
 	}
 
 }
