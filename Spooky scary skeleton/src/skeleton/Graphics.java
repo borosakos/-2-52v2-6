@@ -84,7 +84,6 @@ public class Graphics {
 	public ArrayList<Line> lines = new ArrayList<>();
 
 	private void drawLines() {
-
 		ArrayList<Tile> theTiles = new ArrayList<>(Controller.game.board.getTiles());
 
 		for (int i = 0; i < theTiles.size(); i++) {
@@ -138,7 +137,6 @@ public class Graphics {
 		GridLayout grid = new GridLayout(10, 10, 0, 0);
 		p1.setLayout(grid);
 		p2.setLayout(grid);
-		wp.setLayout(grid); //???
 
 		redraw();
 		p1.setBounds(0, 0, 500, 500);

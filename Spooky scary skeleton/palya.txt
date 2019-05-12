@@ -1,126 +1,59 @@
-tile t00
-tile t01 t00
-tile t02 t01
-tile t03 t02
-tile t04 t03
-tile t05 t04
-tile t06 t05
-tile t07 t06
-tile t08 t07
-tile t09 t08
-tile t10 t00
-tile t11 t10 t01
-tile t12 t11 t02
-tile t13 t12 t03
-tile t14 t13 t04
-tile t15 t14 t05
-btile 20 t16 t15 t06
-tile t17 t16 t07
-tile t18 t17 t08
-tile t19 t18 t09
-tile t20 t10
-btile 20 t21 t20 t11
-tile t22 t21 t12
-tile t23 t22 t13
-tile t24 t23 t14
-tile t25 t24 t15
-tile t26 t25 t16
-tile t27 t26 t17
-tile t28 t27 t18
-tile t29 t28 t19
-tile t30 t20
-tile t31 t30 t21
-tile t32 t31 t22
-tile t33 t32 t23
-tile t34 t33 t24
-tile t35 t34 t25
-tile t36 t35 t26
-tile t37 t36 t27
-tile t38 t37 t28
-tile t39 t38 t29
-tile t40 t30
-tile t41 t40 t31
-tile t42 t41 t32
-tile t43 t42 t33
-tile t44 t43 t34
-tile t45 t44 t35
-tile t46 t45 t36
-tile t47 t46 t37
-tile t48 t47 t38
-tile t49 t48 t39
-tile t50 t40
-tile t51 t50 t41
-tile t52 t51 t42
-btile 20 t53 t52 t43
-tile t54 t53 t44
-tile t55 t54 t45
-btile 0 t56 t55 t46
-tile t57 t56 t47
-tile t58 t57 t48
-tile t59 t58 t49
-tile t60 t50
-tile t61 t60 t51
-tile t62 t61 t52
-tile t63 t62 t53
-tile t64 t63 t54
-tile t65 t64 t55
-tile t66 t65 t56
-tile t67 t66 t57
-tile t68 t67 t58
-tile t69 t68 t59
-tile t70 t60
-tile t71 t70 t61
-tile t72 t71 t62
-tile t73 t72 t63
-tile t74 t73 t64
-tile t75 t74 t65
-tile t76 t75 t66
-btile 20 t77 t76 t67
-tile t78 t77 t68
-tile t79 t78 t69
-tile t80 t70
-tile t81 t80 t71
-tile t82 t81 t72
-tile t83 t82 t73
-tile t84 t83 t74
-tile t85 t84 t75
-tile t86 t85 t76
-tile t87 t86 t77
-tile t88 t87 t78
-tile t89 t88 t79
-tile t90 t80
-tile t91 t90 t81
-tile t92 t91 t82
-tile t93 t92 t83
-tile t94 t93 t84
-tile t95 t94 t85
-tile t96 t95 t86
-tile t97 t96 t87
-tile t98 t97 t88
-tile t99 t98 t89
-orangutan o1 t00
-orangutan o2 t29
-panda p1 t08
-panda p2 t32
-panda p3 t41
-panda p4 t45
-tpanda tp1 t02
-tpanda tp2 t23
-tpanda tp5 t50
-spanda sp1 t58
-spanda sp2 t80
-spanda sp3 t85
-jpanda jp1 t49
-jpanda jp2 t63
-jpanda jp3 t89
-gamemachine g1 t33
-gamemachine g2 t92
-chocolatemachine c1 t25
-chocolatemachine c2 t78
-armchair a1 t51
-armchair a2 t64
-wardrobe w1 t36 t37
-wardrobe w2 t72 t62
+tile t1
+tile t2 t1
+tile t3
+tile t4 t3
+tile t5 t4
+tile t6 t5
+tile t7 
+tile t8 t7
+tile t9 t8
+tile t10 t9 t7
+tile t11 t7 t6
+tile t12 t11 t10
+tile t13 t12 t10 t9
+tile t14 t13
+tile t15 t14 t13
+tile t16 t15
+tile t17 t16
+tile t18 t17
+tile t19 t18 t16 
+tile t20 t19 t15 t13
+tile t21 t12 t13 t20
+tile t22 t19 t21
+tile t23 t5 t6 t11 t12 t21 t22
+tile t24 t23 t22
+tile t25 t24
+tile t26 t23 t24 t25
+tile t27 t3 t4 t5 t23 t26
+tile t28 t2 t3 t27
+btile 20 bt29 t28 t27
+tile t30 t1 t2 t28 bt29
+tile t31 t30
+tile t32 t30 t31
+tile t33 bt29 t30 t32
+btile 20 bt34 t33
+tile t35 t27 bt29 bt34
+tile t36 t25 t26 t27
+tile t37 t25 t36 bt34
+tile t38 t25 t37
+tile t39 bt34 t37 t38
+tile t40 t32 bt34
+tile t41 t25 t24 t19 
+tile t42 t25 t41 t18
+orangutan o1 t1
+color o1 1.0 0.5 0.5 0.5
+orangutan o2 t16
+color o2 0.5 0.5 1.0 0.5
+panda p1 t3
+panda p2 t5
+panda p3 t9
+panda p4 t10
+panda p5 t18
+panda p6 t36
+gamemachine g1 t23
+chocolatemachine t25
+armchair a1 t17
+wardrobe w1 t14 t25
+wardrobe w2 t39 t40
 wardrobe connect w1 w2
-doors ed t05 t15 xd t94 t84
-stats
+doors ed t30 t29 xd t13 t21
