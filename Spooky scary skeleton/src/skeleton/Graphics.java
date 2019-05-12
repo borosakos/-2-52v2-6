@@ -158,7 +158,7 @@ public class Graphics {
 
 		layers.add(p1, JLayeredPane.DEFAULT_LAYER);
 		layers.add(wp, JLayeredPane.PALETTE_LAYER);
-		layers.add(p2, JLayeredPane.MODAL_LAYER); //Ennek elméletben a kettő között kéne hogy legyen, de így se látszódik
+		layers.add(p2, JLayeredPane.MODAL_LAYER);
 		layers.addMouseListener(new tileClick());
 
 		f.add(layers);

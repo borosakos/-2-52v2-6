@@ -14,50 +14,68 @@ public class Interpreter {
 	}
 
 	void getCommands() {
-		Scanner sc = new Scanner(System.in);
-		String cmd = sc.nextLine().toLowerCase();
-
-		String[] cmdParts = cmd.split(" ");
-
-		Printer.setStandardOutput();
-		//Ha command linerol olvasunk
-		while (!cmdParts[0].equals("exit") && !cmdParts[0].equals("file")) {
-			handleCommand(cmdParts);
-			cmd = sc.nextLine().toLowerCase();
-			cmdParts = cmd.split(" ");
-		}
-
-		//Ha fajlbol olvasunk
-		if (cmdParts[0].equals("file")) {
-			String inFile = "", outFile = "";
-			while (true) {
-				board = new Board();
-				Controller.reset();
-				Indent.print("Ird be az input fajl nevet:");
-				sc = new Scanner(System.in);
-				inFile = sc.nextLine();
-				if (inFile.equals("exit")) break;
-				Indent.print("Ird be az output fajl nevet:");
-				outFile = sc.nextLine();
-				if (outFile.equals("exit")) break;
-				Printer.setFile(outFile);
-
-				try {
-					sc = new Scanner(new File(inFile));
-					String fileCmd;
-					while ((sc.hasNextLine())) {
-						fileCmd = sc.nextLine();
-						cmdParts = fileCmd.split(" ");
-						handleCommand(cmdParts);
-
-					}
-				} catch (FileNotFoundException e) {
-					Indent.print("Fajl nem letezik, probald ujra.");
-				}
-				Printer.flushFile();
+		try {
+			Scanner sc = new Scanner(new File("palya.txt"));
+			String fileCmd;
+			while ((sc.hasNextLine())) {
+				fileCmd = sc.nextLine();
+				String[] cmdParts = fileCmd.split(" ");
+				handleCommand(cmdParts);
 			}
-			Printer.closeFile();
+		} catch (FileNotFoundException e) {
+			Indent.print("Fajl nem letezik, probald ujra.");
 		}
+		Controller.setRandom(true);
+		if (Controller.getRandom()) Indent.print("Turning randomization on");
+		Controller.gameOn = true;
+		Controller.game = new Game(board);
+		Controller.graphics.showGame();
+		Controller.game.startGame();
+
+//		Scanner sc = new Scanner(System.in);
+//		String cmd = sc.nextLine().toLowerCase();
+//
+//		String[] cmdParts = cmd.split(" ");
+//
+//		Printer.setStandardOutput();
+//		//Ha command linerol olvasunk
+//		while (!cmdParts[0].equals("exit") && !cmdParts[0].equals("file")) {
+//			handleCommand(cmdParts);
+//			cmd = sc.nextLine().toLowerCase();
+//			cmdParts = cmd.split(" ");
+//		}
+//
+//		//Ha fajlbol olvasunk
+//		if (cmdParts[0].equals("file")) {
+//			String inFile = "", outFile = "";
+//			while (true) {
+//				board = new Board();
+//				Controller.reset();
+//				Indent.print("Ird be az input fajl nevet:");
+//				sc = new Scanner(System.in);
+//				inFile = sc.nextLine();
+//				if (inFile.equals("exit")) break;
+//				Indent.print("Ird be az output fajl nevet:");
+//				outFile = sc.nextLine();
+//				if (outFile.equals("exit")) break;
+//				Printer.setFile(outFile);
+//
+//				try {
+//					sc = new Scanner(new File(inFile));
+//					String fileCmd;
+//					while ((sc.hasNextLine())) {
+//						fileCmd = sc.nextLine();
+//						cmdParts = fileCmd.split(" ");
+//						handleCommand(cmdParts);
+//
+//					}
+//				} catch (FileNotFoundException e) {
+//					Indent.print("Fajl nem letezik, probald ujra.");
+//				}
+//				Printer.flushFile();
+//			}
+//			Printer.closeFile();
+//		}
 	}
 
 	private void handleCommand(String[] cmdParts) {
