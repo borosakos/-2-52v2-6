@@ -54,24 +54,26 @@ public class Controller {
 				for (Orangutan o : orangutans) {
 					Controller.graphics.stepHighlight(o);
 					o.wannaStep();
-					while(o.toStep==true) {try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}}
+					while (o.toStep) {
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
 					Controller.graphics.redraw();
 				}
 			}
 			for (Panda p : pandas) {
 				if (p.getIsAlive()) p.step();
-				if(!p.isInQueue() && p.isAlive){
-					{try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}}
+				if (!p.isInQueue() && p.isAlive) {
+					{
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
 				}
 				Controller.graphics.redraw();
 			}
@@ -157,7 +159,7 @@ public class Controller {
 		}
 		return false;
 	}
-	
+
 	public static Orangutan getOrangutan(String name) {
 		for (Orangutan o : orangutans) {
 			if (o.getName().equals(name)) {

@@ -1,9 +1,7 @@
 package skeleton;
 
+import javax.swing.*;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -33,7 +31,7 @@ public class Wardrobe extends Element {
 			}
 		}
 	}
-	
+
 	public void resetOtherWardrobes() {
 		for (Wardrobe w : Controller.getWardrobes()) {
 			if (!w.name.equals(this.getName())) {
@@ -59,7 +57,7 @@ public class Wardrobe extends Element {
 	 * @param o teleportalando orangutan
 	 */
 	public void teleport(Orangutan o) {
-	
+
 		doorTile.accept(o);
 		o.getTile().remove();
 		doorTile.take(o);
@@ -86,13 +84,13 @@ public class Wardrobe extends Element {
 
 	public Wardrobe selectRandomWardrobe() {
 		if (!Controller.getRandom()) return end;
-		
-			for(Wardrobe w:otherWardrobes) {
-				if(Math.random() < 0.5) return w;
-			}
-		
+
+		for (Wardrobe w : otherWardrobes) {
+			if (Math.random() < 0.5) return w;
+		}
+
 		return otherWardrobes.get(0);
-		
+
 	}
 
 	/**
@@ -168,7 +166,7 @@ public class Wardrobe extends Element {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

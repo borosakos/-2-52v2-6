@@ -1,7 +1,6 @@
 package skeleton;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 /**
  *
@@ -47,7 +46,7 @@ public class ScaredPanda extends Panda {
 		becomeScared();
 		setFrontNeighbour(null);
 		if (backNeighbour != null) {
-			Indent.print("A ScaredPanda, named "+this.name+" got scared, hence the dissolution of its queue.");
+			Indent.print("A ScaredPanda, named " + this.name + " got scared, hence the dissolution of its queue.");
 			getBackNeighbour().release();
 		}
 	}
@@ -62,6 +61,7 @@ public class ScaredPanda extends Panda {
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
 	}
+
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("spanda.png"));

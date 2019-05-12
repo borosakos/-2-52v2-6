@@ -1,16 +1,13 @@
 package skeleton;
 
 
-import java.awt.Color;
+import javax.swing.*;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  * Egy csempet reprezentalo osztaly
  */
-public class Tile extends Nameable implements IDrawable{
+public class Tile extends Nameable implements IDrawable {
 
 	/**
 	 * Default constructor
@@ -209,19 +206,19 @@ public class Tile extends Nameable implements IDrawable{
 		ImageIcon image = new ImageIcon("tile.png");
 		label.setIcon(image);
 	}
-	
+
 	public void draw(JLabel label, JLabel element) {
 		ImageIcon image = new ImageIcon("tile.png");
 		label.setIcon(image);
-		if(this.element!=null)this.getElement().draw(element);
-		if(this.element==null)element.setIcon(new ImageIcon("empty.png"));
-		if(this.isJingling)label.setIcon(new ImageIcon("jtile.png"));
-		if(this.isWhistling)label.setIcon(new ImageIcon("wtile.png"));
+		if (this.element != null) this.getElement().draw(element);
+		if (this.element == null) element.setIcon(new ImageIcon("empty.png"));
+		if (this.isJingling) label.setIcon(new ImageIcon("jtile.png"));
+		if (this.isWhistling) label.setIcon(new ImageIcon("wtile.png"));
 	}
 
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

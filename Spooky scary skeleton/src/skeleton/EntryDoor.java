@@ -1,7 +1,6 @@
 package skeleton;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 /**
  *
@@ -26,7 +25,7 @@ public class EntryDoor extends Door {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

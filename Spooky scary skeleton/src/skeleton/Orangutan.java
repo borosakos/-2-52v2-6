@@ -1,11 +1,8 @@
 package skeleton;
 
-import java.awt.Color;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  * Az orangutan osztaly, ami az Animal osztalybol szarmazik, igy heterogen kollekcioban
@@ -25,7 +22,7 @@ public class Orangutan extends Animal {
 	public boolean toStep = false;
 	private int canSteal = 0;
 	ArrayList<Float> color = new ArrayList<>();
-	
+
 	public Orangutan() {
 		setColor(1.0f, 1.0f, 1.0f, 0.0f);
 	}
@@ -35,19 +32,22 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void release() {
-		Indent.print("Orangutan "+this.name+" released its queue." );
+		Indent.print("Orangutan " + this.name + " released its queue.");
 		if (backNeighbour != null) {
 			backNeighbour.release();
 		}
 	}
-	
+
 	public void wannaStep() {
-		toStep=true;
+		toStep = true;
 	}
-	
+
 	public void setColor(float r, float g, float b, float a) {
 		color.clear();
-		color.add(r); color.add(g); color.add(b); color.add(a);
+		color.add(r);
+		color.add(g);
+		color.add(b);
+		color.add(a);
 	}
 
 	/**
@@ -58,8 +58,8 @@ public class Orangutan extends Animal {
 		release();
 		position.element = null;
 		position = null;
-		Indent.print("!*!*!*!*!*!*!* R.I.P "+this.name +" *!*!*!*!*!*!*!");
-		Indent.print("Our brave fighter, under the legendary name of "+this.name+" has suffered tragic death amongst unbearable circumstances.");
+		Indent.print("!*!*!*!*!*!*!* R.I.P " + this.name + " *!*!*!*!*!*!*!");
+		Indent.print("Our brave fighter, under the legendary name of " + this.name + " has suffered tragic death amongst unbearable circumstances.");
 		Indent.print("You will be missed, and will always have a well-kept place within all our hearts.");
 		Indent.print("You've been a great friend, a perfect lover, and a loving husband.");
 		Indent.print("Thy name shall not be forgotten. Rest in peace, brother! ;(");
@@ -89,7 +89,7 @@ public class Orangutan extends Animal {
 		}
 		Indent.print("Ird be a valasztott csempe szamat!");
 		selection = sc.nextLine();
-		if(selection.equals("release")) {
+		if (selection.equals("release")) {
 			this.release();
 			return this.selectTile();
 		}
@@ -108,9 +108,9 @@ public class Orangutan extends Animal {
 	@Override
 	public boolean hitBy(Orangutan o) {
 		if (o.isInQueue()) return false;
-		
 
-		if (isInQueue() && o.canSteal<=0) {
+
+		if (isInQueue() && o.canSteal <= 0) {
 			this.position.swap(o.position);
 			o.setBackNeighbour(this.backNeighbour);
 			this.backNeighbour.setFrontNeighbour(o);
@@ -153,7 +153,7 @@ public class Orangutan extends Animal {
 	 **/
 	@Override
 	public void step() {
-		
+
 		Tile current = this.position;
 		Tile tostep = this.selectTile();
 		boolean accept = tostep.accept(this);
@@ -271,7 +271,7 @@ public class Orangutan extends Animal {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -279,6 +279,6 @@ public class Orangutan extends Animal {
 		// TODO Auto-generated method stub
 		ImageIcon image = new ImageIcon("orangutan.png");
 		label.setIcon(image);
-		
+
 	}
 }

@@ -1,6 +1,6 @@
 package skeleton;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
 public interface IDrawable {
 	public void draw();

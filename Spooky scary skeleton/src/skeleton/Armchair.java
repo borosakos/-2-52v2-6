@@ -1,7 +1,6 @@
 package skeleton;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 /**
  *
@@ -72,13 +71,13 @@ public class Armchair extends Element {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("ac.png"));
-		if(isOccupied) label.setIcon(new ImageIcon("acs.png"));
+		if (isOccupied) label.setIcon(new ImageIcon("acs.png"));
 	}
 
 

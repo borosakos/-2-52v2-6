@@ -6,17 +6,22 @@ import java.util.ArrayList;
 
 public class WebPanel extends JPanel {
 
-    public ArrayList<Integer> lineCoords;
+	public ArrayList<Line> lines;
 
-    public WebPanel(ArrayList<Integer> plswork){
-        lineCoords = new ArrayList<>(plswork);
-    }
+	public WebPanel(ArrayList<Line> plswork) {
+		lines = new ArrayList<>(plswork);
+	}
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for(int i = 0; i < lineCoords.size(); i += 4){
-            g.drawLine(lineCoords.get(i), lineCoords.get(i + 1), lineCoords.get(i + 2), lineCoords.get(i + 3));
-        }
-    }
+	public void update(ArrayList<Line> plswork) {
+		lines = plswork;
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		System.out.printf("asd");
+		super.paintComponent(g);
+		for (Line line : lines) {
+			g.drawLine(line.start.x, line.start.y, line.end.x, line.end.y);
+		}
+	}
 }

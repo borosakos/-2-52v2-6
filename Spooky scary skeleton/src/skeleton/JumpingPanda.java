@@ -1,9 +1,7 @@
 package skeleton;
 
+import javax.swing.*;
 import java.util.Random;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -40,7 +38,7 @@ public class JumpingPanda extends Panda {
 		boolean halalos;
 		if (Controller.getRandom()) {
 			int randNum = r.nextInt(10 - 3) + 3;
-			Indent.print("A JumpingPanda, named "+this.name+" got surprised, so he fiercefully stomped on its tile, casuing its life to decrease by "+randNum);
+			Indent.print("A JumpingPanda, named " + this.name + " got surprised, so he fiercefully stomped on its tile, casuing its life to decrease by " + randNum);
 			halalos = t.lifeDecrease(randNum);
 		} else {
 			halalos = t.lifeDecrease(1);
@@ -68,6 +66,7 @@ public class JumpingPanda extends Panda {
 		if (backNeighbour != null) Printer.print("backNeighbour: " + backNeighbour.getName());
 		if (frontNeighbour != null) Printer.print("frontNeighbour: " + frontNeighbour.getName());
 	}
+
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("jpanda.png"));

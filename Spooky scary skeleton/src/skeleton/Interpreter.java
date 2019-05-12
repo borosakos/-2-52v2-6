@@ -148,14 +148,16 @@ public class Interpreter {
 				Controller.game = new Game(board);
 				Controller.graphics.showGame();
 				Controller.game.startGame();
-				
+
 				break;
 		}
 	}
+
 	private void handleColor(String[] cmd) {
 		Orangutan current = Controller.getOrangutan(cmd[1]);
 		current.setColor(Float.parseFloat(cmd[2]), Float.parseFloat(cmd[3]), Float.parseFloat(cmd[4]), Float.parseFloat(cmd[5]));
 	}
+
 	private void handleTile(String[] cmd) {
 		Tile t = board.getTByName(cmd[1]);
 		if (t == null) {
@@ -417,7 +419,7 @@ public class Interpreter {
 				w.setEnd(Controller.getWardrobe(cmd[4]));
 			}
 		}
-		for(Wardrobe ward : Controller.getWardrobes()) {
+		for (Wardrobe ward : Controller.getWardrobes()) {
 			ward.resetOtherWardrobes();
 		}
 	}
