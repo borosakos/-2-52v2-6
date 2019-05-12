@@ -56,4 +56,4 @@ armchair a1 t17
 wardrobe w1 t14 t25
 wardrobe w2 t39 t40
 wardrobe connect w1 w2
-doors ed t30 t29 xd t13 t21
+doors ed t30 bt29 xd t13 t21
