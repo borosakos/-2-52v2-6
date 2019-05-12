@@ -18,7 +18,6 @@ public class WebPanel extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		System.out.printf("asd");
 		super.paintComponent(g);
 		for (Line line : lines) {
 			g.drawLine(line.start.x, line.start.y, line.end.x, line.end.y);

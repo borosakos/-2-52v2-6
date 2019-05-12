@@ -144,21 +144,21 @@ public class Graphics {
 		p1.setBounds(0, 0, 500, 500);
 		p1.setBackground(Color.cyan);
 		p2.setBounds(0, 0, 500, 500);
+		wp.setBounds(0, 0, 500, 500);
 		//p2.setBackground(Color.red);
 		p2.setOpaque(false);
 		//layers.add(p2);
 		//layers.add(p1);
 
-		wp.setBackground(Color.green); //ideiglenes
-		wp.setOpaque(true);
+		wp.setOpaque(false);
 
 		layers.setLayout(null);
 		layers.setPreferredSize(new Dimension(500, 500));
 		layers.setBackground(Color.blue);
 
-		layers.add(p2, JLayeredPane.PALETTE_LAYER);
 		layers.add(p1, JLayeredPane.DEFAULT_LAYER);
-		layers.add(wp, 101); //Ennek elméletben a kettő között kéne hogy legyen, de így se látszódik
+		layers.add(wp, JLayeredPane.PALETTE_LAYER);
+		layers.add(p2, JLayeredPane.MODAL_LAYER); //Ennek elméletben a kettő között kéne hogy legyen, de így se látszódik
 		layers.addMouseListener(new tileClick());
 
 		f.add(layers);
