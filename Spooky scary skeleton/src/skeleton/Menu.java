@@ -22,6 +22,9 @@ public class Menu {
 	private final String NEW_GAME = "New Game";
 	private final String EXIT = "Exit";
 
+	/**
+	 * Konstruktor
+	 **/
 	public Menu() {
 		fMenu = new JFrame(TITLE);
 		pMenu = new JPanelWithBackround();
@@ -32,6 +35,9 @@ public class Menu {
 		setUpWindow();
 	}
 
+	/**
+	 * Inicializalja a fomenu gombjait
+	 **/
 	private void initControllButtons() {
 		bNewGame.setBackground(Color.white);
 		bNewGame.setBorder(BorderFactory.createLineBorder(Color.black, 2));
@@ -48,6 +54,9 @@ public class Menu {
 		pMenu.add(bExitGame);
 	}
 
+	/**
+	 * Letrehozza a gombnyomast figyelo osztalyokat
+	 **/
 	private void createActionListeners() {
 		bNewGame.addActionListener(new ActionListener() {
 
@@ -65,6 +74,9 @@ public class Menu {
 		});
 	}
 
+	/**
+	 * Felallitja az ablakot
+	 **/
 	private void setUpWindow() {
 		fMenu.setSize(new Dimension(500, 500));
 		pMenu.setLayout(null);
@@ -74,10 +86,16 @@ public class Menu {
 		fMenu.setVisible(true);
 	}
 
+	/**
+	 * Lekezeli azt az esemenyt, ha a New Game gombot megnyomtak
+	 **/
 	private void startNewGameClicked() {
 		//TODO Innen kell inditani a jatekot.
 	}
 
+	/**
+	 * Lekezeli azt az esemenyt, ha az Exit Game gombot megnyomtak
+	 **/
 	private void exitGameClicked() {
 		System.exit(0);
 	}

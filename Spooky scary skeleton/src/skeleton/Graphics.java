@@ -6,6 +6,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+/**
+ * Rajzolasert felelos osztaly
+ **/
 public class Graphics {
 	JFrame f;
 	JPanel p1, p2;
@@ -20,7 +23,9 @@ public class Graphics {
 		rowHighlight();
 	}
 
-
+	/**
+	 * Jelzi, melyik csempekre lephet a parameterkent kapott allat
+	 **/
 	public void stepHighlight(Animal a) {
 		ArrayList<Integer> idx = new ArrayList<>();
 
@@ -35,7 +40,10 @@ public class Graphics {
 		}
 		rowHighlight();
 	}
-
+	
+	/**
+	 * Az orangutanok sorait egyseges szinnel jeloli
+	 **/
 	public void rowHighlight() {
 		for (Orangutan o : Controller.getOrangutans()) {
 			ArrayList<Integer> idx = new ArrayList<>();
@@ -58,6 +66,9 @@ public class Graphics {
 
 	}
 
+	/**
+	 * Kirajzolja a csempeket es a rajtuk levo elemeket
+	 **/
 	private void drawTiles() {
 		if (tiles.isEmpty()) {
 			for (Tile t : Controller.game.board.getTiles()) {
@@ -83,6 +94,10 @@ public class Graphics {
 
 	public ArrayList<Line> lines = new ArrayList<>();
 
+	/**
+	 * Meghatarozza a palyatopologiat - ket csempe kozott pontosan akkor fut el, ha
+	 * azok szomszedosak
+	 **/
 	private void drawLines() {
 		ArrayList<Tile> theTiles = new ArrayList<>(Controller.game.board.getTiles());
 
@@ -111,6 +126,9 @@ public class Graphics {
 		wp.repaint();
 	}
 
+	/**
+	 * Kirajzolja a fomenut
+	 **/
 	public void showMenu() {
 		JFrame f = new JFrame("Swing Example");
 		JPanel p = new JPanel();
@@ -123,7 +141,10 @@ public class Graphics {
 		f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
 		f.setVisible(true);
 	}
-
+	
+	/**
+	 * Megjeleniti a jatekot
+	 **/
 	public void showGame() {
 		f = new JFrame("Panda Mall - The Reckoning");
 		p1 = new JPanel();
@@ -166,6 +187,9 @@ public class Graphics {
 		f.setVisible(true);
 	}
 
+	/**
+	 * Figyeli, melyik csempere kattint a jatekos
+	 **/
 	private class tileClick implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
