@@ -2,6 +2,8 @@ package skeleton;
 
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -220,5 +222,17 @@ public class Tile extends Nameable implements IDrawable {
 	public void draw() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Color getLineColor() {
+		if(this.element!=null) return element.getLineColor();
+		return null;
+	}
+	
+	public boolean inPair(Tile t2) {
+		if(this.element!=null && t2.element!=null)
+		if(this.element.inPair(t2.element)) return true;
+		return false;
 	}
 }

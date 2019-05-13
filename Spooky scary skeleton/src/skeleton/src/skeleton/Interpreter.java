@@ -6,17 +6,17 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Interpreter extends Thread {
+public class Interpreter extends Thread{
 	private Board board;
+
+	Interpreter() {
+		board = Controller.game.board;
+	}
 	
 	@Override
 	public void run() {
 		getCommands();
 		super.run();
-	}
-	
-	Interpreter() {
-		board = Controller.game.board;
 	}
 
 	void getCommands() {
@@ -33,9 +33,8 @@ public class Interpreter extends Thread {
 		}
 		Controller.setRandom(true);
 		if (Controller.getRandom()) Indent.print("Turning randomization on");
-		//Controller.gameOn = true;
+		Controller.gameOn = true;
 		Controller.game = new Game(board);
-		//Controller.graphics.showMenu();
 		Controller.graphics.showGame();
 		Controller.game.startGame();
 
@@ -155,6 +154,9 @@ public class Interpreter extends Thread {
 			case "color":
 				handleColor(cmdParts);
 				break;
+			case "empty":
+				handleEmpty();
+				break;
 			case "start":
 				try {
 					Scanner sc = new Scanner(new File("palya.txt"));
@@ -171,12 +173,18 @@ public class Interpreter extends Thread {
 				if (Controller.getRandom()) Indent.print("Turning randomization on");
 				Controller.gameOn = true;
 				Controller.game = new Game(board);
-				//Controller.graphics.showMenu();
 				Controller.graphics.showGame();
 				Controller.game.startGame();
 
 				break;
 		}
+	}
+	int ti = 0;
+	private void handleEmpty() {
+		Placeholder t = new Placeholder();
+		t.name = "p"+ti;
+		ti++;
+		Controller.game.board.addTile(t);
 	}
 
 	private void handleColor(String[] cmd) {

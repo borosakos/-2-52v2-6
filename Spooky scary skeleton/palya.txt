@@ -1,59 +1,159 @@
+empty
 tile t1
-tile t2 t1
+tile t2
 tile t3
-tile t4 t3
-tile t5 t4
-tile t6 t5
-tile t7 
-tile t8 t7
-tile t9 t8
-tile t10 t9 t7
-tile t11 t7 t6
-tile t12 t11 t10
-tile t13 t12 t10 t9
-tile t14 t13
-tile t15 t14 t13
-tile t16 t15
-tile t17 t16
-tile t18 t17
-tile t19 t18 t16 
-tile t20 t19 t15 t13
-tile t21 t12 t13 t20
-tile t22 t19 t21
-tile t23 t5 t6 t11 t12 t21 t22
-tile t24 t23 t22
-tile t25 t24
-tile t26 t23 t24 t25
-tile t27 t3 t4 t5 t23 t26
-tile t28 t2 t3 t27
-btile 20 bt29 t28 t27
-tile t30 t1 t2 t28 bt29
-tile t31 t30
-tile t32 t30 t31
-tile t33 bt29 t30 t32
-btile 20 bt34 t33
-tile t35 t27 bt29 bt34
-tile t36 t25 t26 t27
-tile t37 t25 t36 bt34
-tile t38 t25 t37
-tile t39 bt34 t37 t38
-tile t40 t32 bt34
-tile t41 t25 t24 t19 
-tile t42 t25 t41 t18
-orangutan o1 t1
-color o1 1.0 0.5 0.5 0.5
-orangutan o2 t16
-color o2 0.5 0.5 1.0 0.5
-panda p1 t3
-panda p2 t5
-panda p3 t9
-panda p4 t10
-panda p5 t18
-panda p6 t36
-gamemachine g1 t23
-chocolatemachine t25
-armchair a1 t17
-wardrobe w1 t14 t25
-wardrobe w2 t39 t40
+tile t4
+tile t5
+tile t6
+tile t7
+tile t8
+empty
+tile t17
+tile t11
+tile t12
+tile t35
+tile t36
+empty
+tile t38
+tile t39
+tile t40
+empty
+tile t16
+empty
+tile t13
+empty
+empty
+empty
+empty
+tile t37
+tile t41
+tile t42
+tile t18
+tile t15
+tile t14
+empty
+empty
+empty
+empty
+empty
+tile t44
+tile t43
+empty
+btile 20 t19
+empty
+tile t23
+tile t24
+tile t25
+tile t26
+tile t34
+empty
+empty
+empty
+empty
+empty
+tile t22
+empty
+tile t27
+tile t28
+btile 20 t31
+tile t33
+empty
+empty
+empty
+tile t20
+tile t21
+empty
+empty
+tile t29
+tile t30
+tile t32
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+tile t1 t2 t11
+tile t2 t1 t3 t35
+tile t3 t2 t35 t4
+tile t4 t3 t35 t36 t5
+tile t5 t4 t36 t6
+tile t6 t5 t36 t38 t7
+tile t7 t6 t39 t8
+tile t8 t7 t40
+tile t17 t11 t16
+tile t11 t17 t16 t15 t14 t13 t12
+tile t12 t11 t35 t13
+tile t35 t2 t12 t13 t23 t24 t36 t4 t3
+tile t36 t35 t25 t26 t34 t37 t38 t6 t5 t4
+tile t38 t6 t36 t37 t41 t39
+tile t39 t38 t41 t7
+tile t40 t8 t41
+tile t16 t17 t11 t15 t18
+tile t13 t11 t12 t35 t14
+tile t37 t38 t41 t44 t34 t36
+tile t41 t37 t38 t39 t40 t42 t43 t44
+tile t42 t41 t43
+tile t18 t16 t15 t19
+tile t15 t18 t16 t11 t14
+tile t14 t15 t11 t13 t19
+tile t44 t37 t41 t43 t33 t31
+tile t43 t44 t41 t42 t33
+tile t19 t18 t14 t23 t22 t20
+tile t23 t19 t35 t24
+tile t24 t23 t27 t35 t25
+tile t25 t24 t36 t26 t27
+tile t26 t25 t27 t34 t36
+tile t34 t26 t36 t37 t31
+tile t22 t19 t27 t21
+tile t27 t22 t21 t24 t25 t26 t28 t29
+tile t28 t27 t31
+tile t31 t28 t34 t33 t30 t44
+tile t33 t31 t44 t43 t32
+tile t20 t19 t21
+tile t21 t20 t22 t27
+tile t29 t27 t30
+tile t30 t29 t31 t32
+tile t32 t30 t33
+doors ed t11 t12 xd t41 t44
+gamemachine gm t36
+wardrobe w1 t42 t43
+wardrobe w2 t20 t21
 wardrobe connect w1 w2
-doors ed t30 t29 xd t13 t21
+chocolatemachine cm t27
+armchair ac t32
+orangutan Red t34
+orangutan Blue t18
+color Red 1.0 0.0 0.0 0.5
+color Blue 0.0 0.0 1.0 0.5
+panda p1 t2
+spanda p2 t3
+jpanda p3 t39
+panda p4 t40
+tpanda p5 t30
+spanda p6 t24

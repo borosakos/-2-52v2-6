@@ -1,6 +1,8 @@
 package skeleton;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.util.Random;
 
 /**
@@ -318,6 +320,24 @@ public class Panda extends Animal {
 		// TODO Auto-generated method stub
 		ImageIcon image = new ImageIcon("panda.png");
 		label.setIcon(image);
+	}
+
+	@Override
+	public Color getLineColor() {
+		for(Orangutan o:Controller.getOrangutans()) {
+			if(o.backNeighbour!=null) {
+				Panda back = o.getBackNeighbour();
+				while(back!=null) {
+					if(back.equals(this)) return o.getLineColor();
+					back = back.backNeighbour;
+				}
+			}
+		}
+		return null;
+	}
+	public boolean inPair(Element element) {
+		if((frontNeighbour!=null && frontNeighbour.name.equals(element.name)) || (backNeighbour!=null && backNeighbour.name.equals(element.name)) ) return true;
+		return false;
 	}
 }
 

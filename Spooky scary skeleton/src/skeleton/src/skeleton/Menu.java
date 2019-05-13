@@ -1,7 +1,6 @@
 package skeleton;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,11 +18,11 @@ public class Menu {
 	private JPanelWithBackround pMenu;
 	private JButton bNewGame;
 	private JButton bExitGame;
-	private Interpreter interp;
 
 	private final String TITLE = "Panda Mall - The Reckoning";
 	private final String NEW_GAME = "New Game";
 	private final String EXIT = "Exit";
+	private Interpreter interp;
 
 	/**
 	 * Konstruktor
@@ -45,10 +44,12 @@ public class Menu {
 	 **/
 	private void initControllButtons() {
 		bNewGame.setBackground(Color.white);
+		bNewGame.setOpaque(true);
 		bNewGame.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		bNewGame.setFont(new Font("Arial", Font.BOLD, 16));
-
+		
 		bExitGame.setBackground(Color.white);
+		bExitGame.setOpaque(true);
 		bExitGame.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		bExitGame.setFont(new Font("Arial", Font.BOLD, 16));
 
@@ -90,7 +91,7 @@ public class Menu {
 		fMenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		fMenu.setVisible(true);
 	}
-
+	
 	/**
 	 * Lekezeli azt az esemenyt, ha a New Game gombot megnyomtak
 	 **/
@@ -100,6 +101,8 @@ public class Menu {
 			interp.start();
 		}
 	}
+
+
 
 	/**
 	 * Lekezeli azt az esemenyt, ha az Exit Game gombot megnyomtak

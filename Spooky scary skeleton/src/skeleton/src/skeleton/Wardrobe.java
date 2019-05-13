@@ -1,6 +1,8 @@
 package skeleton;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -100,6 +102,7 @@ public class Wardrobe extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Orangutan o) {
+		if(!o.position.equals(this.doorTile)) return false;
 		setEnd(selectRandomWardrobe());
 		Tile followTile = o.position;
 		end.teleport(o);
@@ -120,6 +123,7 @@ public class Wardrobe extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Panda p) {
+		if(!p.position.equals(this.doorTile)) return false;
 		setEnd(selectRandomWardrobe());
 		end.teleport(p);
 		return false;
@@ -172,5 +176,11 @@ public class Wardrobe extends Element {
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("wd.png"));
+	}
+
+	@Override
+	public Color getLineColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

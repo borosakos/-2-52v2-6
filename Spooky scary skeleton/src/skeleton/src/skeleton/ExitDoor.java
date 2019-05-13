@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -41,6 +43,7 @@ public class ExitDoor extends Door {
 	 */
 	@Override
 	public boolean hitBy(Orangutan o) {
+		//if(!o.position.equals(this.doorTile)) return false;
 		if (o.isInQueue()) {
 			o.countPoints();
 
@@ -68,6 +71,12 @@ public class ExitDoor extends Door {
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("xd.png"));
+	}
+
+	@Override
+	public Color getLineColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

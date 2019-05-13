@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -104,5 +106,11 @@ public class GameMachine extends Element implements Steppable {
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("gm.png"));
+	}
+
+	@Override
+	public Color getLineColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

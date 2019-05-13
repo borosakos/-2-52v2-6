@@ -53,8 +53,9 @@ public class Controller {
 			for (int i = 0; i < 3; i++) {
 				Controller.graphics.redraw();
 				for (Orangutan o : orangutans) {
-					Controller.graphics.stepHighlight(o);
+					if(!o.dead) {
 					o.wannaStep();
+					Controller.graphics.stepHighlight(o);
 					while (o.toStep) {
 						try {
 							Thread.sleep(200);
@@ -63,6 +64,7 @@ public class Controller {
 						}
 					}
 					Controller.graphics.redraw();
+				}
 				}
 			}
 			for (Panda p : pandas) {

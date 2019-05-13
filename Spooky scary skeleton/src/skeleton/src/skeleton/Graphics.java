@@ -8,6 +8,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -30,47 +31,18 @@ public class Graphics {
 	public void redraw() {
 		drawLines();
 		drawTiles();
-		rowHighlight();
+		//rowHighlight();
 	}
 
 	/**
 	 * Jelzi, melyik csempekre lephet a parameterkent kapott allat
 	 **/
-	public void stepHighlight(Animal a) {
-		ArrayList<Integer> idx = new ArrayList<>();
-
-		idx.add(Controller.game.board.getTiles().indexOf(a.getTile()));
-
-		for (Tile t : a.getTile().neighbours)
-			idx.add(Controller.game.board.getTiles().indexOf(t));
-
-		for (Integer i : idx) {
-			tiles.get(i).setOpaque(true);
-			tiles.get(i).setBackground(Color.white);
-		}
-		rowHighlight();
+	public void stepHighlight(Orangutan o) {
+		int idx = Controller.game.board.getTiles().indexOf(o.getTile());
+		tiles.get(idx).setBackground(new Color(o.color.get(0), o.color.get(1), o.color.get(2), 0.3f));
+		tiles.get(idx).setOpaque(true);
 	}
-	
-	/**
-	 * Az orangutanok sorait egyseges szinnel jeloli
-	 **/
-	public void rowHighlight() {
-		for (Orangutan o : Controller.getOrangutans()) {
-			if(!o.dead) {
-			ArrayList<Integer> idx = new ArrayList<>();
-			idx.add(Controller.game.board.getTiles().indexOf(o.getTile()));
-			Panda lastBackNeighbour = o.backNeighbour;
-			while (lastBackNeighbour != null) {
-				idx.add(Controller.game.board.getTiles().indexOf(lastBackNeighbour.getTile()));
-				lastBackNeighbour = lastBackNeighbour.backNeighbour;
-			}
-			for (Integer i : idx) {
-				tiles.get(i).setOpaque(true);
-				tiles.get(i).setBackground(new Color(o.color.get(0), o.color.get(1), o.color.get(2)));
-			}
-		}
-		}
-	}
+
 
 	
 	private float getLabelWidth() {
@@ -89,7 +61,6 @@ public class Graphics {
 				JLabel element = new JLabel();
 				label.setHorizontalAlignment(JLabel.CENTER);
 				element.setHorizontalAlignment(JLabel.CENTER);
-				label.setOpaque(false);
 				elements.add(element);
 				tiles.add(label);
 				t.draw(label, element);
@@ -97,16 +68,17 @@ public class Graphics {
 				p2.add(element);
 			}
 		} else {
-			int i = 0;
-			for (Tile t : Controller.game.board.getTiles()) {
+			for (int i = 0; i< Controller.game.board.getTiles().size(); i++) {
+				Tile t = Controller.game.board.getTiles().get(i);
 				t.draw(tiles.get(i), elements.get(i));
 				tiles.get(i).setOpaque(false);
-				i++;
+		
 			}
 		}
 	}
 
 	public ArrayList<Line> lines = new ArrayList<>();
+	public ArrayList<Color> colors = new ArrayList<>();
 
 	/**
 	 * Meghatarozza a palyatopologiat - ket csempe kozott pontosan akkor fut el, ha
@@ -115,6 +87,7 @@ public class Graphics {
 	private void drawLines() {
 		ArrayList<Tile> theTiles = new ArrayList<>(Controller.game.board.getTiles());
 		lines.clear();
+		colors.clear();
 		for (int i = 0; i < theTiles.size(); i++) {
 			for (Tile t : theTiles.get(i).getNeighbours()) {
 				Line line = new Line();
@@ -131,15 +104,31 @@ public class Graphics {
 
 				line.start = new Point(tileX, tileY);
 				line.end = new Point(neighborX, neighborY);
+				
+				if(t.inPair(Controller.game.board.getTiles().get(i))) {
+					if(t.getLineColor()==null) colors.add(Color.black);
+					if(t.getLineColor()!=null) colors.add(t.getLineColor());
+				} else {
+					colors.add(Color.black);
+				}
+				
 				lines.add(line);
+				
 
 			}
 		}
 
-		wp.update(lines);
+		wp.update(lines, colors);
 		wp.repaint();
 	}
 
+	/**
+	 * Kirajzolja a fomenut
+	 **/
+	public void showMenu() {
+		f = new JFrame("Panda Mall - The Reckoning");
+		Menu m = new Menu();
+	}
 	
 	public void SoundClipTest() {
 	     
@@ -163,7 +152,7 @@ public class Graphics {
 	   }
 	
 	void playSound(String soundFile) {
-	    File f = new File(soundFile);
+	    File f = new File("./" + soundFile);
 	    AudioInputStream audioIn;
 		try {
 			audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
@@ -187,26 +176,17 @@ public class Graphics {
 	}
 	
 	/**
-	 * Kirajzolja a fomenut
-	 **/
-	public void showMenu() {
-		f = new JFrame("Panda Mall - The Reckoning");
-		Menu m = new Menu();
-	}
-	
-	/**
 	 * Megjeleniti a jatekot
 	 **/
 	public void showGame() {
 		f = new JFrame("Panda Mall - The Reckoning");
 		p1 = new JPanel();
 		p2 = new JPanel();
-		wp = new WebPanel(lines);
+		wp = new WebPanel(lines, colors);
 		layers = new JLayeredPane();
 		tiles = new ArrayList<>();
 		elements = new ArrayList<>();
-		
-		f.setResizable(false);
+
 		f.setSize(100, 200);
 		GridLayout grid = new GridLayout(10, 10, 0, 0);
 		p1.setLayout(grid);
@@ -226,7 +206,7 @@ public class Graphics {
 
 		layers.setLayout(null);
 		layers.setPreferredSize(new Dimension(500, 500));
-		layers.setBackground(Color.blue);
+		layers.setOpaque(false);
 
 		layers.add(p1, JLayeredPane.PALETTE_LAYER);
 		layers.add(wp, JLayeredPane.DEFAULT_LAYER);

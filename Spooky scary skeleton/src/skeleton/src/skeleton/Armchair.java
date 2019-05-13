@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -78,6 +80,12 @@ public class Armchair extends Element {
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("ac.png"));
 		if (isOccupied) label.setIcon(new ImageIcon("acs.png"));
+	}
+
+	@Override
+	public Color getLineColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

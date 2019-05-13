@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -105,5 +107,11 @@ public class ChocolateMachine extends Element implements Steppable {
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("csoki.png"));
+	}
+
+	@Override
+	public Color getLineColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

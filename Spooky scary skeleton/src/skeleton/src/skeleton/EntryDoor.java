@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -31,6 +33,12 @@ public class EntryDoor extends Door {
 	@Override
 	public void draw(JLabel label) {
 		label.setIcon(new ImageIcon("ed.png"));
+	}
+
+	@Override
+	public Color getLineColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

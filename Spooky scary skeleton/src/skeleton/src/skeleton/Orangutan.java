@@ -1,6 +1,8 @@
 package skeleton;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -60,11 +62,6 @@ public class Orangutan extends Animal {
 		release();
 		position.element = null;
 		position = null;
-		Indent.print("!*!*!*!*!*!*!* R.I.P " + this.name + " *!*!*!*!*!*!*!");
-		Indent.print("Our brave fighter, under the legendary name of " + this.name + " has suffered tragic death amongst unbearable circumstances.");
-		Indent.print("You will be missed, and will always have a well-kept place within all our hearts.");
-		Indent.print("You've been a great friend, a perfect lover, and a loving husband.");
-		Indent.print("Thy name shall not be forgotten. Rest in peace, brother! ;(");
 		dead = true;
 		Controller.game.endGame();
 	}
@@ -193,7 +190,7 @@ public class Orangutan extends Animal {
 	public int countPoints() {
 		if (!isInQueue()) return 0;
 		Panda lastBackNeighbour = backNeighbour;
-		points = 0;
+		
 		while (lastBackNeighbour != null) {
 			lastBackNeighbour = lastBackNeighbour.backNeighbour;
 			points++;
@@ -286,4 +283,21 @@ public class Orangutan extends Animal {
 		label.setIcon(image);
 
 	}
+
+	@Override
+	public Color getLineColor() {
+		return new Color(this.color.get(0), this.color.get(1), this.color.get(2));
+	}
+	
+	public boolean inPair(Element element) {
+		if(backNeighbour==null) return false;
+		if (element.name.equals(this.backNeighbour.name)) return true;
+		/*Panda p = backNeighbour;
+		while(p!=null) {
+			if(p.name.equals(element.name)) return true;
+			p = p.backNeighbour;
+		}*/
+		return false;
+	}
+	
 }

@@ -46,4 +46,9 @@ public abstract class Element extends Nameable implements IDrawable {
 
 	public abstract void printStats();
 
+
+	public boolean inPair(Element element) {
+		return false;
+	}
+
 }
