@@ -1,9 +1,19 @@
 package skeleton;
 
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -46,6 +56,7 @@ public class Graphics {
 	 **/
 	public void rowHighlight() {
 		for (Orangutan o : Controller.getOrangutans()) {
+			if(!o.dead) {
 			ArrayList<Integer> idx = new ArrayList<>();
 			idx.add(Controller.game.board.getTiles().indexOf(o.getTile()));
 			Panda lastBackNeighbour = o.backNeighbour;
@@ -57,13 +68,15 @@ public class Graphics {
 				tiles.get(i).setOpaque(true);
 				tiles.get(i).setBackground(new Color(o.color.get(0), o.color.get(1), o.color.get(2)));
 			}
-
+		}
 		}
 	}
 
-
-	private void drawElements() {
-
+	
+	private float getLabelWidth() {
+		int tileNum = Controller.game.board.getTiles().size();
+		int nColumn = (int) Math.ceil(tileNum/10);
+		return (float)500/nColumn;
 	}
 
 	/**
@@ -76,6 +89,7 @@ public class Graphics {
 				JLabel element = new JLabel();
 				label.setHorizontalAlignment(JLabel.CENTER);
 				element.setHorizontalAlignment(JLabel.CENTER);
+				label.setOpaque(false);
 				elements.add(element);
 				tiles.add(label);
 				t.draw(label, element);
@@ -86,7 +100,7 @@ public class Graphics {
 			int i = 0;
 			for (Tile t : Controller.game.board.getTiles()) {
 				t.draw(tiles.get(i), elements.get(i));
-				tiles.get(i).setBackground(Color.cyan);
+				tiles.get(i).setOpaque(false);
 				i++;
 			}
 		}
@@ -100,7 +114,7 @@ public class Graphics {
 	 **/
 	private void drawLines() {
 		ArrayList<Tile> theTiles = new ArrayList<>(Controller.game.board.getTiles());
-
+		lines.clear();
 		for (int i = 0; i < theTiles.size(); i++) {
 			for (Tile t : theTiles.get(i).getNeighbours()) {
 				Line line = new Line();
@@ -109,11 +123,11 @@ public class Graphics {
 				if (tiles.size() == 0)
 					return;
 
-				int tileX = tiles.get(i).getX() + 24;
-				int tileY = tiles.get(i).getY() + 24;
+				int tileX = (int) (tiles.get(i).getX() + getLabelWidth()/2);
+				int tileY = tiles.get(i).getY() + 25;
 
-				int neighborX = tiles.get(ricsiIsTheBest).getX() + 24;
-				int neighborY = tiles.get(ricsiIsTheBest).getY() + 24;
+				int neighborX = (int) (tiles.get(ricsiIsTheBest).getX() + getLabelWidth()/2);
+				int neighborY = tiles.get(ricsiIsTheBest).getY() + 25;
 
 				line.start = new Point(tileX, tileY);
 				line.end = new Point(neighborX, neighborY);
@@ -142,6 +156,51 @@ public class Graphics {
 		f.setVisible(true);
 	}
 	
+	public void SoundClipTest() {
+	     
+
+	      try {
+	         // Open an audio input stream.
+	         URL url = this.getClass().getClassLoader().getResource("cut.mp3");
+	         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+	         // Get a sound clip resource.
+	         Clip clip = AudioSystem.getClip();
+	         // Open audio clip and load samples from the audio input stream.
+	         clip.open(audioIn);
+	         clip.start();
+	      } catch (UnsupportedAudioFileException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      } catch (LineUnavailableException e) {
+	         e.printStackTrace();
+	      }
+	   }
+	
+	void playSound(String soundFile) {
+	    File f = new File("./" + soundFile);
+	    AudioInputStream audioIn;
+		try {
+			audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+			Clip clip = AudioSystem.getClip();
+		    clip.open(audioIn);
+		    clip.start();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	    
+	}
+	
 	/**
 	 * Megjeleniti a jatekot
 	 **/
@@ -161,7 +220,7 @@ public class Graphics {
 
 		redraw();
 		p1.setBounds(0, 0, 500, 500);
-		p1.setBackground(Color.cyan);
+		p1.setOpaque(false);
 		p2.setBounds(0, 0, 500, 500);
 		wp.setBounds(0, 0, 500, 500);
 		//p2.setBackground(Color.red);
@@ -175,13 +234,13 @@ public class Graphics {
 		layers.setPreferredSize(new Dimension(500, 500));
 		layers.setBackground(Color.blue);
 
-		layers.add(p1, JLayeredPane.DEFAULT_LAYER);
-		layers.add(wp, JLayeredPane.PALETTE_LAYER);
+		layers.add(p1, JLayeredPane.PALETTE_LAYER);
+		layers.add(wp, JLayeredPane.DEFAULT_LAYER);
 		layers.add(p2, JLayeredPane.MODAL_LAYER);
 		layers.addMouseListener(new tileClick());
 
 		f.add(layers);
-
+		playSound("despacito.wav");
 		f.pack();
 		f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
 		f.setVisible(true);
@@ -201,13 +260,12 @@ public class Graphics {
 			Object source = e.getSource();
 			float x = e.getX();
 			float y = e.getY();
-			System.out.println(x + " ééééés " + y);
 			int idx = 0;
 			for (JLabel l : elements) {
 				float lx = l.getX();
 				float ly = l.getY();
 
-				if (x <= lx + 48 && lx <= x && y <= ly + 48 && ly <= y) {
+				if (x <= lx + getLabelWidth() && lx <= x && y <= ly + 50 && ly <= y) {
 
 					for (Orangutan o : Controller.getOrangutans()) {
 

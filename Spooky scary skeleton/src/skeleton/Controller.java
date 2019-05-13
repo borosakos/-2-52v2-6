@@ -46,11 +46,12 @@ public class Controller {
 	 * a pandakat).
 	 */
 	public static void tick() {
-		if (game.hasEnded()) {
+		if (game.hasEnded()!=0) {
 			game.endGame();
 			return;
 		} else {
 			for (int i = 0; i < 3; i++) {
+				Controller.graphics.redraw();
 				for (Orangutan o : orangutans) {
 					Controller.graphics.stepHighlight(o);
 					o.wannaStep();

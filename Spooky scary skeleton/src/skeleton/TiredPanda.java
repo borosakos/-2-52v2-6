@@ -55,7 +55,9 @@ public class TiredPanda extends Panda {
 		if (Controller.gameOn) {
 			Indent.print("TiredPanda " + this.name + " sits down on " + ac.name);
 		}
-		if (frontNeighbour != null) frontNeighbour.release();
+		if (frontNeighbour != null) {
+			release();
+		}
 	}
 
 	/**

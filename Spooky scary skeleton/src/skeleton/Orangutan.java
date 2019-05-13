@@ -20,6 +20,7 @@ public class Orangutan extends Animal {
 	int points;
 
 	public boolean toStep = false;
+	public boolean dead = false;
 	private int canSteal = 0;
 	ArrayList<Float> color = new ArrayList<>();
 
@@ -35,6 +36,7 @@ public class Orangutan extends Animal {
 		Indent.print("Orangutan " + this.name + " released its queue.");
 		if (backNeighbour != null) {
 			backNeighbour.release();
+			backNeighbour=null;
 		}
 	}
 
@@ -63,6 +65,7 @@ public class Orangutan extends Animal {
 		Indent.print("You will be missed, and will always have a well-kept place within all our hearts.");
 		Indent.print("You've been a great friend, a perfect lover, and a loving husband.");
 		Indent.print("Thy name shall not be forgotten. Rest in peace, brother! ;(");
+		dead = true;
 		Controller.game.endGame();
 	}
 
@@ -166,6 +169,7 @@ public class Orangutan extends Animal {
 		if (inQueue && accept) {
 			backNeighbour.follow(current);
 		}
+		
 	}
 
 	/**
@@ -256,6 +260,7 @@ public class Orangutan extends Animal {
 		if (inQueue && accept) {
 			backNeighbour.follow(current);
 		}
+		Controller.game.endGame();
 	}
 
 	/**

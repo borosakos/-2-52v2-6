@@ -91,6 +91,8 @@ public class Menu {
 	 **/
 	private void startNewGameClicked() {
 		//TODO Innen kell inditani a jatekot.
+			Interpreter interp = new Interpreter(Controller.game.board);
+			interp.getCommands();
 	}
 
 	/**
