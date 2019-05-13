@@ -6,11 +6,17 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Interpreter {
+public class Interpreter extends Thread {
 	private Board board;
-
-	Interpreter(Board given) {
-		board = given;
+	
+	@Override
+	public void run() {
+		getCommands();
+		super.run();
+	}
+	
+	Interpreter() {
+		board = Controller.game.board;
 	}
 
 	void getCommands() {
@@ -27,8 +33,9 @@ public class Interpreter {
 		}
 		Controller.setRandom(true);
 		if (Controller.getRandom()) Indent.print("Turning randomization on");
-		Controller.gameOn = true;
+		//Controller.gameOn = true;
 		Controller.game = new Game(board);
+		//Controller.graphics.showMenu();
 		Controller.graphics.showGame();
 		Controller.game.startGame();
 
@@ -164,6 +171,7 @@ public class Interpreter {
 				if (Controller.getRandom()) Indent.print("Turning randomization on");
 				Controller.gameOn = true;
 				Controller.game = new Game(board);
+				//Controller.graphics.showMenu();
 				Controller.graphics.showGame();
 				Controller.game.startGame();
 

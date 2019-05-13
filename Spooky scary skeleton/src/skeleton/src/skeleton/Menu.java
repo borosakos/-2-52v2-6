@@ -1,9 +1,11 @@
 package skeleton;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 /**
  * Menu
@@ -17,6 +19,7 @@ public class Menu {
 	private JPanelWithBackround pMenu;
 	private JButton bNewGame;
 	private JButton bExitGame;
+	private Interpreter interp;
 
 	private final String TITLE = "Panda Mall - The Reckoning";
 	private final String NEW_GAME = "New Game";
@@ -26,6 +29,8 @@ public class Menu {
 	 * Konstruktor
 	 **/
 	public Menu() {
+		fMenu = new JFrame();
+		this.fMenu = fMenu;
 		fMenu = new JFrame(TITLE);
 		pMenu = new JPanelWithBackround();
 		bNewGame = new JButton(NEW_GAME);
@@ -89,10 +94,11 @@ public class Menu {
 	/**
 	 * Lekezeli azt az esemenyt, ha a New Game gombot megnyomtak
 	 **/
-	private void startNewGameClicked() {
-		//TODO Innen kell inditani a jatekot.
-			Interpreter interp = new Interpreter(Controller.game.board);
-			interp.getCommands();
+	private synchronized void startNewGameClicked() {
+		if(interp == null) {
+			interp = new Interpreter();
+			interp.start();
+		}
 	}
 
 	/**

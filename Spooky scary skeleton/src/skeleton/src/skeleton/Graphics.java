@@ -140,21 +140,6 @@ public class Graphics {
 		wp.repaint();
 	}
 
-	/**
-	 * Kirajzolja a fomenut
-	 **/
-	public void showMenu() {
-		JFrame f = new JFrame("Swing Example");
-		JPanel p = new JPanel();
-		JButton b = new JButton("Click Me!");
-		JTextField t = new JTextField("Type here!");
-		p.add(b);
-		p.add(t);
-		f.add(p, BorderLayout.NORTH);
-		f.pack();
-		f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-		f.setVisible(true);
-	}
 	
 	public void SoundClipTest() {
 	     
@@ -178,7 +163,7 @@ public class Graphics {
 	   }
 	
 	void playSound(String soundFile) {
-	    File f = new File("./" + soundFile);
+	    File f = new File(soundFile);
 	    AudioInputStream audioIn;
 		try {
 			audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
@@ -202,6 +187,14 @@ public class Graphics {
 	}
 	
 	/**
+	 * Kirajzolja a fomenut
+	 **/
+	public void showMenu() {
+		f = new JFrame("Panda Mall - The Reckoning");
+		Menu m = new Menu();
+	}
+	
+	/**
 	 * Megjeleniti a jatekot
 	 **/
 	public void showGame() {
@@ -212,7 +205,8 @@ public class Graphics {
 		layers = new JLayeredPane();
 		tiles = new ArrayList<>();
 		elements = new ArrayList<>();
-
+		
+		f.setResizable(false);
 		f.setSize(100, 200);
 		GridLayout grid = new GridLayout(10, 10, 0, 0);
 		p1.setLayout(grid);
