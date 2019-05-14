@@ -58,6 +58,7 @@ public class Menu {
 
 		pMenu.add(bNewGame);
 		pMenu.add(bExitGame);
+		
 	}
 
 	/**
@@ -89,6 +90,8 @@ public class Menu {
 		fMenu.add(pMenu, BorderLayout.CENTER);
 		fMenu.setResizable(false);
 		fMenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		fMenu.setLocation(dim.width/2-fMenu.getSize().width/2, dim.height/2-fMenu.getSize().height/2);
 		fMenu.setVisible(true);
 	}
 	

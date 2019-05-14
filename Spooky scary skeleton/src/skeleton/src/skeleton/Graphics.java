@@ -8,7 +8,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -217,6 +216,8 @@ public class Graphics {
 		playSound("despacito.wav");
 		f.pack();
 		f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		f.setLocation(dim.width/2-f.getSize().width/2, dim.height/2-f.getSize().height/2);
 		f.setVisible(true);
 	}
 

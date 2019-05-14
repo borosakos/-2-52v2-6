@@ -21,7 +21,7 @@ public class JPanelWithBackround extends JPanel {
 	public JPanelWithBackround() {
 		readImage();
 		backroundImage = backroundImage.
-				getScaledInstance(486, 500, java.awt.Image.SCALE_SMOOTH);
+				getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH);
 	}
 
 	private void readImage() {

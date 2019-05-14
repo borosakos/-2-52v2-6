@@ -21,8 +21,16 @@ public class ExitDoor extends Door {
 	 * @param o teleportalando orangutan
 	 */
 	public void teleport(Orangutan o) {
-		o.getTile().remove();
-		otherDoor.doorTile.take(o);
+		for(int i = 0; i< otherDoor.position.getNeighbours().size(); i++) {
+			Tile toTp = otherDoor.position.getNeighbours().get(i);
+			if(toTp.element==null) {
+				toTp.accept(o);
+				o.getTile().remove();
+				toTp.take(o);
+			}
+		}
+		//o.getTile().remove();
+		//otherDoor.doorTile.take(o);
 	}
 
 	/**

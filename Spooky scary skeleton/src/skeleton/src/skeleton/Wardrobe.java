@@ -59,10 +59,17 @@ public class Wardrobe extends Element {
 	 * @param o teleportalando orangutan
 	 */
 	public void teleport(Orangutan o) {
-
-		doorTile.accept(o);
-		o.getTile().remove();
-		doorTile.take(o);
+		for(int i = 0; i< this.position.getNeighbours().size(); i++) {
+			Tile toTp = this.position.getNeighbours().get(i);
+			if(toTp.element==null) {
+				toTp.accept(o);
+				o.getTile().remove();
+				toTp.take(o);
+			}
+		}
+		//doorTile.accept(o);
+		//o.getTile().remove();
+		//doorTile.take(o);
 		//if (o.isInQueue()) o.getBackNeighbour().follow(doorTile);
 	}
 
@@ -102,7 +109,7 @@ public class Wardrobe extends Element {
 	 * @return hamis (nem utkozhet)
 	 */
 	public boolean hitBy(Orangutan o) {
-		if(!o.position.equals(this.doorTile)) return false;
+	//	if(!o.position.equals(this.doorTile)) return false;
 		setEnd(selectRandomWardrobe());
 		Tile followTile = o.position;
 		end.teleport(o);
@@ -110,7 +117,7 @@ public class Wardrobe extends Element {
 
 		if (o.isInQueue()) {
 			o.position = followTile;
-			o.getBackNeighbour().follow(doorTile);
+			o.getBackNeighbour().follow(followTile);
 			o.position = tpTile;
 		}
 		return false;
